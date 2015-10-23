@@ -1,0 +1,15 @@
+{
+  "name": "nmct.backend.project.web",
+  "version": "0.0.0",
+  "description": "nmct.backend.project.web",
+  "main": "app.js",
+  "author": {
+    "name": "Stijn",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "3.4.4",
+    "jade": "*",
+    "stylus": "*"
+  }
+}
