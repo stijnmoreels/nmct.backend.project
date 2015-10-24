@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "nmct.backend.project.web", "nmct.backend.project.web\nmct.backend.project.web.njsproj", "{2ED3DF9E-BB6A-4213-BC8F-C29C340AB719}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "nmct.backend.project.geofeelings", "nmct.backend.project.geofeelings\nmct.backend.project.geofeelings.njsproj", "{E81543FE-51B1-4954-BF84-B320DD094AD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2ED3DF9E-BB6A-4213-BC8F-C29C340AB719}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ED3DF9E-BB6A-4213-BC8F-C29C340AB719}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ED3DF9E-BB6A-4213-BC8F-C29C340AB719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E81543FE-51B1-4954-BF84-B320DD094AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81543FE-51B1-4954-BF84-B320DD094AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81543FE-51B1-4954-BF84-B320DD094AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81543FE-51B1-4954-BF84-B320DD094AD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

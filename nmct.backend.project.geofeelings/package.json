@@ -1,0 +1,14 @@
+{
+  "name": "nmct.backend.project.geofeelings",
+  "version": "0.0.0",
+  "description": "nmct.backend.project.geofeelings",
+  "main": "server.js",
+  "author": {
+    "name": "Stijn",
+    "email": ""
+  },
+  "dependencies": {
+    "jsonwebtoken": "^5.4.0",
+    "serve-static": "^1.10.0"
+  }
+}
