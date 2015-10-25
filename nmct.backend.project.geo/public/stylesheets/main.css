@@ -1,0 +1,15 @@
+body{
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+}
+#wrapper-toggle{
+    position: absolute;
+    z-index: 10000;
+}
+html, body, #map-canvas{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
