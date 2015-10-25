@@ -1,41 +1,47 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Geofeelings</title>
-    <link href="../public/stylesheets/normalize.css" rel="stylesheet">
-    <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="../public/stylesheets/simple-sidebar.css" rel="stylesheet">
-    <link href="../public/stylesheets/font-awesome.min.css" rel="stylesheet">
+    <link href="./stylesheets/normalize.css" rel="stylesheet">
+    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheets/simple-sidebar.css" rel="stylesheet">
+    <link href="./stylesheets/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,300' rel='stylesheet' type='text/css'>
-    <link href="../public/stylesheets/main.css" rel="stylesheet">
+    <link href="./stylesheets/main.css" rel="stylesheet">
+
     <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- Stijn Moreels / Backend -->
+    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="token.js"></script>
 </head>
 <body>
-<div id="wrapper">
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <div class="container">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#"><i class="fa fa-smile-o "></i> Geofeelings</a>
-                </li>
-            </ul>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="container">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#"><i class="fa fa-smile-o "></i> Geofeelings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="wrapper-toggle">
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                <i class="fa fa-navicon fa-2x"></i>
+            </a>
         </div>
     </div>
-    <div id="wrapper-toggle">
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-            <i class="fa fa-navicon fa-2x"></i>
-        </a>
+
+    <div id="map-wrapper">
+        <div id="map-canvas">
+
+        </div>
     </div>
-</div>
-
-<div id="map-wrapper">
-    <div id="map-canvas">
-
-    </div>
-</div>
 
 
 
@@ -43,12 +49,12 @@
 
 
 
-<!-- jQuery -->
-<script src="../public/javascripts/jquery-1.10.2.min.js"></script>
-<script src="../public/javascripts/jquery.validate.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="../public/javascripts/bootstrap.min.js"></script>
-<script src="../public/javascripts/menu_toggle.js"></script>
-<script src="../public/javascripts/map.js"></script>
+    <!-- jQuery -->
+    <script src="./javascripts/jquery-1.10.2.min.js"></script>
+    <script src="./javascripts/jquery.validate.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./javascripts/bootstrap.min.js"></script>
+    <script src="./javascripts/menu_toggle.js"></script>
+    <script src="./javascripts/map.js"></script>
 </body>
 </html>

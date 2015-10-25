@@ -43,7 +43,7 @@ $("#locations").submit(function (e) {
         data: {
             token: token
         },
-        url: "../locations"
+        url: "../add-share"
     }).done(function (result) {
         console.log(result)
     });

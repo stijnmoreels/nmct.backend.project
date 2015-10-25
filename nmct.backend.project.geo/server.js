@@ -34,8 +34,24 @@ sio.use(socketio_jwt.authorize({
 sio.sockets
   .on('connection', function (socket) {
     console.log(socket.decoded_token.email, 'connected');
-});
+    
+    //socket.on("add-share", function (error, share) {
+        
+    //});
 
+    // BROADCAST
+    //io.emit('this', { will: 'be received by everyone' });
+    
+    // PRIVATE
+    //socket.on('private message', function (from, msg) {
+    //    console.log('I received a private message by ', from, ' saying ', msg);
+    //});
+    
+    // DISCONNECT
+    //socket.on('disconnect', function () {
+    //    io.emit('user disconnected');
+    //});
+});
 
 var profile = {};
 app.post('/login', function (request, response) {
@@ -59,11 +75,11 @@ function parseRequestCallback(error, data) {
 
 
 var object = {};
-app.post('/locations', function (request, response) {
+app.post('/add-share', function (request, response) {
     request.on('data', function (data) {
         Request.parseRequest(data, parseObjectRequestCallback);
         var decoded = jwt.verify(object.token, jwt_secret, verifyTokenCallback);
-        // TODO: get locations 
+        // TODO: add share
     });
 });
 
@@ -75,7 +91,11 @@ function parseObjectRequestCallback(error, data) {
 function verifyTokenCallback(error, decoded) {
     if (error) { throw error }
     var user = decoded;
+
+    // TODO: add share
 }
+
+
 
 server.listen(9000, function () {
     console.log('listening on http://localhost:9000');
