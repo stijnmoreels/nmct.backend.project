@@ -16,6 +16,9 @@ function connect() {
     }).on('disconnect', function () {
         console.log('- disconnected');
     });
+    //.on("add-share", function(share) {
+        // TODO: Add share to map
+    //};
 }
 connect(); //connect now, it will drop
 
@@ -47,4 +50,5 @@ $("#locations").submit(function (e) {
     }).done(function (result) {
         console.log(result)
     });
+    //socket.emit("add-share", {share-data});
 });
