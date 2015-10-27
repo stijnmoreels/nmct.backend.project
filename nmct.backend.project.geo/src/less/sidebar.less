@@ -1,0 +1,120 @@
+@import "variables.less";
+@import "mixins.less";
+
+//Toggle styles
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+
+  #sidebar-wrapper {
+    width: 250px;
+  }
+  #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+  }
+}
+
+#sidebar-wrapper {
+  z-index: 10000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: @midnightBlue;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+//sidebar styles
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    text-indent: 0;
+    line-height: 40px;
+    a {
+      display: block;
+      text-decoration: none;
+      color: @white;
+
+      &:hover {
+        text-decoration: none;
+        color: @cloud;
+        background: rgba(255, 255, 255, 0.2);
+      }
+      &:active, &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+  > .sidebar-brand {
+    height: 65px;
+    font-size: 30px;
+    line-height: 60px;
+
+    a {
+      color: @sunFlower;
+
+      &:hover {
+        color: @orange;
+        background: none;
+        -webkit-transition: color 0.2s;
+        -moz-transition: color 0.2s;
+        -ms-transition: color 0.2s;
+        -o-transition: color 0.2s;
+        transition: color 0.2s;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 400px;
+  }
+
+  #wrapper.toggled {
+    padding-left: 0;
+
+    #sidebar-wrapper {
+      width: 0;
+    }
+    #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+    }
+
+  }
+
+  #sidebar-wrapper {
+    width: 400px;
+  }
+
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative
+  }
+}

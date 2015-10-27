@@ -1,0 +1,26 @@
+@import "variables.less";
+@import "mixins.less";
+
+body{
+  font-family: @fontFamily;
+  color: @white;
+}
+
+#wrapper-toggle{
+  position: absolute;
+  z-index: 10000;
+  height: 100%;
+  background-color: @midnightBlue;
+}
+#menu-toggle{
+  border: none;
+  color: @white;
+  background-color: transparent;
+}
+html, body, #map-canvas{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
