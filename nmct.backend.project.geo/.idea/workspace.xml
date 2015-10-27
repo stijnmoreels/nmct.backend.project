@@ -2,51 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e66483d-93e0-4cda-a513-68b467adde9f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/less/mixins.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/less/sidebar.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/less/site.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/less/variables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/src/fonts/FontAwesome.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/src/fonts/fontawesome-webfont.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/src/fonts/fontawesome-webfont.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/src/fonts/fontawesome-webfont.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/src/fonts/fontawesome-webfont.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/src/fonts/fontawesome-webfont.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/src/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/src/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/src/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/src/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/_references.js" afterPath="$PROJECT_DIR$/src/javascripts/_references.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/bootstrap.js" afterPath="$PROJECT_DIR$/src/javascripts/bootstrap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/bootstrap.min.js" afterPath="$PROJECT_DIR$/src/javascripts/bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery-1.10.2.intellisense.js" afterPath="$PROJECT_DIR$/src/javascripts/jquery-1.10.2.intellisense.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery-1.10.2.js" afterPath="$PROJECT_DIR$/src/javascripts/jquery-1.10.2.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery-1.10.2.min.js" afterPath="$PROJECT_DIR$/src/javascripts/jquery-1.10.2.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery-1.10.2.min.map" afterPath="$PROJECT_DIR$/src/javascripts/jquery-1.10.2.min.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery.validate-vsdoc.js" afterPath="$PROJECT_DIR$/src/javascripts/jquery.validate-vsdoc.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery.validate.js" afterPath="$PROJECT_DIR$/src/javascripts/jquery.validate.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery.validate.min.js" afterPath="$PROJECT_DIR$/src/javascripts/jquery.validate.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery.validate.unobtrusive.js" afterPath="$PROJECT_DIR$/src/javascripts/jquery.validate.unobtrusive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/jquery.validate.unobtrusive.min.js" afterPath="$PROJECT_DIR$/src/javascripts/jquery.validate.unobtrusive.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/map.js" afterPath="$PROJECT_DIR$/src/javascripts/map.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/menu_toggle.js" afterPath="$PROJECT_DIR$/src/javascripts/menu_toggle.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/modernizr-2.6.2.js" afterPath="$PROJECT_DIR$/src/javascripts/modernizr-2.6.2.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/respond.js" afterPath="$PROJECT_DIR$/src/javascripts/respond.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/respond.min.js" afterPath="$PROJECT_DIR$/src/javascripts/respond.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/login.html" afterPath="$PROJECT_DIR$/src/login.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/bootstrap.css" afterPath="$PROJECT_DIR$/src/stylesheets/bootstrap.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/bootstrap.min.css" afterPath="$PROJECT_DIR$/src/stylesheets/bootstrap.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/font-awesome.css" afterPath="$PROJECT_DIR$/src/stylesheets/font-awesome.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/font-awesome.min.css" afterPath="$PROJECT_DIR$/src/stylesheets/font-awesome.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/main.css" afterPath="$PROJECT_DIR$/src/stylesheets/main.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/normalize.css" afterPath="$PROJECT_DIR$/src/stylesheets/normalize.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/simple-sidebar.css" afterPath="$PROJECT_DIR$/src/stylesheets/simple-sidebar.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/stylesheets/style.styl" afterPath="$PROJECT_DIR$/src/stylesheets/style.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nmct.backend.project.geo.iws" />
@@ -68,12 +23,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6346705">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state vertical-scroll-proportion="-28.75">
+              <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.06232687">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#39#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,8 +90,8 @@
         <option value="$PROJECT_DIR$/src/less/site.less" />
         <option value="$PROJECT_DIR$/src/dist/css/site.css" />
         <option value="$PROJECT_DIR$/src/less/sidebar.less" />
-        <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/src/login.html" />
+        <option value="$PROJECT_DIR$/src/index.html" />
       </list>
     </option>
   </component>
@@ -298,14 +265,22 @@
       <option name="number" value="Default" />
       <updated>1445770540193</updated>
     </task>
+    <task id="LOCAL-00001" summary="Update index.html&#10;">
+      <created>1445970439073</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1445970439073</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="862" height="819" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28306264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28306264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -325,6 +300,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update index.html&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update index.html&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -381,16 +360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.094736844">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#39#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/less/mixins.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -441,14 +410,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dist/css/site.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/less/sidebar.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-41.875">
@@ -465,11 +426,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/dist/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6346705">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state vertical-scroll-proportion="-28.75">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06232687">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
