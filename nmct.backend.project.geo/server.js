@@ -34,48 +34,73 @@ sio.use(socketio_jwt.authorize({
 sio.sockets
   .on('connection', function (socket) {
     console.log(socket.decoded_token.email, 'connected');
+    
+    //socket.on("add-share", function (error, share) {
+        //sio.emit("add-share", share);
+    //});
+
+    // BROADCAST
+    //sio.emit('this', { will: 'be received by everyone' });
+    
+    // PRIVATE
+    //socket.on('private message', function (from, msg) {
+    //    console.log('I received a private message by ', from, ' saying ', msg);
+    //});
+    
+    // DISCONNECT
+    //socket.on('disconnect', function () {
+    //    io.emit('user disconnected');
+    //});
 });
 
 
-var profile = {};
+// LOGIN
+// -----------------------------------------------------------------------------
 app.post('/login', function (request, response) {
+    var user = {};
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
         // We are sending the profile inside the token
-        var token = jwt.sign(profile, jwt_secret, { expiresInMinutes: 60 * 5 });
+        var token = jwt.sign(user, jwt_secret, { expiresInMinutes: 60 * 5 });
         response.json({ token: token });
     });
+
+    function parseRequestCallback(error, data) {
+        if (error) { throw error }
+        
+        // TODO: get user from NoSQL
+        user = data;
+        user.id = 123;
+        user.email = "john@doe.com";
+    }
 });
-
-function parseRequestCallback(error, data) {
-    if (error) { throw error }
-    
-    // TODO: get user from NoSQL
-    profile = data;
-    profile.id = 123;
-    profile.email = "john@doe.com";
-    profile.last_name = "Doe";
-}
+// -----------------------------------------------------------------------------
 
 
-var object = {};
-app.post('/locations', function (request, response) {
+// ADD SHARE
+// -----------------------------------------------------------------------------
+app.post('/add-share', function (request, response) {
+    var object = {};
     request.on('data', function (data) {
         Request.parseRequest(data, parseObjectRequestCallback);
         var decoded = jwt.verify(object.token, jwt_secret, verifyTokenCallback);
-        // TODO: get locations 
+        // TODO: add share
     });
+
+    function parseObjectRequestCallback(error, data) {
+        if (error) { throw error }
+        object = data;
+    }
+
+    function verifyTokenCallback(error, decoded) {
+        if (error) { throw error }
+        var user = decoded;
+
+    // TODO: add share
+    }
 });
+// -----------------------------------------------------------------------------
 
-function parseObjectRequestCallback(error, data) {
-    if (error) { throw error }
-    object = data;
-}
-
-function verifyTokenCallback(error, decoded) {
-    if (error) { throw error }
-    var user = decoded;
-}
 
 server.listen(9000, function () {
     console.log('listening on http://localhost:9000');
