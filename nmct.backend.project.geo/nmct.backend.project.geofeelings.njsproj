@@ -33,11 +33,9 @@
     <Compile Include="crypto\encrypt.js" />
     <Compile Include="model\share.js" />
     <Compile Include="model\user.js" />
-    <Compile Include="public\encrypt.js" />
     <Compile Include="request.js" />
     <Compile Include="server.js" />
     <Compile Include="public\token.js" />
-    <Content Include="public\index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
     <Content Include="bin\ChangeConfig.ps1" />

@@ -20,7 +20,7 @@ var app = express();
 var serveStatic = require('serve-static');
 var bodyParser = require('body-parser');
 
-app.use(serveStatic('public', { 'index': ['index.html'] }));
+app.use(serveStatic('public/src', { 'index': ['index.html'] }));
 app.use(bodyParser.json());
 
 var server = http.createServer(app);
@@ -35,9 +35,9 @@ sio.sockets
   .on('connection', function (socket) {
     console.log(socket.decoded_token.email, 'connected');
     
-    //socket.on("add-share", function (error, share) {
-        //sio.emit("add-share", share);
-    //});
+    socket.on("addshare", function (error, share) {
+        sio.emit("addshare", share);
+    });
 
     // BROADCAST
     //sio.emit('this', { will: 'be received by everyone' });

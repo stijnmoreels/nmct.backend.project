@@ -15,12 +15,15 @@ function connect() {
         console.log('- authenticated');
     }).on('disconnect', function () {
         console.log('- disconnected');
-    });
-    //.on("add-share", function(share) {
+    })
+    .on("addshare", function(share) {
         // TODO: Add share to map
-    //};
+        console.log("- add share to map");
+    });
 }
 connect(); //connect now, it will drop
+
+socket.emit("addshare", { error: null, share: "test-share" });
 
 $('#login').submit(function (e) {
     e.preventDefault();
