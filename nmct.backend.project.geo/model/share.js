@@ -11,7 +11,6 @@ var Share = function () {
     this.longitude = 0.0;
     this.activityId = 0;
 }
-
 Share.prototype = {
     initialize: function (id, feeling, latitude, longitude, activityId) {
         this.id = id;
@@ -20,5 +19,4 @@ Share.prototype = {
         this.activityId = activityId;
     }
 };
-
 module.exports = Share;

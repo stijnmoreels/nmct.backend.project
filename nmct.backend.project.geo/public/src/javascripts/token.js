@@ -15,43 +15,37 @@ function connect() {
         console.log('- authenticated');
     }).on('disconnect', function () {
         console.log('- disconnected');
-    })
-    .on("addshare", function(share) {
+    }).on("addshare", function(share) {
         // TODO: Add share to map
         console.log("- add share to map");
+    }).on("unauthorized", function (error) { 
+        console.log("- unauthorized");
     });
-}
-connect(); //connect now, it will drop
-
-socket.emit("addshare", { error: null, share: "test-share" });
-
-$('#login').submit(function (e) {
-    e.preventDefault();
-    var username = $('#username').val();
-    var password = $('#password').val();
+} function connectAnonymous() {
     $.ajax({
         type: 'POST',
         data: {
-            username: username,
-            password: password
+            username: "anonymous",
+            password: 123
         },
         url: '../login'
     }).done(function (result) {
         token = result.token;
         connect();
     });
+}
 
-});
-$("#locations").submit(function (e) {
+
+connect(); //connect now, it will drop
+connectAnonymous();
+
+$('#login').submit(function (e) {
     e.preventDefault();
-    $.ajax({
-        type: "POST",
-        data: {
-            token: token
-        },
-        url: "../add-share"
-    }).done(function (result) {
-        console.log(result)
-    });
-    //socket.emit("add-share", {share-data});
+    var username = $('#exampleInputEmail1').val();
+    var password = $('#exampleInputPassword1').val();
+
+    // TODO: get new token and reconnect
+});
+$("#add-share").submit(function (e) {
+    socket.emit("addshare", { error: null, share: "test-share", token: token });   
 });

@@ -36,7 +36,7 @@
     <Compile Include="request.js" />
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
-    <Compile Include="public\token.js" />
+    <Compile Include="public\src\javascripts\token.js" />
     <Compile Include="socket\communication.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
@@ -51,6 +51,8 @@
     <Folder Include="bin\" />
     <Folder Include="model\" />
     <Folder Include="crypto\" />
+    <Folder Include="public\src\" />
+    <Folder Include="public\src\javascripts\" />
     <Folder Include="socket\" />
     <Folder Include="public\" />
   </ItemGroup>

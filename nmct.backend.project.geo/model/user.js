@@ -11,7 +11,6 @@ var User = function () {
     this.passwordHash = "";
     this.isAdmin = false;
 };
-
 User.prototype = {
     InitializeUser: function (id, username, email, passwordHash, isAdmin) {
         this.id = id;
@@ -21,5 +20,4 @@ User.prototype = {
         this.isAdmin = isAdmin;
     }
 };
-
 module.exports = User;

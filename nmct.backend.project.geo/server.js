@@ -16,8 +16,28 @@ app.use(bodyParser.json());
 
 var server = http.createServer(app);
 
+var Request = require('./request.js');
 var communication = require('./socket/communication.js');
 communication.listen(server);
+
+// Anonymous login (can see map but can't add shares)
+app.post('/login', function (request, response) {
+    var user = {};
+    request.on('data', function (data) {
+        Request.parseRequest(data, parseRequestCallback);
+        // We are sending the profile inside the token
+        communication.sign(user, getToken);
+    }); function parseRequestCallback(error, data) {
+        if (error) { throw error }
+        
+        // TODO: get user from NoSQL
+        user = data;
+        user.id = 123;
+        user.email = "john@doe.com";
+    } function getToken(error, token) {
+        response.json({ token: token });
+    }
+});
 
 server.listen(9000, function () {
     console.log('listening on http://localhost:9000');
