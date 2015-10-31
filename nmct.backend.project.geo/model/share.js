@@ -4,16 +4,17 @@
  * @language: Node.js
  * @purpose: Share Model 
  =============================================================================*/
-var Share = function () {
-    this.id = 0;
-    this.feeling = "";
-    this.latitude = 0.0;
-    this.longitude = 0.0;
-    this.activityId = 0;
+var Share = function (id, feeling, latitude, longitude, activityId) {
+    this.id = id;
+    this.feeling = feeling;
+    this.latitude = latitude;
+    this.longitude = longitude;
+    this.activityId = activityId;
 }
 Share.prototype = {
     initialize: function (id, feeling, latitude, longitude, activityId) {
         this.id = id;
+        this.feeling = feeling;
         this.latitude = tatitude;
         this.longitude = longitude;
         this.activityId = activityId;

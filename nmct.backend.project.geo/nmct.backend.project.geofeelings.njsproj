@@ -33,7 +33,7 @@
     <Compile Include="crypto\encrypt.js" />
     <Compile Include="model\share.js" />
     <Compile Include="model\user.js" />
-    <Compile Include="request.js" />
+    <Compile Include="http\request.js" />
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
     <Compile Include="public\src\javascripts\token.js" />
@@ -51,6 +51,7 @@
     <Folder Include="bin\" />
     <Folder Include="model\" />
     <Folder Include="crypto\" />
+    <Folder Include="http\" />
     <Folder Include="public\src\" />
     <Folder Include="public\src\javascripts\" />
     <Folder Include="socket\" />

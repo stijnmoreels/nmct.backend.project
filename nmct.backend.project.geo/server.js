@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 var server = http.createServer(app);
 
-var Request = require('./request.js');
+var Request = require("./http/request.js");
 var communication = require('./socket/communication.js');
 communication.listen(server);
 
@@ -34,6 +34,7 @@ app.post('/login', function (request, response) {
         user = data;
         user.id = 123;
         user.email = "john@doe.com";
+
     } function getToken(error, token) {
         response.json({ token: token });
     }
