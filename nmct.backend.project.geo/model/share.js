@@ -3,9 +3,11 @@
  * @author: Stijn Moreels
  * @language: Node.js
  * @purpose: Share Model 
+ * @comments: id = timestamp + author
  =============================================================================*/
-var Share = function (id, feeling, latitude, longitude, activityId) {
+var Share = function (id, feeling, author, latitude, longitude, activityId, timestamp) {
     this.id = id;
+    this.author = author;
     this.feeling = feeling;
     this.latitude = latitude;
     this.longitude = longitude;
@@ -13,8 +15,9 @@ var Share = function (id, feeling, latitude, longitude, activityId) {
     this.timestamp = timestamp;
 }
 Share.prototype = {
-    initialize: function (id, feeling, latitude, longitude, activityId, timestamp) {
+    initialize: function (id, feeling, author, latitude, longitude, activityId, timestamp) {
         this.id = id;
+        this.author = author;
         this.feeling = feeling;
         this.latitude = tatitude;
         this.longitude = longitude;
