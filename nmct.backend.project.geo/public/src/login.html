@@ -15,38 +15,39 @@
 <div id="wrapper">
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
-        <div class="container">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
+        <div class="container" id="main-content">
+            <div class="sidebar-nav">
+                <div class="sidebar-brand">
                     <a href="#"><i class="fa fa-smile-o "></i> Geofeelings</a>
-                </li>
-                <form id="login">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </ul>
+                </div>
+            </div>
+            <div class="btn-group" role="group" aria-label="...">
+                <a type="button" class="btn btn-default" href="index.html" id="home">home</a>
+                <a type="button" class="btn btn-default" href="login.html" id="login">login</a>
+            </div>
+            <div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos eos est hic labore praesentium recusandae, temporibus totam? Aut magnam non nostrum placeat similique. Atque cum delectus nulla perspiciatis quis! Repellendus!
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto blanditiis consectetur, consequuntur cupiditate dolor ea est eum, facere impedit maxime necessitatibus nemo non officiis quos repellat sed ullam, ut?
+                </p>
+            </div>
         </div>
     </div>
-    <div id="wrapper-toggle">
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
-            <i class="fa fa-navicon fa-2x"></i>
-        </a>
+        <div id="wrapper-toggle">
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                <i class="fa fa-navicon fa-2x"></i>
+            </a>
+        </div>
+    </div>
+
+    <div id="map-wrapper">
+        <div id="map-canvas">
+
+        </div>
     </div>
 </div>
-
-<div id="map-wrapper">
-    <div id="map-canvas">
-
-    </div>
-</div>
-
 
 <!-- jQuery -->
 <script src="./javascripts/jquery-1.10.2.min.js"></script>
@@ -54,13 +55,67 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="./javascripts/bootstrap.min.js"></script>
 <script src="./javascripts/menu_toggle.js"></script>
-<<<<<<< Updated upstream
-<script src="./javascripts/map.js"></script>
-
-    <!-- Test Login-->
-
-=======
+<script src="./javascripts/modernizr-2.6.2.js"></script>
 <script src="dist/js/map.js"></script>
->>>>>>> Stashed changes
+<script src="dist/js/mapStyle.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/token.js"></script>
+<script src="js/dynamicpage.js"></script>
+
+<!-- Backend Communication -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/client.js"></script>
+<script>
+    /*
+
+     Arne, hier kan je je communicatie met de backend verzorgen.
+     Beter in een aparte file misschien.
+
+     "client" is een publieke variabele waar alle functies in staat.
+     - login
+     - connectAnonymous
+     - getShares
+     - addShareOrActivity
+     (- register, nog niet uitgewerkt)
+     (- getActivities, nog niet uitgewerkt)
+
+     ---------------------------------------------------------------
+
+     "connectAnonymous" moet altijd eerst uitgevoerd worden.
+     daarna kan er iemand zich inloggen.
+
+     client.login();
+
+     ---------------------------------------------------------------
+
+     "getShares" geeft je alle schares in de database
+
+     client.getShares();
+
+     --------------------------------------------------------------
+
+     "addShareOrActivity" kan je een share of activity toevoegen
+     maar is nog niet helemaal klaar, dus wordt vervolgd
+
+     client.addShareOrActivity();
+
+     ---------------------------------------------------------------
+
+
+     */
+    // altijd eerste "connect anonymous"
+    client.connectAnonymous(function (error, user) {
+
+        // bij het klikken op "login" ->
+        client.login("stijn@moreels", "123", function (error, user) {
+
+            // haal alle shares op van de database
+            client.getShares(function (error, shares) {
+                // hier kan je je het "shares" element toevoegen aan je HTML
+                console.log(shares);
+            });
+        });
+    });
+</script>
 </body>
 </html>
