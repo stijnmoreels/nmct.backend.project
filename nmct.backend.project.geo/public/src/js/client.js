@@ -6,7 +6,7 @@
  =============================================================================*/
 
 var client = (function () {
-    var token, socket;
+    var token, socket, callbackAddShare, callbackAddActivity;
     var setupSockets = function () {
         socket = io.connect(token ? ('?token=' + token) : '', {
             'forceNew': true
@@ -19,6 +19,12 @@ var client = (function () {
             console.log('- disconnected');
         }).on("unauthorized", function (error) {
             console.log("- unauthorized");
+        }).on("addshare", function (created) {
+            if (callbackAddShare != null)
+                callbackAddShare(null, created);
+        }).on("addactivity", function (created) { 
+            if (callbackAddActivity != null)
+                callbackAddActivity(null, created);
         });
     }, connectAnonymous = function (callback) {
             post("anonymous", 123, callback);
@@ -44,15 +50,13 @@ var client = (function () {
             socket.emit("shares", null);
         }, addShare = function (share, callback) {
             var object = { error: null, share: share, token: token };
-            socket.on("addshare", function (created) {
-                callback(null, created);
-            })
+            if (callback != null)
+                callbackAddShare = callback;
             socket.emit("addshare", object);
         }, addActivity = function (activity, callback) {
             var object = { error: null, activity: activity, token: token };
-            socket.on("addactivity", function (created) {
-                callback(null, created);
-            });
+            if (callback != null)
+                callbackAddActivity = callback;
             socket.emit("addactivity", object);
         }, addShareOrActivity = function (element, callback) {
             if (element.isActivity) {
@@ -65,7 +69,9 @@ var client = (function () {
         login: login,
         connectAnonymous: connectAnonymous,
         getShares: getShares,
-        addShareOrActivity: addShareOrActivity
+        addShareOrActivity: addShareOrActivity,
+        standardCallbackAddShare: callbackAddShare,
+        standardCallbackAddActivity: callbackAddActivity
         //TODO: register, 
     };
 })();
