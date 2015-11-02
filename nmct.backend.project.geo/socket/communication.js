@@ -28,11 +28,13 @@ var Communication = (function () {
                     if (user.username === "anonymous" || user.password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
                     else if (true/* TODO: user exists in database */) {
-                        // TODO: add share to database
-                        sio.emit("addshare", data.share);
+                        DocumentDB.insert("shares", data.share, 
+                            function (error, document) {
+                            sio.emit("addshare", document);
+                        });
                     }
                 }
-            });           
+            });
             // user get all curent shares
             socket.on("shares", function () {
                 var query = { query: "SELECT * FROM shares" };
