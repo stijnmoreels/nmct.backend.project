@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 
 //Task: convert less to css
 gulp.task("css", function(){
-    gulp.src("./src/less/**/*.less")
+    gulp.src("./public/src/less/**/*.less")
         .pipe(less())
         .pipe(csslint({
             'ids': false
@@ -21,7 +21,7 @@ gulp.task("css", function(){
         //.pipe(cssMinifier())
         .pipe(concat("site.css"))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest("./src/dist/css"))
+        .pipe(gulp.dest("./public/src/dist/css"))
         .pipe(notify({
             message: "css built"
         }))
