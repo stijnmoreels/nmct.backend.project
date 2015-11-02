@@ -36,7 +36,7 @@ app.post('/login', function (request, response) {
         user.email = "john@doe.com";
 
     } function getToken(error, token) {
-        response.json({ token: token });
+        response.json({ token: token, user: user });
     }
 });
 

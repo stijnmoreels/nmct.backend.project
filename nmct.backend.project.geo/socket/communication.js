@@ -27,8 +27,10 @@ var Communication = (function () {
                     if (error) { throw error }
                     if (user.username === "anonymous" || user.password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
-                    else if (true/* user exists in database */)
+                    else if (true/* user exists in database */) {
+                        // TODO: add share to database
                         sio.emit("addshare", data.share);
+                    }
                 }
             });
             // user get all curent shares
