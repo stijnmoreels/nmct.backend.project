@@ -27,20 +27,53 @@ var Communication = (function () {
                     if (error) { throw error }
                     if (user.username === "anonymous" || user.password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
-                    else if (true/* user exists in database */) {
-                        // TODO: add share to database
-                        sio.emit("addshare", data.share);
+                    else
+                        userExists(user, userExistsCallback);
+                } function userExistsCallback(error, user) {
+                    if (error) { throw error }
+                    else {
+                        // user exists
+                        DocumentDB.insert("shares", data.element, 
+                            function (error, document) {
+                            sio.emit("addshare", document);
+                        });
                     }
                 }
+            });
+            
+            // TODO: addactivity
+            
+            socket.on("register", function (data) {
+                if (data.error) { throw error }
+                DocumentDB.insert("users", data.user, function (error, user) { 
+                    sio.emit("register", data.user);
+                });
             });
             // user get all curent shares
             socket.on("shares", function () {
                 var query = { query: "SELECT * FROM shares" };
-                DocumentDB.query("shares", query, queryDocumentsCallback)
+                DocumentDB.query("shares", query, queryDocumentsCallback);
                 function queryDocumentsCallback(error, shares) {
                     sio.emit("shares", shares);
                 }
             });
+            // user get all curent activities
+            socket.on("activities", function () {
+                var query = { query: "SELECT * FROM activities" };
+                DocumentDB.query("activities", query, queryDocumentsCallback);
+                function queryDocumentsCallback(error, activities) {
+                    sio.emit("activities", activities);
+                }
+            });
+            function userExists(user, callback) {
+                var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
+                var parameters = [{
+                        name: "@username", value: user.username + ""
+                    }, {
+                        name: "@password", value: user.password + ""
+                    }];
+                documentDb.query("users", { query: query, parameters: parameters }, callback);
+            }
         } function authorize() {
             sio.use(socketio_jwt.authorize({
                 secret: jwt_secret,

@@ -18,6 +18,7 @@ var server = http.createServer(app);
 
 var Request = require("./http/request.js");
 var communication = require('./socket/communication.js');
+var documentDb = require("./database/documentdb.js");
 communication.listen(server);
 
 // Anonymous login (can see map but can't add shares)
@@ -25,16 +26,21 @@ app.post('/login', function (request, response) {
     var user = {};
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
-        // We are sending the profile inside the token
-        communication.sign(user, getToken);
+       
     }); function parseRequestCallback(error, data) {
         if (error) { throw error }
-        
-        // TODO: get user from NoSQL
-        user = data;
-        user.id = 123;
-        user.email = "john@doe.com";
-
+        var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
+        var parameters = [{
+                name: "@username", value: data.username + ""
+            }, {
+                name: "@password", value: data.password + ""
+            }];
+        documentDb.query("users", { query: query, parameters: parameters }, signUserCallback);
+    } function signUserCallback(error, user) {
+        if (error) { throw error }
+        else if (user != null)
+            // We are sending the profile inside the token
+            communication.sign(user, getToken);
     } function getToken(error, token) {
         response.json({ token: token, user: user });
     }
