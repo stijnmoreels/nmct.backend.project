@@ -59,7 +59,7 @@
                 var pageData = pages[pageURL.split('.')[0]];
 
                 //create new history item
-                history.pushState(pageData, pageData.title, pageURL);
+                history.pushState(pageData, pageData.title, 'pages/'+ pageURL);
             });
         });
     }
@@ -73,4 +73,18 @@
     loadContent('index.html', function () {
         history.replaceState(pages.index, pages.index.title, '');
     });
-})();
+
+/*    window.onbeforeunload = function (evt) {
+        var message = 'are you sure you want to leave ?';
+        if (typeof (evt) == window.event) {
+            evt = window.event;
+            window.location.href = 'http://localhost:63342/DynamicPage/index.html';
+        }
+        if (evt) {
+            evt.returnValue = message;
+            window.location.href = 'http://localhost:63342/DynamicPage/index.html';
+        }
+        return window.location.href = 'http://localhost:63342/DynamicPage/index.html';
+    }*/
+
+    })();

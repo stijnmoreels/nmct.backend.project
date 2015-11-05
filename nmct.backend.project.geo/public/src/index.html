@@ -18,12 +18,23 @@
             <div class="container">
                 <div class="sidebar-nav">
                     <div class="sidebar-brand">
-                        <a href="#"><i class="fa fa-smile-o "></i> Geofeelings</a>
+                        <a href="#">Geofeelings</a>
                     </div>
-
-                    <div class="btn-group" role="group" aria-label="...">
-                        <a type="button" class="btn btn-default load-content" href="login.html" id="home">Login</a>
-                        <a type="button" class="btn btn-default load-content" href="register.html" id="register">Register</a>
+                    <div class="login-box">
+                        <form class="login">
+                            <div class="form-group">
+                                <label for="e-mail"><i class="fa fa-user icon-input"></i>E-mail</label>
+                                <input type="email" class="form-control" id="e-mail" placeholder="user@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i class="fa fa-lock icon-input"></i>Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-block btn-login">Submit</button>
+                        </form>
+                    </div>
+                    <div class="register">
+                        <a class="load-content register-link" href="register.html" id="register">Not a member yet ? Register</a>
                     </div>
                 </div>
             </div>
@@ -43,7 +54,7 @@
     </div>
 
 <!-- jQuery -->
-<script src="./javascripts/jquery-1.10.2.min.js"></script>
+<script src="./javascripts/jquery-2.1.4.min.js"></script>
 <script src="./javascripts/jquery.validate.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="./javascripts/bootstrap.min.js"></script>
