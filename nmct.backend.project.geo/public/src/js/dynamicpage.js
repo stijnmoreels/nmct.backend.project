@@ -8,9 +8,9 @@
             url: "pages/index.html",
             content: ""
         },
-        login: {
-            title: "Login",
-            url: "pages/login.html",
+        main: {
+            title: "Main",
+            url: "pages/main.html",
             content: ""
         },
         register: {

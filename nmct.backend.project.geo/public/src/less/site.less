@@ -33,30 +33,30 @@ html, body, #map-canvas{
   left: 0;
   right: 0;
 }
-.login-box{
+.form-box {
   background-color: @cloud;
   padding: 20px;
   box-sizing: border-box;
   border-radius: 5px;
   width: 350px;
   margin: 0 0 10px 0;
-  .login{
+  .form-content {
     color: @midnightBlue;
     input, button{
       width: 300px;
     }
-
     .icon-input{
       margin: 0 10px 0 2px;
     }
-
     input:focus{
       border-color: @turquoise;
     }
-    .btn-login{
+    .checkbox input{
+      width: 0px;
+    }
+    .btn-submit {
       background-color: @turquoise;
       color: @white;
-      
       &:hover{
         background-color: darken(@turquoise, 5%);
         -webkit-transition: background-color 0.2s;
