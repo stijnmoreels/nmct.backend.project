@@ -18,7 +18,10 @@ var map;
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     });
+
+    map.addListener('click', function (e) {
+        if(true){
+            placeMarkerAndPanTo(e.latLng, map)
+        }
+    });
 })();
-
-
-
