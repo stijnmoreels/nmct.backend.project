@@ -40,6 +40,7 @@ var client = (function () {
                 url: '../login'
             }).done(function (result) {
                 token = result.token;
+                localStorage.token = token;
                 setupSockets();
                 callback(null, result.user);
             });

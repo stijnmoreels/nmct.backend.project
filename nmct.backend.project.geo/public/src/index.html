@@ -46,7 +46,6 @@
     <!--
     <script src="dist/js/mapStyle.js"></script>
     -->
-    <script src="js/token.js"></script>
 
     <!-- Backend Communication -->
     <script src="/socket.io/socket.io.js"></script>
@@ -89,23 +88,29 @@
 
 
      */
+        if (localStorage.token) {
+            var token = localStorage.token;
+        } else {
+            // connect annoymous
+            client.connectAnonymous(function(error, user) { });
+        }
     // altijd eerste "connect anonymous"
-    client.connectAnonymous(function (error, user) {
+    //client.connectAnonymous(function (error, user) {
 
-        //// bij het klikken op "login" ->
-        //client.login("stijn@moreels", "123", function (error, user) {
+    //    //// bij het klikken op "login" ->
+    //    //client.login("stijn@moreels", "123", function (error, user) {
 
-        //    // haal alle shares op van de database
-        //    client.getShares(function (error, shares) {
-        //        // hier kan je je het "shares" element toevoegen aan je HTML
-        //        console.log(shares);
-        //    });
-        //});
-        //client.register("moreels", "stijn", "stijn.moreels@student.howest.be", "123",
-        //    function (error, user) {
-        //        console.log(user);
-        //    });
-    });
+    //    //    // haal alle shares op van de database
+    //    //    client.getShares(function (error, shares) {
+    //    //        // hier kan je je het "shares" element toevoegen aan je HTML
+    //    //        console.log(shares);
+    //    //    });
+    //    //});
+    //    //client.register("moreels", "stijn", "stijn.moreels@student.howest.be", "123",
+    //    //    function (error, user) {
+    //    //        console.log(user);
+    //    //    });
+    //});
     </script>
 
     <!-- AngluarJS -->

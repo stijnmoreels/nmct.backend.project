@@ -35,6 +35,7 @@
     <Compile Include="public\src\Controllers\LoginController.js" />
     <Compile Include="public\src\Controllers\MainController.js" />
     <Compile Include="public\src\Controllers\RegisterController.js" />
+    <Compile Include="public\src\js\app.js" />
     <Compile Include="public\src\js\client.js" />
     <Compile Include="crypto\encrypt.js" />
     <Compile Include="model\share.js" />

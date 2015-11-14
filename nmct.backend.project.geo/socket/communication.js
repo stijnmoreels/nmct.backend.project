@@ -84,7 +84,7 @@ var Communication = (function () {
             }));
         }
     }, sign = function (user, callback) {
-            var token = jwt.sign(user, jwt_secret, { expiresIn: 60 * 5 });
+            var token = jwt.sign(user, jwt_secret, { expiresIn: 60 * 5 }); // 5 min
             callback(null, token);
         }, decoded = function (object, callback) {
             var decoded = jwt.verify(object.token, jwt_secret, callback);
