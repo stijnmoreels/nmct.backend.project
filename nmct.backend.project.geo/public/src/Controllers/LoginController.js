@@ -4,11 +4,11 @@
     var LoginController = function ($scope, $location) {
 
         $scope.login = function (username, password) {
-            client.connectAnnonymous(function (error, user) {
+            //client.connectAnnonymous(function (error, user) {
                client.login(username, password, function (error, shares) {
                    //get shares from user
                });
-            });
+            //});
         };
 
     };

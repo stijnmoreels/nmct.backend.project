@@ -31,6 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="database\documentdb.js" />
+    <Compile Include="public\src\Controllers\HomeController.js" />
+    <Compile Include="public\src\Controllers\LoginController.js" />
+    <Compile Include="public\src\Controllers\MainController.js" />
+    <Compile Include="public\src\Controllers\RegisterController.js" />
     <Compile Include="public\src\js\client.js" />
     <Compile Include="crypto\encrypt.js" />
     <Compile Include="model\share.js" />
@@ -40,6 +44,9 @@
     <Compile Include="server.js" />
     <Compile Include="socket\communication.js" />
     <Content Include="public\src\index.html" />
+    <Content Include="public\src\templates\login.html" />
+    <Content Include="public\src\templates\main.html" />
+    <Content Include="public\src\templates\register.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
     <Content Include="bin\ChangeConfig.ps1" />
@@ -56,8 +63,10 @@
     <Folder Include="crypto\" />
     <Folder Include="http\" />
     <Folder Include="public\src\" />
+    <Folder Include="public\src\Controllers\" />
     <Folder Include="public\src\javascripts\" />
     <Folder Include="public\src\js\" />
+    <Folder Include="public\src\templates\" />
     <Folder Include="socket\" />
     <Folder Include="public\" />
   </ItemGroup>

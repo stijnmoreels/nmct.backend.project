@@ -59,7 +59,7 @@ var client = (function () {
                 callback(null, activities);
             });
             
-            .emit("activities", null);
+            socket.emit("activities", null);
         }, addShare = function (share, callback) {
             var object = { error: null, share: share, token: token };
             if (callback != null)
