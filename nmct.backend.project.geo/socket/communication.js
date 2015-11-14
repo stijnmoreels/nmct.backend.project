@@ -12,7 +12,8 @@ var Communication = (function () {
         socketio_jwt = require('socketio-jwt'),
         sio = "",
         Share = require("../model/share.js"),
-        DocumentDB = require("../database/documentdb.js");
+        DocumentDB = require("../database/documentdb.js"),
+        sh1 = require("../crypto/hash.js");
     var listen = function (server) {
         sio = socketIo.listen(server);
         authorize();
@@ -45,6 +46,7 @@ var Communication = (function () {
             
             socket.on("register", function (data) {
                 if (data.error) { throw error }
+                //data.user.password = sh1.hash(data.user.password);
                 DocumentDB.insert("users", data.user, function (error, user) { 
                     sio.emit("register", data.user);
                 });
@@ -66,6 +68,7 @@ var Communication = (function () {
                 }
             });
             function userExists(user, callback) {
+                //var password = sh1.hash(user.password);
                 var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
                 var parameters = [{
                         name: "@username", value: user.username + ""
