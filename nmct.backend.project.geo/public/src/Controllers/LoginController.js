@@ -3,10 +3,15 @@
 
     var LoginController = function ($scope, $location) {
 
+        $scope.username = "stijn@moreels";
+        $scope.password = "123";
+
         $scope.login = function (username, password) {
             //client.connectAnnonymous(function (error, user) {
                client.login(username, password, function (error, shares) {
-                   //get shares from user
+                   client.getShares(function (error, shares) {
+                       console.log(shares);
+                   })
                });
             //});
         };
