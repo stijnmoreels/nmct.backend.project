@@ -23,5 +23,5 @@ var mapType = (function () {
                     map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
             }
         }
-    }
+    };
 })();

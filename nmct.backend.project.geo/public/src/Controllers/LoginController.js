@@ -4,19 +4,20 @@
     var LoginController = function ($scope, $location) {
 
 
-        $scope.userLogin = function (username, password) {
-            client.login(username, password, function (error, user) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    $location.path("/main");
-                }
-               });
+        $scope.userLogin = function () {
+            $location.path('/main');
             console.log("username:  " + $scope.username + ", password: " + $scope.password);
             //alert('ok');
         };
+        /*client.login(username, password, function (error, user) {
+         if (error) {
+         console.log(error);
+         } else {
+         $location.path("/main");
+         }
+         });*/
 
     };
 
-    app.controller("LoginController", LoginController);
+    app.controller("LoginController", ["$scope","$location",LoginController]);
 })();
