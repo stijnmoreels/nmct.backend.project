@@ -7,7 +7,10 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
-    less = require('gulp-less');
+    less = require('gulp-less'),
+    jshint = require('gulp-jshint'),
+    jsStylish = require('jshint-stylish'),
+    uglify = require('gulp-uglify');
 
 
 //Task: convert less to css
@@ -25,4 +28,17 @@ gulp.task("css", function(){
         .pipe(notify({
             message: "css built"
         }))
+});
+
+gulp.task("js", function(){
+    gulp.src("./public/src/js/**/*.js")
+        .pipe(jshint())
+        .pipe(jshint.reporter(jsStylish))
+        .pipe(sourcemaps.init())
+        .pipe(concat("app.min.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest("./public/src/dist/js"))
+        .pipe(notify({
+            message: "js built"
+        }));
 });
