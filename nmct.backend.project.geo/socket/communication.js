@@ -23,6 +23,7 @@ var Communication = (function () {
         // Connection Callback
         function connection(socket) {
             console.log("connected: " + socket.id);
+            
             // user adds share to map
             socket.on("addshare", function (data) {
                 if (data.error) { throw error }
@@ -47,7 +48,29 @@ var Communication = (function () {
                 }
             });
             
-            // TODO: addactivity
+            // user adds activity to map
+            socket.on("addactivity", function (data) {
+                if (data.error) { throw error; }
+                jwt.verify(data.token, jwt_secret, getDecoded);
+                // Get verified by JsonWebToken
+                function getDecoded(error, user) {
+                    if (error) { throw error; }
+                    // Anonymous has no rights to add shares/activities
+                    if (user.username === "anonymous" || user.password === 123)
+                        sio.emit("unauthorized", "Must login to add a share");
+                    else
+                        userExists(user, userExistsCallback);
+                } function userExistsCallback(error, user) {
+                    if (error) { throw error; }
+                    else {
+                        // user exists
+                        DocumentDB.insert("activities", data.element, 
+                            function (error, document) {
+                            sio.emit("addactivity", document);
+                        });
+                    }
+                }
+            });
             
             socket.on("register", function (data) {
                 if (data.error) { throw error }
@@ -88,17 +111,23 @@ var Communication = (function () {
                 handshake: true
             }));
         }
-    }, sign = function (user, callback) {
+    }, 
+        // sign user, means he gets a token 
+        sign = function (user, callback) {
             var token = jwt.sign(user, jwt_secret, { expiresIn: 60 * 5 }); // 5 min
             callback(null, token);
-        }, decoded = function (object, callback) {
+        }, 
+        // get the user from the token
+        decoded = function (object, callback) {
             var decoded = jwt.verify(object.token, jwt_secret, callback);
         };
     
+    // public methods    
     return {
         listen: listen,
         sign: sign,
         verify: decoded
     };
 })();
+
 module.exports = Communication;

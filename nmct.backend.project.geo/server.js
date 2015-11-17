@@ -27,10 +27,12 @@ app.post('/login', function (request, response) {
         sh1 = require("./crypto/hash.js");
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
-       
-    }); function parseRequestCallback(error, data) {
+    });
+    
+    // get the data from the POST and find the right user
+    function parseRequestCallback(error, data) {
         if (error) { throw error }
-        
+
         var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
         var parameters = [{
                 name: "@username", value: data.username + ""
@@ -38,7 +40,10 @@ app.post('/login', function (request, response) {
                 name: "@password", value: data.password + ""
             }];
         documentDb.query("users", { query: query, parameters: parameters }, signUserCallback);
-    } function signUserCallback(error, user) {
+    }
+    
+    // sign user in the application
+    function signUserCallback(error, user) {
         if (error) { throw error }
         else if (user.length == 0)
             // No user found
@@ -46,7 +51,10 @@ app.post('/login', function (request, response) {
         else if (user != null && user.length != 0)
             // We are sending the profile inside the token
             communication.sign(user, getToken);
-    } function getToken(error, token) {
+    }
+    
+    // get token to send back to the client
+    function getToken(error, token) {
         if (error) { throw error }
         else response.json({ token: token, user: user });
     }

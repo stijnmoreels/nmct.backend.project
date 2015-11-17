@@ -4,6 +4,7 @@
  * @language: Node.js
  * @purpose: Request Parser Server Side 
  =============================================================================*/
+
 var Request = (function () {
     function parseRequest(data, callback) {
         var values = data.toString().split("&");
