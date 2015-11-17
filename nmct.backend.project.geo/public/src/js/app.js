@@ -30,6 +30,7 @@
 
 })();
 
+/*
 var roadmap = document.getElementById("roadmap");
 var hybrid = document.getElementById("hybrid");
 var satellite = document.getElementById("satellite");
@@ -49,4 +50,4 @@ satellite.addEventListener('click', function () {
 
 terrain.addEventListener('click', function () {
     mapType.changeMapType("terrain");
-});
+});*/
