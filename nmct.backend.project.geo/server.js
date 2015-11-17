@@ -23,8 +23,7 @@ communication.listen(server);
 // Anonymous login (can see map but can't add shares)
 app.post('/login', function (request, response) {
     var Request = require("./http/request.js"),
-        user = {},
-        sh1 = require("./crypto/hash.js");
+        user = {};
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
     });

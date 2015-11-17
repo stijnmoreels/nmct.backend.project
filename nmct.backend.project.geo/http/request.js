@@ -6,6 +6,7 @@
  =============================================================================*/
 
 var Request = (function () {
+    "use-strict";
     function parseRequest(data, callback) {
         var values = data.toString().split("&");
         var object = {};
@@ -17,7 +18,9 @@ var Request = (function () {
         callback(null, object);
     }
     
-    return { parseRequest: parseRequest };
+    return {
+        parseRequest: parseRequest
+    };
 })();
 
 module.exports = Request;

@@ -6,6 +6,7 @@
  =============================================================================*/
 
 var DocumentDB = (function () {
+    "use-strict";
     var config = require("../config/configuration");
     var DocumentClient = require('documentdb').DocumentClient;
     var client = new DocumentClient(config.host, { masterKey: config.masterKey });

@@ -30,6 +30,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="config\configuration.js" />
     <Compile Include="crypto\hash.js" />
     <Compile Include="database\documentdb.js" />
     <Compile Include="public\src\Controllers\HomeController.js" />
@@ -63,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
+    <Folder Include="config\" />
     <Folder Include="database\" />
     <Folder Include="model\" />
     <Folder Include="crypto\" />
