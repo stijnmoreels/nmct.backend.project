@@ -5,25 +5,25 @@
  * @purpose: Server Side 
  =============================================================================*/
 
-var express = require('express');
-var http = require('http');
-var app = express();
-var serveStatic = require('serve-static');
-var bodyParser = require('body-parser');
+var express = require('express'),
+    http = require('http'),
+    app = express(),
+    serveStatic = require('serve-static'),
+    bodyParser = require('body-parser');
 
 app.use(serveStatic('public/src', { 'index': ['index.html'] }));
 app.use(bodyParser.json());
 
 var server = http.createServer(app);
 
-var Request = require("./http/request.js");
-var communication = require('./socket/communication.js');
-var documentDb = require("./database/documentdb.js");
+var communication = require('./socket/communication.js'),
+    documentDb = require("./database/documentdb.js");
 communication.listen(server);
 
 // Anonymous login (can see map but can't add shares)
 app.post('/login', function (request, response) {
-    var user = {},
+    var Request = require("./http/request.js"),
+        user = {},
         sh1 = require("./crypto/hash.js");
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
@@ -31,7 +31,7 @@ app.post('/login', function (request, response) {
     
     // get the data from the POST and find the right user
     function parseRequestCallback(error, data) {
-        if (error) { throw error }
+        if (error) { throw error; }
 
         var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
         var parameters = [{
@@ -44,13 +44,14 @@ app.post('/login', function (request, response) {
     
     // sign user in the application
     function signUserCallback(error, user) {
-        if (error) { throw error }
-        else if (user.length == 0)
+        if (error) { throw error; }
+        else if (user.length == 0) {
             // No user found
             response.json({ token: null, user: null, error: "No user found" });
-        else if (user != null && user.length != 0)
+        } else if (user != null && user.length != 0) {
             // We are sending the profile inside the token
             communication.sign(user, getToken);
+        }
     }
     
     // get token to send back to the client
@@ -61,5 +62,5 @@ app.post('/login', function (request, response) {
 });
 
 server.listen(9000, function () {
-    console.log('listening on http://localhost:9000');
+    console.log('server listening on http://localhost:9000');
 });

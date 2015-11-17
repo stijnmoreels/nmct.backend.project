@@ -36,6 +36,7 @@
     <Compile Include="public\src\Controllers\LoginController.js" />
     <Compile Include="public\src\Controllers\MainController.js" />
     <Compile Include="public\src\Controllers\RegisterController.js" />
+    <Compile Include="public\src\js\addMarker.js" />
     <Compile Include="public\src\js\app.js" />
     <Compile Include="public\src\js\client.js" />
     <Compile Include="crypto\encrypt.js" />
@@ -43,6 +44,7 @@
     <Compile Include="model\user.js" />
     <Compile Include="http\request.js" />
     <Compile Include="public\src\js\hash.js" />
+    <Compile Include="public\src\js\map.js" />
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
     <Compile Include="socket\communication.js" />
@@ -69,6 +71,7 @@
     <Folder Include="public\src\Controllers\" />
     <Folder Include="public\src\javascripts\" />
     <Folder Include="public\src\js\" />
+    <Folder Include="public\src\pages\" />
     <Folder Include="public\src\templates\" />
     <Folder Include="socket\" />
     <Folder Include="public\" />

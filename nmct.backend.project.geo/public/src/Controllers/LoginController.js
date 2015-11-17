@@ -9,7 +9,7 @@
                 if (error) {
                     console.log(error);
                 } else {
-                    $location.path("/main");
+                    $location.path("#/main");
                 }
                });
             console.log("username:  " + $scope.username + ", password: " + $scope.password);
