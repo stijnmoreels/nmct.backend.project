@@ -5,7 +5,7 @@
 
         $scope.userLogin = function () {
             $location.path('/main');
-            client.login(username, password, function (error, user) {
+            client.login($scope.username, $scope.password, function (error, user) {
                 if (error) {
                     console.log(error);
                 } else {
