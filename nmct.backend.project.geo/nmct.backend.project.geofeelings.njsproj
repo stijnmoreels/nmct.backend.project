@@ -30,6 +30,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="crypto\hash.js" />
     <Compile Include="database\documentdb.js" />
     <Compile Include="public\src\Controllers\HomeController.js" />
     <Compile Include="public\src\Controllers\LoginController.js" />
@@ -41,6 +42,7 @@
     <Compile Include="model\share.js" />
     <Compile Include="model\user.js" />
     <Compile Include="http\request.js" />
+    <Compile Include="public\src\js\hash.js" />
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
     <Compile Include="socket\communication.js" />

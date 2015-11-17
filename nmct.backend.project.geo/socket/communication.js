@@ -14,18 +14,23 @@ var Communication = (function () {
         Share = require("../model/share.js"),
         DocumentDB = require("../database/documentdb.js"),
         sh1 = require("../crypto/hash.js");
+    
     var listen = function (server) {
         sio = socketIo.listen(server);
         authorize();
         sio.sockets.on('connection', connection);
+        
+        // Connection Callback
         function connection(socket) {
             console.log("connected: " + socket.id);
             // user adds share to map
             socket.on("addshare", function (data) {
                 if (data.error) { throw error }
                 jwt.verify(data.token, jwt_secret, getDecoded);
+                // Get verified by JsonWebToken
                 function getDecoded(error, user) {
                     if (error) { throw error }
+                    // Anonymous has no rights to add shares/activities
                     if (user.username === "anonymous" || user.password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
                     else

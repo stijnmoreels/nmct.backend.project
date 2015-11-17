@@ -37,21 +37,25 @@ var client = (function () {
         }, post = function (username, password, callback) {
             $.ajax({
                 type: 'POST',
+                contentType: "text/html; charset=UTF-8",
                 data: {
                     username: username,
                     password: password
                 },
                 url: '../login'
             }).done(function (result) {
-                token = result.token;
-                localStorage.token = token;
-                setupSockets();
-                callback(null, result.user);
+                if (result.error) { callback(result.error, null); }
+                else if (result.token) {
+                    token = result.token;
+                    localStorage.token = token;
+                    setupSockets();
+                    callback(null, result.user);
+                } else callback("Unhandeld error", null);
             });
         }, 
         // Login method
             login = function (username, password, callback) {
-            post(username, password, callback);
+            post(username, Sha1.hash(password), callback);
         }, 
         // Register method
             register = function (name, firstname, username, password, callback) { 

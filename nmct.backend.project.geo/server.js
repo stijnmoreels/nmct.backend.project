@@ -23,12 +23,14 @@ communication.listen(server);
 
 // Anonymous login (can see map but can't add shares)
 app.post('/login', function (request, response) {
-    var user = {};
+    var user = {},
+        sh1 = require("./crypto/hash.js");
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
        
     }); function parseRequestCallback(error, data) {
         if (error) { throw error }
+        
         var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
         var parameters = [{
                 name: "@username", value: data.username + ""
@@ -38,11 +40,15 @@ app.post('/login', function (request, response) {
         documentDb.query("users", { query: query, parameters: parameters }, signUserCallback);
     } function signUserCallback(error, user) {
         if (error) { throw error }
-        else if (user != null)
+        else if (user.length == 0)
+            // No user found
+            response.json({ token: null, user: null, error: "No user found" });
+        else if (user != null && user.length != 0)
             // We are sending the profile inside the token
             communication.sign(user, getToken);
     } function getToken(error, token) {
-        response.json({ token: token, user: user });
+        if (error) { throw error }
+        else response.json({ token: token, user: user });
     }
 });
 
