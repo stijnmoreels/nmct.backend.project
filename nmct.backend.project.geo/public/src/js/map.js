@@ -15,9 +15,9 @@ var map = (function () {
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             map = new google.maps.Map(mapCanvas, mapOptions);
-            map.addListener('click', function (e) {
+            /*map.addListener('click', function (e) {
                placeMarkerAndPanTo(e.latLng, map);
-            });
+            });*/
 
             google.maps.event.addDomListener(window, 'load', initialize);
             google.maps.event.addDomListener(window, "resize", function () {

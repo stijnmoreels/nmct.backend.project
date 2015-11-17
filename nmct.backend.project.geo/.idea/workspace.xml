@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e66483d-93e0-4cda-a513-68b467adde9f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/src/js/mapEvents.js" afterPath="$PROJECT_DIR$/public/src/js/userLocation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/Controllers/LoginController.js" afterPath="$PROJECT_DIR$/public/src/Controllers/LoginController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/index.html" afterPath="$PROJECT_DIR$/public/src/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/map.js" afterPath="$PROJECT_DIR$/public/src/js/map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nmct.backend.project.geo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,21 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userLocation.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="userLocation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/js/userLocation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6232687">
+            <state vertical-scroll-proportion="0.0">
               <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/src/js/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="46" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.10387812">
+              <caret line="17" column="14" selection-start-line="17" selection-start-column="12" selection-end-line="19" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -139,8 +135,8 @@
         <option value="$PROJECT_DIR$/public/src/templates/login.html" />
         <option value="$PROJECT_DIR$/public/src/Controllers/LoginController.js" />
         <option value="$PROJECT_DIR$/public/src/index.html" />
-        <option value="$PROJECT_DIR$/public/src/js/map.js" />
         <option value="$PROJECT_DIR$/public/src/js/userLocation.js" />
+        <option value="$PROJECT_DIR$/public/src/js/map.js" />
       </list>
     </option>
   </component>
@@ -874,18 +870,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/map.js">
+    <entry file="file://$PROJECT_DIR$/public/src/js/userLocation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="46" selection-end-column="1" />
+          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/userLocation.js">
+    <entry file="file://$PROJECT_DIR$/public/src/js/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6232687">
-          <caret line="30" column="35" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.10387812">
+          <caret line="17" column="14" selection-start-line="17" selection-start-column="12" selection-end-line="19" selection-end-column="17" />
           <folding />
         </state>
       </provider>
