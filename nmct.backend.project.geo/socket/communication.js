@@ -6,6 +6,7 @@
  =============================================================================*/
 
 var Communication = (function () {
+    "use-strict";
     var jwt = require('jsonwebtoken'),
         jwt_secret = 'BRZ8gRtRzmNMcEzSfA6wq8zC3ACZGvuFKGHGaNw78DvTtX8azxRCfyWAEZUvwUKkP6sNFZxL5trJSLZ4FKt5Dyc46bRMzt4Z2UjsT4zUKseaN6hAgxQHaTzn',
         socketIo = require("socket.io"),
@@ -24,20 +25,25 @@ var Communication = (function () {
         function connection(socket) {
             console.log("connected: " + socket.id);
             
+            //socket.on("disconnect", function () {
+            //    console.log("disconnect");
+            //});
+
             // user adds share to map
             socket.on("addshare", function (data) {
-                if (data.error) { throw error }
+                if (data.error) { throw error; }
                 jwt.verify(data.token, jwt_secret, getDecoded);
                 // Get verified by JsonWebToken
                 function getDecoded(error, user) {
-                    if (error) { throw error }
+                    if (error) { throw error; }
                     // Anonymous has no rights to add shares/activities
-                    if (user.username === "anonymous" || user.password === 123)
+                    if (user.username === "anonymous" || user.password === 123) {
                         sio.emit("unauthorized", "Must login to add a share");
-                    else
+                    } else {
                         userExists(user, userExistsCallback);
+                    }
                 } function userExistsCallback(error, user) {
-                    if (error) { throw error }
+                    if (error) { throw error; }
                     else {
                         // user exists
                         DocumentDB.insert("shares", data.element, 
@@ -73,9 +79,9 @@ var Communication = (function () {
             });
             
             socket.on("register", function (data) {
-                if (data.error) { throw error }
+                if (data.error) { throw error; }
                 //data.user.password = sh1.hash(data.user.password);
-                DocumentDB.insert("users", data.user, function (error, user) { 
+                DocumentDB.insert("users", data.user, function (error, user) {
                     sio.emit("register", data.user);
                 });
             });
