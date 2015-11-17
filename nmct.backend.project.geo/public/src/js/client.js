@@ -33,7 +33,7 @@ var client = (function () {
     },  
     // Connect Anonymous is needed for everyone to see the shares/activities
         connectAnonymous = function (callback) {
-            post("anonymous", 123, callback);
+            post("anonymous", Sha1.hash("123"), callback);
         }, post = function (username, password, callback) {
             $.ajax({
                 type: 'POST',
@@ -55,7 +55,7 @@ var client = (function () {
         }, 
         // Login method
             login = function (username, password, callback) {
-            post(username, Sha1.hash(password), callback);
+            post(username, Sha1.hash(password.toString()), callback);
         }, 
         // Register method
             register = function (name, firstname, username, password, callback) { 
