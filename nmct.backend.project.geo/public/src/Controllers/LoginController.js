@@ -12,17 +12,8 @@
                     $location.path("#/main");
                 }
                });
-            console.log("username:  " + $scope.username + ", password: " + $scope.password);
-            //alert('ok');
+            //console.log("username:  " + $scope.username + ", password: " + $scope.password);
         };
-        /*client.login(username, password, function (error, user) {
-         if (error) {
-         console.log(error);
-         } else {
-         $location.path("/main");
-         }
-         });*/
-
     };
 
     app.controller("LoginController", ["$scope","$location",LoginController]);
