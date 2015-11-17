@@ -3,17 +3,17 @@
 
     var LoginController = function ($scope, $location) {
 
-        $scope.login = login;
+        //$scope.login = login;
 
-        $scope.login = function () {
-            /*client.login(username, password, function (error, user) {
+        $scope.userLogin = function (username, password) {
+            client.login(username, password, function (error, user) {
                 if (error) {
                     console.log(error);
                 } else {
                     $location.path("/main");
                 }
-               });*/
-            alert('ok');
+               });
+            //alert('ok');
         };
 
     };

@@ -1,5 +1,5 @@
-<form class="form-box" name="myForm" ng-submit="login()" role="form">
-    <div class="form-content" >
+<form ng-submit="userLogin(username, password)" class="form-box" name="login">
+    <div class="form-content">
         <div class="form-group">
             <label for="e-mail"><i class="fa fa-user icon-input"></i>E-mail</label>
             <input type="email" class="form-control" id="e-mail" placeholder="user@example.com" ng-model="username">
@@ -15,7 +15,7 @@
                 </label>
             </div>
         </div>
-        <input type="submit" class="btn btn-lg btn-block btn-submit load-content" value="Submit"/>
+        <button type="submit" class="btn btn-lg btn-block btn-submit load-content">Submit</button>
     </div>
 </form>
 <div class="register">

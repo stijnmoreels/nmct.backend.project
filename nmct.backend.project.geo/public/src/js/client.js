@@ -11,6 +11,8 @@ var client = (function () {
         socket = io.connect(token ? ('?token=' + token) : '', {
             'forceNew': true
         });
+
+        // Socket registration
         socket.on('time', function (data) {
             console.log('- broadcast: ' + data);
         }).on("register", function (user) {
@@ -28,7 +30,9 @@ var client = (function () {
             if (callbackAddActivity != null)
                 callbackAddActivity(null, created);
         });
-    }, connectAnonymous = function (callback) {
+    },  
+    // Connect Anonymous is needed for everyone to see the shares/activities
+        connectAnonymous = function (callback) {
             post("anonymous", 123, callback);
         }, post = function (username, password, callback) {
             $.ajax({
@@ -44,40 +48,56 @@ var client = (function () {
                 setupSockets();
                 callback(null, result.user);
             });
-        }, login = function (username, password, callback) {
+        }, 
+        // Login method
+            login = function (username, password, callback) {
             post(username, password, callback);
-        }, register = function (name, firstname, username, password, callback) { 
+        }, 
+        // Register method
+            register = function (name, firstname, username, password, callback) { 
             var user = { id: username, name: name, firstname: firstname, username: username, password: password }
             socket.emit("register", { error: null, user: user, token: token });
             callback(null, user);
-        }, getShares = function (callback) {
+        }, 
+        // Get all shares
+            getShares = function (callback) {
             socket.on("shares", function (shares) {
                 callback(null, shares);
             });
             socket.emit("shares", null);
-        }, getActivities = function (callback) {
+        }, 
+        // Get all activities
+            getActivities = function (callback) {
             socket.on("activities", function (activities) { 
                 callback(null, activities);
             });
             
             socket.emit("activities", null);
-        }, addShare = function (share, callback) {
+        }, 
+        // Add a new share
+            addShare = function (share, callback) {
             var object = { error: null, share: share, token: token };
             if (callback != null)
                 callbackAddShare = callback;
             socket.emit("addshare", object);
-        }, addActivity = function (activity, callback) {
+        }, 
+        // Add a new activity
+            addActivity = function (activity, callback) {
             var object = { error: null, activity: activity, token: token };
             if (callback != null)
                 callbackAddActivity = callback;
             socket.emit("addactivity", object);
-        }, addShareOrActivity = function (element, callback) {
+        }, 
+        // Public method Add share/activity
+            addShareOrActivity = function (element, callback) {
             if (element.isActivity) {
                 addActivity(element, callback);
             } else {
                 addShare(element, callback);
             }
         };
+    
+        // Public methods
     return {
         login: login,
         register: register,
