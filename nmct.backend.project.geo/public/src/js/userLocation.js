@@ -2,7 +2,7 @@
     "use strict";
     if (navigator.geolocation) {
         var position;
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
         showError(error);
     }
@@ -23,11 +23,19 @@ function placeMarkerAndPanTo(latlng, map) {
     map.panTo(latlng);
 }
 
-/*
+
 function showError(error){
+
+    var x = document.getElementById("error-msg");
+
     switch(error.code) {
         case error.PERMISSION_DENIED:
             x.innerHTML = "User denied the request for Geolocation.";
+            $("#error").animate({
+                width: '300px',
+                height: '200px',
+                opacity: 1.0
+            }, "slow");
             break;
         case error.POSITION_UNAVAILABLE:
             x.innerHTML = "Location information is unavailable.";
@@ -39,4 +47,4 @@ function showError(error){
             x.innerHTML = "An unknown error occurred.";
             break;
     }
-}*/
+}
