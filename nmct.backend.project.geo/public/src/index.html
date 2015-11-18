@@ -31,8 +31,13 @@
         </div>
     </div>
 
+
+
     <div id="map-wrapper">
         <div id="map-canvas"></div>
+        <div id="error">
+            <p id="error-msg">"User denied the request for Geolocation."</p>
+        </div>
     </div>
     <!-- jQuery -->
     <script src="./javascripts/jquery-2.1.4.min.js"></script>
@@ -47,66 +52,14 @@
     <script src="js/hash.js"></script>
     <script src="js/client.js"></script>
     <script>
-    /*
 
-     Arne, hier kan je je communicatie met de backend verzorgen.
-     Beter in een aparte file misschien.
-
-     "client" is een publieke variabele waar alle functies in staat.
-     - login
-     - connectAnonymous
-     - getShares
-     - addShareOrActivity
-     (- register, nog niet uitgewerkt)
-     (- getActivities, nog niet uitgewerkt)
-
-     ---------------------------------------------------------------
-
-     "connectAnonymous" moet altijd eerst uitgevoerd worden.
-     daarna kan er iemand zich inloggen.
-
-     client.login();
-
-     ---------------------------------------------------------------
-
-     "getShares" geeft je alle schares in de database
-
-     client.getShares();
-
-     --------------------------------------------------------------
-
-     "addShareOrActivity" kan je een share of activity toevoegen
-     maar is nog niet helemaal klaar, dus wordt vervolgd
-
-     client.addShareOrActivity();
-
-     ---------------------------------------------------------------
-
-
-     */
         if (localStorage.token) {
             var token = localStorage.token;
         } else {
             // connect annoymous
             client.connectAnonymous(function(error, user) { });
         }
-    // altijd eerste "connect anonymous"
-    //client.connectAnonymous(function (error, user) {
 
-    //    //// bij het klikken op "login" ->
-    //    //client.login("stijn@moreels", "123", function (error, user) {
-
-    //    //    // haal alle shares op van de database
-    //    //    client.getShares(function (error, shares) {
-    //    //        // hier kan je je het "shares" element toevoegen aan je HTML
-    //    //        console.log(shares);
-    //    //    });
-    //    //});
-    //    //client.register("moreels", "stijn", "stijn.moreels@student.howest.be", "123",
-    //    //    function (error, user) {
-    //    //        console.log(user);
-    //    //    });
-    //});
     </script>
     <!-- AngluarJS -->
     <script src="./javascripts/angular.min.js"></script>
