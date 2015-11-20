@@ -21,7 +21,10 @@
             .when('/main', {
                 controller: 'MainController',
                 controllerAs: 'main',
-                templateUrl: './templates/main.html'
+                templateUrl: './templates/main.html',
+                resolve: {
+
+                }
             })
             .otherwise({
                 redirectTo: '/'

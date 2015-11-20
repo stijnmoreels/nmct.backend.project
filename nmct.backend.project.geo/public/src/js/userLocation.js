@@ -26,25 +26,19 @@ function placeMarkerAndPanTo(latlng, map) {
 
 function showError(error){
 
-    var x = document.getElementById("error-msg");
 
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation.";
-            $("#error").animate({
-                width: '300px',
-                height: '200px',
-                opacity: 1.0
-            }, "slow");
+            showErrorMsg();
             break;
         case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable.";
+            showErrorMsg();
             break;
         case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out.";
+            showErrorMsg();
             break;
         case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred.";
+            showErrorMsg();
             break;
     }
 }

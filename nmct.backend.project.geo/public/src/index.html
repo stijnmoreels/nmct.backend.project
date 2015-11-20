@@ -21,7 +21,6 @@
                         <a href="#">Geofeelings</a>
                     </div>
                     <div ng-view></div>
-                    <button class="btn btn-default" id="btnStartError">start error</button>
                 </div>
             </div>
         </div>
@@ -36,8 +35,12 @@
 
     <div id="map-wrapper">
         <div id="map-canvas"></div>
-        <div id="error">
-            <p id="error-msg"></p>
+        <div id="error" class="popup" data-popup="popup-1">
+            <div class="popup-inner">
+                <h2>Browser location not available</h2>
+                <p>Please change the privacy settings of your browser to use the application</p>
+                <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+            </div>
         </div>
     </div>
     <!-- jQuery -->
@@ -66,10 +69,11 @@
     <script src="./javascripts/angular.js"></script>
     <script src="./javascripts/angular-route.min.js"></script>
     <script src="js/map.js"></script>
-    <script src="js/userLocation.js"></script>
+    <script src="js/showErrorMsg.js"></script>
     <script src="js/app.js"></script>
     <script src="./Controllers/LoginController.js"></script>
     <script src="./Controllers/MainController.js"></script>
     <script src="./Controllers/RegisterController.js"></script>
+    <script src="js/userLocation.js"></script>
 </body>
 </html>
