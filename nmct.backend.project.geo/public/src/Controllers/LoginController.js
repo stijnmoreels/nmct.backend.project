@@ -4,10 +4,8 @@
     var LoginController = function ($scope, $location, $rootScope) {
 
         $scope.userLogin = function () {
-
             $rootScope.loggedInUser = null;
-
-            $scope.userLogin = client.login($scope.username, $scope.password, function (error, user) {
+            client.login($scope.username, $scope.password, function (error, user) {
                 if (error) {
                     console.log(error);
                 } else {
@@ -16,6 +14,7 @@
                 }
             });
         };
+
     };
     app.controller("LoginController", ["$scope", "$location","$rootScope", LoginController]);
 })();
