@@ -17,7 +17,6 @@ var map = (function () {
             };
             map = new google.maps.Map(mapCanvas, mapOptions);
 
-            //userlocation.placeMarkerAndPanTo()
 
             google.maps.event.addDomListener(window, 'load', initialize);
             google.maps.event.addDomListener(window, "resize", function () {
