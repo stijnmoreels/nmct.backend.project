@@ -29,7 +29,7 @@
             .otherwise({
                 redirectTo: '/'
             });
-    })/*.run(function ($rootScope, $location) {
+    }).run(function ($rootScope, $location) {
             $rootScope.$on("$routeChangeStart", function (event, next, current) {
                 if ($rootScope.loggedInUser == null) {
                     //console.log("no user");
@@ -38,7 +38,7 @@
                     }
                 }
             })
-        });*/
+        });
 
 })();
 
