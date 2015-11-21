@@ -3,7 +3,7 @@
  */
 var gulp = require('gulp'),
     csslint = require('gulp-csslint'),
-    //cssMinifier = require('gulp-minify-css'),
+//cssMinifier = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
@@ -13,8 +13,17 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify');
 
 
+//watcher
+gulp.task("default", function () {
+    //Css Watch
+    gulp.watch("./public/src/less/**/*.less", ['css']);
+
+
+});
+
+
 //Task: convert less to css
-gulp.task("css", function(){
+gulp.task("css", function () {
     gulp.src("./public/src/less/**/*.less")
         .pipe(less())
         .pipe(csslint({
@@ -30,7 +39,7 @@ gulp.task("css", function(){
         }))
 });
 
-gulp.task("js", function(){
+gulp.task("js", function () {
     gulp.src("./public/src/js/**/*.js")
         .pipe(jshint())
         .pipe(jshint.reporter(jsStylish))

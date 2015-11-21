@@ -9,8 +9,10 @@ var map = (function () {
 
             var mapCanvas = document.getElementById(element);
             var mapOptions = {
-                zoom: 12,
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8,
                 mapTypeControl: false,
+                scrollwheel: false,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             map = new google.maps.Map(mapCanvas, mapOptions);
