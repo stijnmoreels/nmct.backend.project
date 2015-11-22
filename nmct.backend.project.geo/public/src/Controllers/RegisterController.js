@@ -11,7 +11,9 @@
                    console.log(error);
                }else{
                    $rootScope.loggedInUser = $scope.email;
-                   $location.path('/main');
+                   client.login($scope.email, $scope.password, function (error, user) {
+                       $location.path('/main');
+                   });
                }
             });
         }

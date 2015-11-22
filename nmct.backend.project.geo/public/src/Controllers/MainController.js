@@ -3,16 +3,15 @@
 
     var MainController = function ($scope) {
 
-        var allShares = [];
-        $scope.getShares = (function () {
-            client.getShares(function (error, shares) {
-                if(error){
-                    console.log(error);
-                }else {
-                    allShares = shares;
-                }
-            });
-        })();
+        var isActivity = document.getElementById("isActivity").value;
+
+        $scope.addShareToMap = function () {
+            if(isActivity){
+                client.ad
+            }else{
+
+            }
+        };
 
 
     };

@@ -5,17 +5,17 @@
 
             <div class="input-group">
                 <span class="input-group-addon input-icon-left">#</span>
-                <input type="text" class="form-control" id="activity">
+                <input type="text" class="form-control" id="activity" ng-model="activity">
             </div>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox"> Create Activity
+                <input type="checkbox" id="isActivity"> Create Activity
             </label>
         </div>
         <div class="form-group">
             <label for="feelings">How do you feel?</label>
-            <select class="form-control" id="feelings">
+            <select class="form-control" id="feelings" nd-model="feelings">
                 <option value="happy">Happy</option>
                 <option value="excited">Excited</option>
                 <option value="tender">Tender</option>
