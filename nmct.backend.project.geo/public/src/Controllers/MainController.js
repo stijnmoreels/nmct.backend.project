@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module("app");
 
-    var MainController = function ($scope) {
+    var MainController = function ($scope, $rootScope) {
 
         var isActivity = document.getElementById("isActivity").value;
 
@@ -23,6 +23,7 @@
 
                     client.addActivity(activityModel, function (error, activity) {
                        // addActivityToMap(error, activity);
+                        console.log("added");
                     });
                 }
 
@@ -34,5 +35,5 @@
 
     };
 
-    app.controller("MainController", ["$scope",MainController]);
+    app.controller("MainController", ["$scope","$rootScope",MainController]);
 })();
