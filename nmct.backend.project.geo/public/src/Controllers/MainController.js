@@ -22,7 +22,7 @@
                     activityModel.author = $rootScope.loggedInUser;
 
                     client.addActivity(activityModel, function (error, activity) {
-                        addActivityToMap(error, activity);
+                       // addActivityToMap(error, activity);
                     });
                 }
 
