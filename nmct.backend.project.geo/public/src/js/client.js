@@ -11,7 +11,7 @@ var client = (function () {
         socket = io.connect(token ? ('?token=' + token) : '', {
             'forceNew': true
         });
-
+        
         // Socket registration
         socket.on('time', function (data) {
             console.log('- broadcast: ' + data);
@@ -29,7 +29,7 @@ var client = (function () {
         }).on("addactivity", function (created) {
             if (callbackAddActivity != null)
                 callbackAddActivity(null, created);
-        }).on("challenge", function (challenge) { 
+        }).on("challenge", function (challenge) {
             console.log(challenge);
         });
     },  
@@ -56,62 +56,54 @@ var client = (function () {
             });
         }, 
         // Login method
-            login = function (username, password, callback) {
+        login = function (username, password, callback) {
             post(username, Sha1.hash(password.toString()), callback);
         }, 
         // Register method
-            register = function (name, firstname, username, password, callback) {
+        register = function (name, firstname, username, password, callback) {
             var user = { id: username, name: name, firstname: firstname, username: username, password: Sha1.hash(password + "") }
             socket.emit("register", { error: null, user: user, token: token == null ? localStorage.token : token });
             callback(null, user);
         }, 
         // Get all shares
-            getShares = function (callback) {
+        getShares = function (callback) {
             socket.on("shares", function (shares) {
                 callback(null, shares);
             });
             socket.emit("shares", null);
         }, 
         // Get all activities
-            getActivities = function (callback) {
-            socket.on("activities", function (activities) { 
+        getActivities = function (callback) {
+            socket.on("activities", function (activities) {
                 callback(null, activities);
             });
             
             socket.emit("activities", null);
         }, 
         // Add a new share
-            addShare = function (share, callback) {
-            var object = { error: null, share: share, token: token };
+        addShare = function (share, callback) {
+            var object = { error: null, share: share, token: token == null ? localStorage.token : token };
             if (callback != null)
                 callbackAddShare = callback;
             socket.emit("addshare", object);
         }, 
         // Add a new activity
-            addActivity = function (activity, callback) {
-            var object = { error: null, activity: activity, token: token };
+        addActivity = function (activity, callback) {
+            var object = { error: null, activity: activity, token: token == null ? localStorage.token : token };
             if (callback != null)
                 callbackAddActivity = callback;
             socket.emit("addactivity", object);
-        }, 
-        // Public method Add share/activity
-            addShareOrActivity = function (element, callback) {
-            if (element.isActivity) {
-                addActivity(element, callback);
-            } else {
-                addShare(element, callback);
-            }
         };
     
         // Public methods
     return {
-        setupSockets: setupSockets,
         login: login,
         register: register,
         connectAnonymous: connectAnonymous,
         getShares: getShares,
         getActivities: getActivities,
-        sendShareOrActivity: addShareOrActivity,
+        addShare: addShare,
+        addActivity: addActivity,
         receiveAddShare: callbackAddShare,
         receiveAddActivity: callbackAddActivity
     };
