@@ -79,7 +79,6 @@ var client = (function () {
             socket.on("activities", function (activities) {
                 callback(null, activities);
             });
-            
             socket.emit("activities", null);
         }, 
         // Add a new share

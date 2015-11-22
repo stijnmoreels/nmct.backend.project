@@ -47,7 +47,7 @@ var Communication = (function () {
                     if (error) { throw error; }
                     else {
                         // user exists
-                        DocumentDB.insert("shares", data.element, 
+                        DocumentDB.insert("shares", data.share, 
                             function (error, document) {
                             sio.emit("addshare", document);
                         });
@@ -71,7 +71,7 @@ var Communication = (function () {
                     if (error) { throw error; }
                     else {
                         // user exists
-                        DocumentDB.insert("activities", data.element, 
+                        DocumentDB.insert("activities", data.activity, 
                             function (error, document) {
                             sio.emit("addactivity", document);
                         });
@@ -110,7 +110,7 @@ var Communication = (function () {
                     }, {
                         name: "@password", value: user.password + ""
                     }];
-                documentDb.query("users", { query: query, parameters: parameters }, callback);
+                DocumentDB.query("users", { query: query, parameters: parameters }, callback);
             }
         } function authorize() {
             sio.use(socketio_jwt.authorize({
