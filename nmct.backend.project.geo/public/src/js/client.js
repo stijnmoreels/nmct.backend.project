@@ -24,11 +24,13 @@ var client = (function () {
         }).on("unauthorized", function (error) {
             console.log("- unauthorized");
         }).on("addshare", function (created) {
-            if (callbackAddShare != null)
-                callbackAddShare(null, created);
+            //if (callbackAddShare != null)
+            //    callbackAddShare(null, created);
+            addShareToMap(null, created);
         }).on("addactivity", function (created) {
-            if (callbackAddActivity != null)
-                callbackAddActivity(null, created);
+            //if (callbackAddActivity != null)
+            //    callbackAddActivity(null, created);
+            addActivityToMap(null, created);
         }).on("challenge", function (challenge) {
             console.log(challenge);
         });
@@ -83,16 +85,18 @@ var client = (function () {
         // Add a new share
         addShare = function (share, callback) {
             var object = { error: null, share: share, token: token == null ? localStorage.token : token };
-            if (callback != null)
-                callbackAddShare = callback;
+            //if (callback != null)
+            //    callbackAddShare = callback;
             socket.emit("addshare", object);
+            callback(null, object);
         }, 
         // Add a new activity
         addActivity = function (activity, callback) {
             var object = { error: null, activity: activity, token: token == null ? localStorage.token : token };
-            if (callback != null)
-                callbackAddActivity = callback;
+            //if (callback != null)
+            //    callbackAddActivity = callback;
             socket.emit("addactivity", object);
+            callback(null, object);
         };
     
         // Public methods
