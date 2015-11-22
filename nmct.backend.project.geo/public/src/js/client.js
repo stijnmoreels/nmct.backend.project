@@ -60,9 +60,9 @@ var client = (function () {
             post(username, Sha1.hash(password.toString()), callback);
         }, 
         // Register method
-            register = function (name, firstname, username, password, callback) { 
-            var user = { id: username, name: name, firstname: firstname, username: username, password: password }
-            socket.emit("register", { error: null, user: user, token: token });
+            register = function (name, firstname, username, password, callback) {
+            var user = { id: username, name: name, firstname: firstname, username: username, password: Sha1.hash(password + "") }
+            socket.emit("register", { error: null, user: user, token: token == null ? localStorage.token : token });
             callback(null, user);
         }, 
         // Get all shares
@@ -105,6 +105,7 @@ var client = (function () {
     
         // Public methods
     return {
+        setupSockets: setupSockets,
         login: login,
         register: register,
         connectAnonymous: connectAnonymous,

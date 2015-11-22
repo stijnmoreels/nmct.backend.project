@@ -58,12 +58,13 @@
     <script src="js/client.js"></script>
     <script>
 
-        if (localStorage.token) {
-            var token = localStorage.token;
-        } else {
+        //client.setupSockets();
+        //if (localStorage.token) {
+        //    var token = localStorage.token;
+        //} else {
             // connect annoymous
             client.connectAnonymous(function(error, user) { });
-        }
+        //}
 
     </script>
     <!-- AngluarJS -->
