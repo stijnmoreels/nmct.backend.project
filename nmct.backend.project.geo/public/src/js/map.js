@@ -9,7 +9,7 @@ var map = (function () {
 
             var mapCanvas = document.getElementById(element);
             var mapOptions = {
-                center: {lat: -34.397, lng: 150.644},
+                center: {lat: 50.824683, lng: 3.25141},
                 zoom: 8,
                 mapTypeControl: false,
                 scrollwheel: false,
