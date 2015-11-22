@@ -6,7 +6,7 @@
  =============================================================================*/
 
 var client = (function () {
-    var token, socket, callbackAddShare, callbackAddActivity;
+    var token, socket, callbackAddShare, callbackAddActivity, challenge;
     var setupSockets = function () {
         socket = io.connect(token ? ('?token=' + token) : '', {
             'forceNew': true
@@ -29,6 +29,8 @@ var client = (function () {
         }).on("addactivity", function (created) {
             if (callbackAddActivity != null)
                 callbackAddActivity(null, created);
+        }).on("challenge", function (challenge) { 
+            console.log(challenge);
         });
     },  
     // Connect Anonymous is needed for everyone to see the shares/activities

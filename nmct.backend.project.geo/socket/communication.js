@@ -24,7 +24,8 @@ var Communication = (function () {
         // Connection Callback
         function connection(socket) {
             console.log("connected: " + socket.id);
-            
+            sio.emit("challenge", socket.id);
+
             //socket.on("disconnect", function () {
             //    console.log("disconnect");
             //});

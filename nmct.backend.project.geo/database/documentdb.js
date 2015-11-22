@@ -26,6 +26,7 @@ var DocumentDB = (function () {
         insert: insertDocument
     };
 })();
+
 module.exports = DocumentDB;
 
 /* -----------------------------------------------------------------------------

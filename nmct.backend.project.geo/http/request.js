@@ -13,11 +13,12 @@ var Request = (function () {
         
         for (var i = 0, l = values.length; i < l; i++) {
             var propertySet = values[i].split("=");
-            object[propertySet[0]] = propertySet[1].replace("%40", "@");
+            object[propertySet[0]] = propertySet[1].replace("%40", "@"); // email support
         };
         callback(null, object);
     }
     
+    // public methods
     return {
         parseRequest: parseRequest
     };
