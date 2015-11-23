@@ -1,23 +1,23 @@
 
-<h2>Share Your Activity</h2>
+<h2 class="headline">Share Your Trip</h2>
 <form class="form-box" ng-submit="addShareDb()" role="form">
     <div class="form-content">
-        <label for="activity">Share your activity</label>
+        <label for="activity">Name of event</label>
 
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon input-icon-left">#</span>
-                <input type="text" class="form-control" id="activity" ng-model="activity">
+                <input type="text" class="form-control" id="activity" required ng-model="activity">
             </div>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" id="isActivity"> Create Activity
+                <input type="checkbox" value="true" id="isActivity"> Create Activity
             </label>
         </div>
         <div class="form-group">
-            <label for="feelings">How do you feel?</label>
-            <select class="form-control" id="feelings" ng-model="feelings">
+            <label for="feelings">What's the mood over there ?</label>
+            <select class="form-control" id="feelings" required ng-model="feelings">
                 <option value="happy">Happy</option>
                 <option value="excited">Excited</option>
                 <option value="tender">Tender</option>
@@ -30,8 +30,8 @@
     </div>
 </form>
 
-<div class="logout" ng-controller="LoginController">
-    <button type="button" class="btn btn-lg btn-default">
+<div class="logout">
+    <button type="button" class="btn btn-lg btn-default" ng-click="logout()">
         <span class="glyphicon glyphicon-log-out"></span> Exit
     </button>
 </div>

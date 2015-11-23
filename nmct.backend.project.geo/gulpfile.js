@@ -10,15 +10,16 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     jshint = require('gulp-jshint'),
     jsStylish = require('jshint-stylish'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    watch = require('gulp-watch');
 
 
 //watcher
-gulp.task("default", function () {
+gulp.task("stream", function () {
     //Css Watch
-    gulp.watch("./public/src/less/**/*.less", ['css']);
-
-
+    return gulp.src("./public/src/less/**/*.less")
+        .pipe(watch("./public/src/less/**/*.less"))
+        .pipe(gulp.dest('build'));
 });
 
 

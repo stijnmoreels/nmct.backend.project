@@ -42,11 +42,10 @@ html, body, #map-canvas{
   margin: 0 0 10px 0;
   .form-content {
     color: @midnightBlue;
-
     .icon-input{
       margin: 0 10px 0 2px;
     }
-    input:focus{
+    .form-control:focus{
       border-color: @turquoise;
     }
     .checkbox input{
@@ -55,6 +54,7 @@ html, body, #map-canvas{
     .btn-submit {
       background-color: @turquoise;
       color: @white;
+      font-family: @fontFamily;
       &:hover{
         background-color: darken(@turquoise, 5%);
         -webkit-transition: background-color 0.2s;
@@ -64,12 +64,17 @@ html, body, #map-canvas{
         transition: background-color 0.2s;
       }
     }
+
+    label{
+      font-family: @fontFamily;
+      text-transform: capitalize;
+    }
   }
 }
 .register{
   a.register-link{
     color: @white;
-
+    font-family: @fontFamily;
     &:hover{
       color: @turquoise;
       -webkit-transition: color 0.2s;
@@ -89,6 +94,13 @@ html, body, #map-canvas{
   position: fixed;
   bottom: 0;
   margin-bottom: 20px;
+}
+
+.headline{
+  font-size: @headline;
+  font-weight: 700;
+  font-family: @fontFamily;
+  letter-spacing: 1px;
 }
 
 /* Error handling */

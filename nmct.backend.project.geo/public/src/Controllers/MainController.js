@@ -1,13 +1,14 @@
 (function () {
     var app = angular.module("app");
     
-    var MainController = function ($scope, $rootScope) {
-        
-        var isActivity = document.getElementById("isActivity").checked;
-        
+    var MainController = function ($scope, $rootScope, $location) {
+
+
+        var isActivity = document.getElementById("isActivity");
+
+
         $scope.addShareDb = function () {
-            
-            if (isActivity) {
+            if (isActivity.checked) {
                 var lat, lng;
                 var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
                 function getPosition(position) {
@@ -31,8 +32,13 @@
             }
         };
 
+        $scope.logout = function(){
+            $rootScope.loggedInUser = null;
+            $location.path("/");
+        }
+
 
     };
     
-    app.controller("MainController", ["$scope", "$rootScope", MainController]);
+    app.controller("MainController", ["$scope", "$rootScope","$location", MainController]);
 })();
