@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module("app");
 
-    var LoginController = function ($scope, $location, $rootScope) {
+    var LoginController = function ($scope, $location, $rootScope, $cookieStore) {
 
         var allShares = [];
         $scope.getShares = (function () {
@@ -29,6 +29,7 @@
                 if (error) {
                     console.log(error);
                 } else {
+                    //$cookieStore.put("username", $scope.username);
                     $rootScope.loggedInUser = $scope.username;
                     $location.path("/main");
                 }
@@ -36,5 +37,5 @@
         };
 
     };
-    app.controller("LoginController", ["$scope", "$location", "$rootScope", LoginController]);
+    app.controller("LoginController", ["$scope", "$location", "$rootScope","$cookieStore", LoginController]);
 })();

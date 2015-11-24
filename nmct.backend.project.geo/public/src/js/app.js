@@ -2,9 +2,9 @@
 
     map.initialize("map-canvas");
 
-    var app = angular.module("app", ['ngRoute']);
+    var app = angular.module("app", ['ngRoute', 'ngCookies']);
 
-    app.config(function ($logProvider, $routeProvider, $locationProvider) {
+    app.config(function ($logProvider, $routeProvider, $cookieStore) {
 
         $logProvider.debugEnabled(true);
         $routeProvider
@@ -22,23 +22,21 @@
                 controller: 'MainController',
                 controllerAs: 'main',
                 templateUrl: './templates/main.html',
-                resolve: {
-
-                }
+                resolve: {}
             })
             .otherwise({
                 redirectTo: '/'
             });
-    })/*.run(function ($rootScope, $location) {
-            $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                if ($rootScope.loggedInUser == null) {
-                    //console.log("no user");
-                    if (next.templateUrl === "./templates/main.html") {
-                        $location.path("/");
-                    }
+    }).run(function ($rootScope, $location) {
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            if ($rootScope.loggedInUser == null) {
+                //console.log("no user");
+                if (next.templateUrl === "./templates/main.html") {
+                    $location.path("/");
                 }
-            })
-        });*/
+            }
+        })
+    });
 
 })();
 
