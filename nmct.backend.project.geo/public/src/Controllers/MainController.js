@@ -16,6 +16,7 @@
                     lng = position.coords.longitude;
                     
                     activityModel.id = new Date().getDate() + "-" + $rootScope.loggedInUser;
+                    activityModel.activityName = $scope.activityName;
                     activityModel.feeling = $scope.feelings;
                     activityModel.latitude = lat;
                     activityModel.longitude = lng;

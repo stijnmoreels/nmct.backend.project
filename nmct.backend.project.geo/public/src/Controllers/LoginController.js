@@ -3,7 +3,6 @@
 
     var LoginController = function ($scope, $location, $rootScope) {
 
-
         var allShares = [];
         $scope.getShares = (function () {
             client.connectAnonymous(function (error, user) {

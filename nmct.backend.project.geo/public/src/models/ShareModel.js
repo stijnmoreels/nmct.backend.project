@@ -1,5 +1,6 @@
 var shareModel = {
     id:"",
+    ShareName:"",
     author:"",
     feeling:"",
     latitude:"",
