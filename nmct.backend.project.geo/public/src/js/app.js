@@ -4,7 +4,7 @@
 
     var app = angular.module("app", ['ngRoute', 'ngCookies']);
 
-    app.config(function ($logProvider, $routeProvider, $cookieStore) {
+    app.config(function ($logProvider, $routeProvider) {
 
         $logProvider.debugEnabled(true);
         $routeProvider

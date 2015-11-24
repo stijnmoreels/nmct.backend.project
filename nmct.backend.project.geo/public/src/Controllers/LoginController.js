@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module("app");
 
-    var LoginController = function ($scope, $location, $rootScope, $cookieStore) {
+    var LoginController = function ($scope, $location, $rootScope) {
 
         var allShares = [];
         $scope.getShares = (function () {
@@ -37,5 +37,5 @@
         };
 
     };
-    app.controller("LoginController", ["$scope", "$location", "$rootScope","$cookieStore", LoginController]);
+    app.controller("LoginController", ["$scope", "$location", "$rootScope", LoginController]);
 })();
