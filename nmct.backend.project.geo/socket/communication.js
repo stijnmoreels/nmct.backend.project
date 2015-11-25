@@ -25,11 +25,11 @@ var Communication = (function () {
         function connection(socket) {
             console.log("connected: " + socket.id);
             sio.emit("challenge", socket.id);
-
+            
             //socket.on("disconnect", function () {
             //    console.log("disconnect");
             //});
-
+            
             // user adds share to map
             socket.on("addshare", function (data) {
                 if (data.error) { throw error; }
@@ -73,6 +73,7 @@ var Communication = (function () {
                         // user exists
                         DocumentDB.insert("activities", data.activity, 
                             function (error, document) {
+                            if (error) { throw error; }
                             sio.emit("addactivity", document);
                         });
                     }
@@ -83,6 +84,7 @@ var Communication = (function () {
                 if (data.error) { throw error; }
                 //data.user.password = sh1.hash(data.user.password);
                 DocumentDB.insert("users", data.user, function (error, user) {
+                    if (error) { throw error; }
                     sio.emit("register", data.user);
                 });
             });
@@ -91,6 +93,7 @@ var Communication = (function () {
                 var query = { query: "SELECT * FROM shares" };
                 DocumentDB.query("shares", query, queryDocumentsCallback);
                 function queryDocumentsCallback(error, shares) {
+                    if (error) { throw error; }
                     sio.emit("shares", shares);
                 }
             });
@@ -99,6 +102,7 @@ var Communication = (function () {
                 var query = { query: "SELECT * FROM activities" };
                 DocumentDB.query("activities", query, queryDocumentsCallback);
                 function queryDocumentsCallback(error, activities) {
+                    if (error) { throw error; }
                     sio.emit("activities", activities);
                 }
             });
@@ -112,7 +116,9 @@ var Communication = (function () {
                     }];
                 DocumentDB.query("users", { query: query, parameters: parameters }, callback);
             }
-        } function authorize() {
+        }
+        // authorize any socket communication
+        function authorize() {
             sio.use(socketio_jwt.authorize({
                 secret: jwt_secret,
                 handshake: true
@@ -122,7 +128,9 @@ var Communication = (function () {
         // sign user, means he gets a token 
         sign = function (user, callback) {
             var token = jwt.sign(user, jwt_secret, { expiresIn: 60 * 5 }); // 5 min
-            callback(null, token);
+            if (token)
+                callback(null, token);
+            callback("error with token", null);
         }, 
         // get the user from the token
         decoded = function (object, callback) {

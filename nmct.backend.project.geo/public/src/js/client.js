@@ -70,14 +70,18 @@ var client = (function () {
         // Get all shares
         getShares = function (callback) {
             socket.on("shares", function (shares) {
-                callback(null, shares);
+                if (shares)
+                    callback(null, shares);
+                callback("no shares", null);
             });
             socket.emit("shares", null);
         }, 
         // Get all activities
         getActivities = function (callback) {
             socket.on("activities", function (activities) {
-                callback(null, activities);
+                if (activities)
+                    callback(null, activities);
+                callback("no activities", null);
             });
             socket.emit("activities", null);
         }, 
@@ -98,7 +102,7 @@ var client = (function () {
             callback(null, object);
         };
     
-        // Public methods
+    // Public methods
     return {
         login: login,
         register: register,

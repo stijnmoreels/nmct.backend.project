@@ -23,7 +23,11 @@ var communication = require('./socket/communication.js'),
     documentDb = require("./database/documentdb.js");
 communication.listen(server);
 
-// Anonymous login (can see map but can't add shares)
+// login (can see map but can't add shares)
+// because the socket communication is authorized
+// the first communication between client - server
+// has to come from ajax calls so the client can sign 
+// the socket communication with his/hers token
 app.post('/login', function (request, response) {
     var Request = require("./http/request.js"),
         user = {};
@@ -33,6 +37,7 @@ app.post('/login', function (request, response) {
     
     // get the data from the POST and find the right user
     function parseRequestCallback(error, data) {
+        // TODO: make "userExists"-method public in "Communication" so it can be used in here
         if (error) { throw error; }
 
         var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
