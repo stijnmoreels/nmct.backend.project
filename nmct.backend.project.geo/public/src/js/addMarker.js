@@ -39,6 +39,8 @@ function addActivityToMap(error, activity){
     marker.addListener('click', function () {
         infoWindow.open(map, marker);
     });
+
+
 }
 
 /*

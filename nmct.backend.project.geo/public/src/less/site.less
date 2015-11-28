@@ -10,7 +10,7 @@ body{
   position: absolute;
   z-index: 10000;
   height: 100%;
-  background-color: @midnightBlue;
+  background-color: @endColor;
 }
 #menu-toggle{
   border: none;
@@ -34,15 +34,14 @@ html, body, #map-canvas{
   right: 0;
 }
 .form-box {
-  //background-color: darken(@midnightBlue, 5%);
-  background-color: @cloud;
+  background-color: #22313F;
   padding: 20px;
   box-sizing: border-box;
   border-radius: 1px;
   width: 350px;
   margin: 0 0 10px 0;
   .form-content {
-    color: @midnightBlue;
+    color: @white;
     .icon-input{
       margin: 0 10px 0 2px;
     }
@@ -53,12 +52,12 @@ html, body, #map-canvas{
       width: 0px;
     }
     .btn-submit {
-      background-color: @turquoise;
+      background-color: @endColor;
       color: @cloud;
       font-family: @fontFamily;
       border-radius: 1px;
       &:hover{
-        background-color: darken(@turquoise, 5%);
+        background-color: darken(@endColor, 5%);
         -webkit-transition: background-color 0.2s;
         -moz-transition: background-color 0.2s;
         -ms-transition: background-color 0.2s;
@@ -73,6 +72,15 @@ html, body, #map-canvas{
     }
     input[type=text], input[type=password], input[type=email]{
       border-radius: 1px;
+
+      &:focus{
+        &:invalid{
+          border-color: @warning;
+        }
+        &:valid{
+          border-color: @valid;
+        }
+      }
     }
   }
 }
