@@ -15,12 +15,12 @@
                     lat = position.coords.latitude;
                     lng = position.coords.longitude;
                     
-                    activityModel.id = new Date().getDate() + "-" + $rootScope.loggedInUser;
+                    activityModel.id = new Date().getTime() + "-" + $rootScope.loggedInUser;
                     activityModel.activityName = $scope.activityName;
                     activityModel.feeling = $scope.feelings;
                     activityModel.latitude = lat;
                     activityModel.longitude = lng;
-                    activityModel.timestamp = new Date().getDate();
+                    activityModel.timestamp = new Date().toLocaleDateString();
                     activityModel.author = $rootScope.loggedInUser;
                     
                     client.addActivity(activityModel, function (error, activity) {
