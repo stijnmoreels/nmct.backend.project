@@ -1,6 +1,6 @@
 ﻿/* =============================================================================
  * @project: GEOFEELINGS
- * @author: Arne Tesch / Stijn Moreels
+ * @author: Stijn Moreels
  * @language: Node.js
  * @purpose: Client Side (Sockets & Login Post)
  =============================================================================*/
@@ -33,6 +33,8 @@ var client = (function () {
             addActivityToMap(null, created);
         }).on("challenge", function (challenge) {
             console.log(challenge);
+        }).on("error", function (error) { 
+            console.log("Socket error: " + error);
         });
     },  
     // Connect Anonymous is needed for everyone to see the shares/activities
@@ -64,15 +66,19 @@ var client = (function () {
         // Register method
         register = function (name, firstname, username, password, callback) {
             var user = { id: username, name: name, firstname: firstname, username: username, password: Sha1.hash(password + "") }
+            if (user.id == null || user.id === "")
+                callback("Error: 'id' is missing", null);
+            else {
             socket.emit("register", { error: null, user: user, token: token == null ? localStorage.token : token });
-            callback(null, user);
+                callback(null, user);
+            }
         }, 
         // Get all shares
         getShares = function (callback) {
             socket.on("shares", function (shares) {
                 if (shares)
                     callback(null, shares);
-                callback("no shares", null);
+                else callback("no shares", null);
             });
             socket.emit("shares", null);
         }, 
@@ -81,7 +87,7 @@ var client = (function () {
             socket.on("activities", function (activities) {
                 if (activities)
                     callback(null, activities);
-                callback("no activities", null);
+                else callback("no activities", null);
             });
             socket.emit("activities", null);
         }, 
@@ -90,16 +96,24 @@ var client = (function () {
             var object = { error: null, share: share, token: token == null ? localStorage.token : token };
             //if (callback != null)
             //    callbackAddShare = callback;
+            if (share.id == null || share.id === "")
+                callback("Error: 'id' is missing", null);
+            else {
             socket.emit("addshare", object);
-            callback(null, object);
+                callback(null, object);
+            }
         }, 
         // Add a new activity
         addActivity = function (activity, callback) {
             var object = { error: null, activity: activity, token: token == null ? localStorage.token : token };
             //if (callback != null)
             //    callbackAddActivity = callback;
-            socket.emit("addactivity", object);
-            callback(null, object);
+            if (activity.id == null || activity.id === "")
+                callback("Error: 'id' is missing", null);
+            else {
+                socket.emit("addactivity", object);
+                callback(null, object);
+            }
         };
     
     // Public methods

@@ -25,11 +25,7 @@ var Communication = (function () {
         function connection(socket) {
             console.log("connected: " + socket.id);
             sio.emit("challenge", socket.id);
-            
-            //socket.on("disconnect", function () {
-            //    console.log("disconnect");
-            //});
-            
+
             // user adds share to map
             socket.on("addshare", function (data) {
                 if (data.error) { throw error; }
@@ -47,8 +43,10 @@ var Communication = (function () {
                     if (error) { throw error; }
                     else {
                         // user exists
+                        data.share.isActivity = false; // we use the same document list
                         DocumentDB.insert("shares", data.share, 
                             function (error, document) {
+                            if (error) { throw error; sio.emit("error", "Insert share failed"); }
                             sio.emit("addshare", document);
                         });
                     }
@@ -71,41 +69,48 @@ var Communication = (function () {
                     if (error) { throw error; }
                     else {
                         // user exists
-                        DocumentDB.insert("activities", data.activity, 
+                        data.activity.isActivity = true; // we use the same document list
+                        DocumentDB.insert("shares", data.activity, 
                             function (error, document) {
-                            if (error) { throw error; }
+                            if (error) { throw error; sio.emit("error", "Insert activity failed"); }
                             sio.emit("addactivity", document);
                         });
                     }
                 }
             });
             
+            // TODO: admin has the authority to delete shares and activities
+
+            // register users
             socket.on("register", function (data) {
                 if (data.error) { throw error; }
                 //data.user.password = sh1.hash(data.user.password);
                 DocumentDB.insert("users", data.user, function (error, user) {
-                    if (error) { throw error; }
+                    if (error) { throw error; sio.emit("error", "Register user failed"); }
                     sio.emit("register", data.user);
                 });
             });
+            
             // user get all curent shares
             socket.on("shares", function () {
-                var query = { query: "SELECT * FROM shares" };
+                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false" };
                 DocumentDB.query("shares", query, queryDocumentsCallback);
                 function queryDocumentsCallback(error, shares) {
-                    if (error) { throw error; }
+                    if (error) { throw error; sio.emit("error", "Get shares failed"); }
                     sio.emit("shares", shares);
                 }
             });
+            
             // user get all curent activities
             socket.on("activities", function () {
-                var query = { query: "SELECT * FROM activities" };
-                DocumentDB.query("activities", query, queryDocumentsCallback);
+                var query = { query: "SELECT * FROM shares WHERE isActivity = true" };
+                DocumentDB.query("shares", query, queryDocumentsCallback);
                 function queryDocumentsCallback(error, activities) {
-                    if (error) { throw error; }
+                    if (error) { throw error; sio.emit("error", "Get activities failed"); }
                     sio.emit("activities", activities);
                 }
             });
+            
             function userExists(user, callback) {
                 //var password = sh1.hash(user.password);
                 var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
@@ -117,6 +122,7 @@ var Communication = (function () {
                 DocumentDB.query("users", { query: query, parameters: parameters }, callback);
             }
         }
+        
         // authorize any socket communication
         function authorize() {
             sio.use(socketio_jwt.authorize({
@@ -127,10 +133,10 @@ var Communication = (function () {
     }, 
         // sign user, means he gets a token 
         sign = function (user, callback) {
-            var token = jwt.sign(user, jwt_secret, { expiresIn: 60 * 5 }); // 5 min
+            var token = jwt.sign(user, jwt_secret, { expiresIn: 60 * 5 }); // 5 min expiration time
             if (token)
                 callback(null, token);
-            callback("error with token", null);
+            else callback("error with token", null);
         }, 
         // get the user from the token
         decoded = function (object, callback) {
