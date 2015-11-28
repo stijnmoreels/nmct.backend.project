@@ -36,9 +36,12 @@
         $scope.logout = function(){
             $rootScope.loggedInUser = null;
             $location.path("/");
-        }
+        };
 
-
+        $scope.changeMap = function () {
+            var target = event.target || event.srcElement || event.originalTarget;
+            mapType.changeMapType(target.id);
+        };
     };
     
     app.controller("MainController", ["$scope", "$rootScope","$location", MainController]);

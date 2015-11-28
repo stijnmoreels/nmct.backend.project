@@ -1,14 +1,10 @@
-
 <h2 class="headline">Share Your Trip</h2>
 <form class="form-box" ng-submit="addShareDb()" role="form">
     <div class="form-content">
         <label for="activity">Name of event</label>
 
         <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon input-icon-left">#</span>
-                <input type="text" class="form-control" id="activity" required ng-model="activityName">
-            </div>
+            <input type="text" class="form-control" id="activity" required ng-model="activityName">
         </div>
         <div class="checkbox">
             <label>
@@ -29,6 +25,13 @@
         <input type="submit" class="btn btn-lg btn-block btn-submit" value="Submit"/>
     </div>
 </form>
+
+<div class="map-control">
+    <button class="btn btn-default btn-xs" ng-click="changeMap()" id="roadmap">Roadmap</button>
+    <button class="btn btn-default btn-xs" ng-click="changeMap()" id="hybrid">Hybrid</button>
+    <button class="btn btn-default btn-xs" ng-click="changeMap()" id="satellite">Satellite</button>
+    <button class="btn btn-default btn-xs"ng-click="changeMap()" id="terrain">Terrain</button>
+</div>
 
 <div class="logout">
     <button type="button" class="btn btn-lg btn-default" ng-click="logout()">
