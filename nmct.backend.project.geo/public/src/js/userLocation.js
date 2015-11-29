@@ -29,7 +29,7 @@ function placeMarkerAndPanTo(latlng, map) {
             '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
             'Assumenda at atque, corporis cupiditate debitis eaque eligendi, ' +
             'eos facilis, in laborum maxime odio porro quam recusandae sapiente sed sunt tempore vitae.</p>'+
-            '<div><button id="btnAdd" class="btn btn-primary">Add Share</button></div>'+
+            '<div><button class="btn btn-primary">Add Share</button></div>'+
             '</div>' +
         '</div>';
 
@@ -38,11 +38,11 @@ function placeMarkerAndPanTo(latlng, map) {
         content: contentString
     });
 
-    google.maps.event.addListener(infowindow, 'domready', function () {
-        document.getElementById("btnAdd").addEventListener("click", function (e) {
-            console.log("add share to activity");
-        });
-    });
+/*    google.maps.event.addListener(infowindow, 'domready', function () {
+     document.getElementById("btnAdd").addEventListener("click", function (e) {
+     console.log("add share to activity");
+     });
+     });*/
 
     marker.addListener('click', function () {
         infowindow.open(map, marker);

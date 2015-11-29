@@ -39,5 +39,24 @@
      })
      });*/
 
+    var getData = (function () {
+        client.connectAnonymous(function (error, user) {
+            if (error) {
+                console.log(error)
+            } else {
+                client.getActivities(function (error, activities) {
+                    if(error){
+                        console.log(error);
+                    }else{
+                        allActivities = activities;
+                        for(var i= 0, l=activities.length; i<l;i++){
+                            addActivityToMap(null, activities[i]);
+                        }
+                    }
+                });
+            }
+        });
+    })();
+
 })();
 

@@ -1,15 +1,10 @@
-<h2 class="headline">Share Your Trip</h2>
+<h2 class="headline">Add a new activity !</h2>
 <form class="form-box" ng-submit="addShareDb()" role="form">
     <div class="form-content">
         <label for="activity">Name of event</label>
 
         <div class="form-group">
             <input type="text" class="form-control" id="activity" required ng-model="activityName">
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="true" id="isActivity"> Create Activity
-            </label>
         </div>
         <div class="form-group">
             <label for="feelings">What's the mood over there ?</label>
@@ -21,6 +16,9 @@
                 <option value="sad">Sad</option>
                 <option value="angry">Angry</option>
             </select>
+        </div>
+        <div>
+            <input type="hidden" id="activityID" ng-model="activityID"/>
         </div>
         <input type="submit" class="btn btn-lg btn-block btn-submit" value="Submit"/>
     </div>
