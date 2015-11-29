@@ -4,7 +4,8 @@
     var LoginController = function ($scope, $location, $rootScope) {
         
         var allShares = [];
-        $scope.getShares = (function () {
+        var allActivities = [];
+        $scope.getData = (function () {
             client.connectAnonymous(function (error, user) {
                 if (error) {
                     console.log(error)
@@ -16,6 +17,16 @@
                             allShares = shares;
                             for (var i = 0, l = shares.length; i < l; i++) {
                                 addShareToMap(null, shares[i]);
+                            }
+                        }
+                    });
+                    client.getActivities(function (error, activities) {
+                        if(error){
+                            console.log(error);
+                        }else{
+                            allActivities = activities;
+                            for(var i= 0, l=activities.length; i<l;i++){
+                                addActivityToMap(null, activities[i]);
                             }
                         }
                     });
