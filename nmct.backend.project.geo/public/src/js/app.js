@@ -1,33 +1,33 @@
-var allShares;
+var allShares = [[]];
 (function () {
-
+    
     map.initialize("map-canvas");
-
+    
     var app = angular.module("app", ['ngRoute', 'ngCookies']);
-
+    
     app.config(function ($logProvider, $routeProvider) {
-
+        
         $logProvider.debugEnabled(true);
         $routeProvider
             .when('/', {
-                controller: 'LoginController',
-                controllerAs: 'login',
-                templateUrl: './templates/login.html'
-            })
+            controller: 'LoginController',
+            controllerAs: 'login',
+            templateUrl: './templates/login.html'
+        })
             .when('/register', {
-                controller: 'RegisterController',
-                controllerAs: 'register',
-                templateUrl: './templates/register.html'
-            })
+            controller: 'RegisterController',
+            controllerAs: 'register',
+            templateUrl: './templates/register.html'
+        })
             .when('/main', {
-                controller: 'MainController',
-                controllerAs: 'main',
-                templateUrl: './templates/main.html',
-                resolve: {}
-            })
+            controller: 'MainController',
+            controllerAs: 'main',
+            templateUrl: './templates/main.html',
+            resolve: {}
+        })
             .otherwise({
-                redirectTo: '/'
-            });
+            redirectTo: '/'
+        });
     })
     /*.run(function ($rootScope, $location) {
      $rootScope.$on("$routeChangeStart", function (event, next, current) {
@@ -44,21 +44,33 @@ var allShares;
             if (error) {
                 console.log(error)
             } else {
-                client.getActivities(function (error, activities) {
-                    if(error){
-                        console.log(error);
-                    }else{
-                        allActivities = activities;
-                        for(var i= 0, l=activities.length; i<l;i++){
-                            addActivityToMap(null, activities[i]);
-                        }
-                    }
-                });
                 client.getShares(function (error, shares) {
                     if (error) { connsole.log(error); }
                     for (var i = 0, l = shares.length; i < l; i++) {
+                        var share = shares[i],
+                            shareActivity = share.activityId + "";
                         
+                        //if (shareActivity !== "0" && allShares[shareActivity].length === 0) {
+                        //    allShares[shareActivity] = [];
+                        //    allShares[shareActivity].push(share);
+                        //} else {
+                        
+                        //}
+                        
+                        if (allShares[shareActivity] === undefined) {
+                            allShares[shareActivity] = [];
+                        } allShares[shareActivity].push(share);
                     };
+                    client.getActivities(function (error, activities) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            allActivities = activities;
+                            for (var i = 0, l = activities.length; i < l; i++) {
+                                addActivityToMap(null, activities[i]);
+                            }
+                        }
+                    });
                 });
             }
         });
