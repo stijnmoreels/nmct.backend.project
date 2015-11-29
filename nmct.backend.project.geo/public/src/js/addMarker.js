@@ -1,13 +1,22 @@
+/* =============================================================================
+ * @project: GEOFEELINGS
+ * @author: Arne Tesch
+ * @language: Javascript
+ * @purpose: Client Side Google Maps Integration
+ =============================================================================*/
+
 var markers = [];
 var contentString = "";
 
+// Add share to infowindow activity
 function addShareToMap(error, share) {
-    var marker = markers[share.activityId];
-    var badge = document.getElementById(share.activityId+"_"+share.feeling.toLocaleLowerCase());
+    var marker = markers[share.activityId]; // get marker for the given "activityId"
+    var badge = document.getElementById(share.activityId+"_"+share.feeling.toLocaleLowerCase()); // get the right badge in the infowindow 
     var innerValue = parseInt(badge.innerHTML);
-    badge.innerHTML = ++innerValue;
+    badge.innerHTML = isNaN(innerValue) ? 0 : ++innerValue; // set the new value to the badge
 }
 
+// Add activity to map with an infowindow
 function addActivityToMap(error, activity) {
     var marker = new google.maps.Marker({
         position: {lat: activity.latitude, lng: activity.longitude},
@@ -17,8 +26,24 @@ function addActivityToMap(error, activity) {
 
     marker.set("id", activity.id);
     markers[activity.id] = marker;
-
-    console.log(markers);
+    
+    // Get shares for the given activity
+    
+    
+    //var allShares = {};
+    //client.getSharesForActivity(activity.id, function (error, shares) {
+    //    if (error) { console.log(error); }
+    //    allShares = shares;
+    //});
+    
+    function getSharesForActivity(activityId, callback) {
+        for (var i = 0; i < length; i++) {
+            
+        };
+        
+    }
+    
+    // Infowindow HTML
     contentString =
         '<div id="iw-container">' +
         '<h1 class="iw-title">' + activity.activityName + '</h1>' +
@@ -33,7 +58,7 @@ function addActivityToMap(error, activity) {
         '<li class="list-group-item"><span id="'+ activity.id+'_angry" class="badge"></span><i class="fa fa-smile-o"></i></li>' +
         '</ul>' +
         '</div>' +
-        '<div class="form-group"><select id="feeling" class="form-control" required>' +
+        '<div class="form-group"><select id="feeling_' + activity.id + '" class="form-control" required>' +
         '<option value="happy">Happy</option>' +
         '<option value="excited">Excited</option>' +
         '<option value="tender">Tender</option>' +
@@ -41,19 +66,20 @@ function addActivityToMap(error, activity) {
         '<option value="sad">Sad</option>' +
         '<option value="angry">Angry</option>'
         + '</select></div>' +
-        '<button id="btnAdd" class="btn btn-primary">Add Share</button>' +
+        '<button id="btnAdd_' + activity.id + '" class="btn btn-primary">Add Share</button>' +
         '</div>' +
         '</div>';
 
     var infoWindow = new google.maps.InfoWindow({
         content: contentString
-    });
+    }); 
 
     google.maps.event.addListener(infoWindow, 'domready', function () {
-        document.getElementById("btnAdd").addEventListener("click", function (e) {
+        // Click listener for button within infowindow 
+        document.getElementById("btnAdd_" + activity.id).addEventListener("click", function (e) {
             var activityID = activity.id;
             document.getElementById("activityID").value = activityID;
-            var feeling = document.getElementById("feeling").value;
+            var feeling = document.getElementById("feeling_" + activity.id).value;
 
             var lat, lng;
             var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
@@ -61,14 +87,20 @@ function addActivityToMap(error, activity) {
             function getPosition(position) {
                 lat = position.coords.latitude;
                 lng = position.coords.longitude;
-
+                
+                // Register ShareModel
+                shareModel.id = new Date().getTime() + "-" + localStorage.username;
                 shareModel.feeling = feeling;
                 shareModel.latitude = lat;
                 shareModel.longitude = lng;
                 shareModel.timestamp = new Date().toLocaleDateString();
                 shareModel.author = localStorage.username;
-
+                shareModel.activityId = activityID;
+                
+                // Add share to database
                 client.addShare(shareModel, function (error, share) {
+                    if (error) { console.log(error); }
+                    // just a callback check, the new share will be added in the "addShareToMap" method
                     console.log('share added');
                 });
             }

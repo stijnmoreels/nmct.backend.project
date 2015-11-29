@@ -33,7 +33,7 @@ var client = (function () {
             addActivityToMap(null, created);
         }).on("challenge", function (challenge) {
             console.log(challenge);
-        }).on("error", function (error) { 
+        }).on("error", function (error) {
             console.log("Socket error: " + error);
         });
     },  
@@ -69,7 +69,7 @@ var client = (function () {
             if (user.id == null || user.id === "")
                 callback("Error: 'id' is missing", null);
             else {
-            socket.emit("register", { error: null, user: user, token: token == null ? localStorage.token : token });
+                socket.emit("register", { error: null, user: user, token: token == null ? localStorage.token : token });
                 callback(null, user);
             }
         }, 
@@ -81,6 +81,15 @@ var client = (function () {
                 else callback("no shares", null);
             });
             socket.emit("shares", null);
+        },
+        // Get all shares for a given "activityId"
+        getSharesForActivity = function (activityId, callback) {
+            socket.on("sharesactivity", function (shares) { 
+                if (shares)
+                    callback(null, shares);
+                else callback("no shares", null);
+            });
+            socket.emit("sharesactivity", null);
         }, 
         // Get all activities
         getActivities = function (callback) {
@@ -99,7 +108,7 @@ var client = (function () {
             if (share.id == null || share.id === "")
                 callback("Error: 'id' is missing", null);
             else {
-            socket.emit("addshare", object);
+                socket.emit("addshare", object);
                 callback(null, object);
             }
         }, 
@@ -122,6 +131,7 @@ var client = (function () {
         register: register,
         connectAnonymous: connectAnonymous,
         getShares: getShares,
+        getSharesForActivity: getSharesForActivity,
         getActivities: getActivities,
         addShare: addShare,
         addActivity: addActivity,

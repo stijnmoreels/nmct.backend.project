@@ -1,3 +1,4 @@
+var allShares;
 (function () {
 
     map.initialize("map-canvas");
@@ -38,7 +39,6 @@
      }
      })
      });*/
-
     var getData = (function () {
         client.connectAnonymous(function (error, user) {
             if (error) {
@@ -53,6 +53,12 @@
                             addActivityToMap(null, activities[i]);
                         }
                     }
+                });
+                client.getShares(function (error, shares) {
+                    if (error) { connsole.log(error); }
+                    for (var i = 0, l = shares.length; i < l; i++) {
+                        
+                    };
                 });
             }
         });

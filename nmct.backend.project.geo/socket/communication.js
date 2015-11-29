@@ -101,6 +101,17 @@ var Communication = (function () {
                 }
             });
             
+            // get all shares for activity
+            socket.on("sharesactivity", function (activityId) {
+                var query = "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId=@activityId";
+                var parameters = [{ name: "@activityId", value: activityId + "" }];
+                DocumentDB.query("shares", { query: query, parameters: parameters }, queryDocumentsCallback);
+                function queryDocumentsCallback(error, shares) {
+                    if (error) { throw error; sio.emit("error", "Get shares for activity failed"); }
+                    sio.emit("sharesactivity", shares);
+                }
+            });
+            
             // user get all curent activities
             socket.on("activities", function () {
                 var query = { query: "SELECT * FROM shares s WHERE s.isActivity=true" };

@@ -3,7 +3,6 @@
 
     var MainController = function ($scope, $rootScope, $location) {
 
-
         $scope.addShareDb = function () {
             var lat, lng;
             var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
