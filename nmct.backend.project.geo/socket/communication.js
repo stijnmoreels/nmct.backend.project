@@ -103,7 +103,7 @@ var Communication = (function () {
             
             // user get all curent activities
             socket.on("activities", function () {
-                var query = { query: "SELECT * FROM shares WHERE isActivity = true" };
+                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=true" };
                 DocumentDB.query("shares", query, queryDocumentsCallback);
                 function queryDocumentsCallback(error, activities) {
                     if (error) { throw error; sio.emit("error", "Get activities failed"); }
