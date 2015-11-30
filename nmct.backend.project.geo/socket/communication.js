@@ -47,8 +47,8 @@ var Communication = (function () {
                         DocumentDB.insert("shares", data.share, 
                             function (error, document) {
                             if (error) { throw error; sio.emit("error", "Insert share failed"); }
-                            sio.emit("addshare", document);
-                            // sio.sockets.emit(); -> maybe?
+                            //sio.emit("addshare", document);
+                             sio.sockets.emit("addshare", document); //-> maybe?
                         });
                     }
                 }
@@ -74,7 +74,7 @@ var Communication = (function () {
                         DocumentDB.insert("shares", data.activity, 
                             function (error, document) {
                             if (error) { throw error; sio.emit("error", "Insert activity failed"); }
-                            sio.emit("addactivity", document);
+                            sio.sockets.emit("addactivity", document);
                         });
                     }
                 }

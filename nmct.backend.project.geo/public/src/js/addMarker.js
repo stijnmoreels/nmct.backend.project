@@ -13,7 +13,7 @@ function addShareToMap(error, share) {
     var marker = markers[share.activityId]; // get marker for the given "activityId"
     var badge = document.getElementById(share.activityId + "_" + share.feeling.toLocaleLowerCase()); // get the right badge in the infowindow 
     var innerValue = parseInt(badge.innerHTML);
-    badge.innerHTML = isNaN(innerValue) ? 0 : ++innerValue; // set the new value to the badge
+    badge.innerHTML = isNaN(innerValue) || innerValue === 0 ? 1 : ++innerValue; // set the new value to the badge
 }
 
 // Add activity to map with an infowindow
