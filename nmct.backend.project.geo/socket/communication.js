@@ -34,7 +34,7 @@ var Communication = (function () {
                 function getDecoded(error, user) {
                     if (error) { throw error; }
                     // Anonymous has no rights to add shares/activities
-                    if (user.username === "anonymous" || user.password === 123) {
+                    if (user[0].username === "anonymous" || user.password === 123) {
                         sio.emit("unauthorized", "Must login to add a share");
                     } else {
                         userExists(user, userExistsCallback);
@@ -48,6 +48,7 @@ var Communication = (function () {
                             function (error, document) {
                             if (error) { throw error; sio.emit("error", "Insert share failed"); }
                             sio.emit("addshare", document);
+                            // sio.sockets.emit(); -> maybe?
                         });
                     }
                 }

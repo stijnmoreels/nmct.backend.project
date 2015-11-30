@@ -49,6 +49,7 @@
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
     <Compile Include="socket\communication.js" />
+    <Compile Include="test\mocha\socketTests.js" />
     <Content Include="public\src\index.html" />
     <Content Include="public\src\templates\login.html" />
     <Content Include="public\src\templates\main.html" />
@@ -69,6 +70,7 @@
     <Folder Include="model\" />
     <Folder Include="crypto\" />
     <Folder Include="http\" />
+    <Folder Include="test\" />
     <Folder Include="public\src\" />
     <Folder Include="public\src\Controllers\" />
     <Folder Include="public\src\javascripts\" />
@@ -77,6 +79,7 @@
     <Folder Include="public\src\templates\" />
     <Folder Include="socket\" />
     <Folder Include="public\" />
+    <Folder Include="test\mocha\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
