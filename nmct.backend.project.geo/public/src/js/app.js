@@ -44,23 +44,19 @@ var allShares = [[]];
             if (error) {
                 console.log(error)
             } else {
+                // TODO: get only the signed shares
+                // get shares from database
                 client.getShares(function (error, shares) {
                     if (error) { connsole.log(error); }
                     for (var i = 0, l = shares.length; i < l; i++) {
                         var share = shares[i],
                             shareActivity = share.activityId + "";
-                        
-                        //if (shareActivity !== "0" && allShares[shareActivity].length === 0) {
-                        //    allShares[shareActivity] = [];
-                        //    allShares[shareActivity].push(share);
-                        //} else {
-                        
-                        //}
-                        
+                        // "allShares" is a global variable 
                         if (allShares[shareActivity] === undefined) {
                             allShares[shareActivity] = [];
                         } allShares[shareActivity].push(share);
                     };
+                    // get activities from database
                     client.getActivities(function (error, activities) {
                         if (error) {
                             console.log(error);

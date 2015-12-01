@@ -7,7 +7,7 @@
 
 var client = (function () {
     var token, socket, callbackAddShare, callbackAddActivity, challenge;
-    var setupSockets = function () {
+    var setupSockets = function (user) {
         socket = io.connect(token ? ('?token=' + token) : '', {
             'forceNew': true
         });
@@ -31,11 +31,17 @@ var client = (function () {
             //if (callbackAddActivity != null)
             //    callbackAddActivity(null, created);
             addActivityToMap(null, created);
+        }).on("newuser", function (user) { 
+            // TODO: show to frontend
+            console.log("new user");
         }).on("challenge", function (challenge) {
             console.log(challenge);
         }).on("error", function (error) {
             console.log("Socket error: " + error);
         });
+        
+        if (user.isAvailable)
+            socket.emit("newuser", user);
     },  
     // Connect Anonymous is needed for everyone to see the shares/activities
         connectAnonymous = function (callback) {
@@ -54,7 +60,7 @@ var client = (function () {
                 else if (result.token) {
                     token = result.token;
                     localStorage.token = token;
-                    setupSockets();
+                    setupSockets(result.user);
                     callback(null, result.user);
                 } else callback("Unhandeld error", null);
             });
@@ -82,9 +88,18 @@ var client = (function () {
             });
             socket.emit("shares", null);
         },
+        // Get all shares that are signed to an Activity
+        getSignedShares = function (callback) {
+            socket.on("signedshares", function (shares) {
+                if (shares)
+                    callback(null, shares);
+                else callback("no shares", null);
+            });
+            socket.emit("signedshares", null);
+        },
         // Get all shares for a given "activityId"
         getSharesForActivity = function (activityId, callback) {
-            socket.on("sharesactivity", function (shares) { 
+            socket.on("sharesactivity", function (shares) {
                 if (shares)
                     callback(null, shares);
                 else callback("no shares", null);
@@ -131,6 +146,7 @@ var client = (function () {
         register: register,
         connectAnonymous: connectAnonymous,
         getShares: getShares,
+        getSignedShares: getSignedShares,
         getSharesForActivity: getSharesForActivity,
         getActivities: getActivities,
         addShare: addShare,

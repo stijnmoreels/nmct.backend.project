@@ -24,7 +24,14 @@ var Communication = (function () {
         // Connection Callback
         function connection(socket) {
             console.log("connected: " + socket.id);
-
+            
+            // inform other users that there's a new user connected
+            socket.on("newuser", function (user) {
+                // if the user don't want to chat with anyone (Registration)
+                if (user.isAvailable)
+                    sio.sockets.emit("newuser", user.username);
+            });
+            
             // user adds share to map
             socket.on("addshare", function (data) {
                 if (data.error) { throw error; }
@@ -36,19 +43,34 @@ var Communication = (function () {
                     if (user[0].username === "anonymous" || user[0].password === 123) {
                         sio.emit("unauthorized", "Must login to add a share");
                     } else {
-                        userExists(user, userExistsCallback);
+                        userExists(user[0], userExistsCallback);
                     }
                 } function userExistsCallback(error, user) {
                     if (error) { throw error; }
                     else {
                         // user exists
+                        // check if this user has already a share in this activity
+                        var query = "SELECT * FROM shares s WHERE s.isActivity=false AND s.author=@username AND s.activityId=@activityId";
+                        var parameters = [{ name: "@username", value: user[0].username }, { name: "@activityId", value: data.share.activityId }];
+                        DocumentDB.query("shares", { query: query, parameters: parameters }, queryDocumentsCallback);
+                    }
+                }
+                // callback that checks for the single or multiple shares
+                function queryDocumentsCallback(error, shares) {
+                    if (error) { throw error; }
+                    
+                    // only add a share if the user hasn't add a share in the past
+                    if (shares == null || shares == undefined || shares.length == 0) {
                         data.share.isActivity = false; // we use the same document list
                         DocumentDB.insert("shares", data.share, 
                             function (error, document) {
                             if (error) { throw error; sio.emit("error", "Insert share failed"); }
                             //sio.emit("addshare", document);
-                             sio.sockets.emit("addshare", document); //-> maybe?
+                            sio.sockets.emit("addshare", document); //-> maybe?
                         });
+                    } else if (shares.length > 0) {
+                        // send default error message back to client
+                        sio.emit("error", "Insert share failed");
                     }
                 }
             });
@@ -63,8 +85,7 @@ var Communication = (function () {
                     // Anonymous has no rights to add shares/activities
                     if (user.username === "anonymous" || user.password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
-                    else
-                        userExists(user, userExistsCallback);
+                    else userExists(user, userExistsCallback);
                 } function userExistsCallback(error, user) {
                     if (error) { throw error; }
                     else {
@@ -80,7 +101,10 @@ var Communication = (function () {
             });
             
             // TODO: admin has the authority to delete shares and activities
+            socket.on("deleteactivity", function (data) {
 
+            });
+            
             // register users
             socket.on("register", function (data) {
                 if (data.error) { throw error; }
@@ -99,6 +123,21 @@ var Communication = (function () {
                     if (error) { throw error; sio.emit("error", "Get shares failed"); }
                     sio.emit("shares", shares);
                 }
+            });
+            
+            // get all shares that are signed to an Activity
+            socket.on("signedshares", function () {
+                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId=0" };
+                DocumentDB.query("shares", query, queryDocumentCallback);
+                function queryDocumentCallback(error, shares) {
+                    if (error) { throw error; sio.emit("error", "Get shares faild"); }
+                    sio.emit(shares);
+                }
+            });
+            
+            // get all unsigned shares
+            socket.on("unsignedshares", function () {
+                // TODO: ...
             });
             
             // get all shares for activity
@@ -145,8 +184,7 @@ var Communication = (function () {
         // sign user, means he gets a token 
         sign = function (user, callback) {
             var token = jwt.sign(user, jwt_secret, { expiresIn: 60 * 5 }); // 5 min expiration time
-            if (token)
-                callback(null, token);
+            if (token) callback(null, token);
             else callback("error with token", null);
         }, 
         // get the user from the token

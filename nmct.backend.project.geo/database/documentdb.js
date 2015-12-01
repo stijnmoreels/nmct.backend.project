@@ -29,14 +29,7 @@ var DocumentDB = (function () {
 
 module.exports = DocumentDB;
 
-/* -----------------------------------------------------------------------------
+/* -------------------------------------------------------------------------------------------------
  * Note: (query syntax): 
- * var querySpec = {
- *       query: 'SELECT * FROM root r WHERE r.id=@id',
- *      parameters: [{
- *          name: '@id',
- *          value: document.id
- *      }]
- *  };
- * (document syntax): "model"-folder
- -----------------------------------------------------------------------------*/
+ * { query: 'SELECT * FROM root r WHERE r.id=@id', parameters: [{ name: '@id', value: document.}] };
+ --------------------------------------------------------------------------------------------------*/
