@@ -27,23 +27,13 @@ function addActivityToMap(error, activity) {
     marker.set("id", activity.id);
     markers[activity.id] = marker;
     
-    // Get shares for the given activity
-    
-    
-    //var allShares = {};
-    //client.getSharesForActivity(activity.id, function (error, shares) {
-    //    if (error) { console.log(error); }
-    //    allShares = shares;
-    //});
-    
+    // find out how much shares each feeling has in this activity
     var feelings = { "happy": 0, "sad": 0, "excited": 0, "tender": 0, "angry": 0, "scared": 0 };
     var shares = allShares[activity.id];
     if (shares !== undefined)
         for (var i = 0, l = shares.length; i < l; i++) {
             feelings[shares[i].feeling]++;
         };
-    
-    
     
     // Infowindow HTML
     contentString =
@@ -79,6 +69,9 @@ function addActivityToMap(error, activity) {
     google.maps.event.addListener(infoWindow, 'domready', function () {
         // Click listener for button within infowindow 
         document.getElementById("btnAdd_" + activity.id).addEventListener("click", function (e) {
+            // block event if the user already has a share in this activity
+            // TODO: (above)
+
             var activityID = activity.id;
             //document.getElementById("activityID").value = activityID;
             var feeling = document.getElementById("feeling_" + activity.id).value;
@@ -106,7 +99,6 @@ function addActivityToMap(error, activity) {
                     console.log('share added');
                 });
             }
-
         });
     });
     

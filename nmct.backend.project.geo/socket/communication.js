@@ -24,7 +24,6 @@ var Communication = (function () {
         // Connection Callback
         function connection(socket) {
             console.log("connected: " + socket.id);
-            sio.emit("challenge", socket.id);
 
             // user adds share to map
             socket.on("addshare", function (data) {
@@ -34,7 +33,7 @@ var Communication = (function () {
                 function getDecoded(error, user) {
                     if (error) { throw error; }
                     // Anonymous has no rights to add shares/activities
-                    if (user[0].username === "anonymous" || user.password === 123) {
+                    if (user[0].username === "anonymous" || user[0].password === 123) {
                         sio.emit("unauthorized", "Must login to add a share");
                     } else {
                         userExists(user, userExistsCallback);
