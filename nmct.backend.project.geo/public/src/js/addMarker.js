@@ -20,7 +20,7 @@ function addShareToMap(error, share) {
 function addActivityToMap(error, activity) {
     var marker = new google.maps.Marker({
         position: { lat: activity.latitude, lng: activity.longitude },
-        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        icon: '../images/activity_pin@xs.png',
         map: map
     });
     

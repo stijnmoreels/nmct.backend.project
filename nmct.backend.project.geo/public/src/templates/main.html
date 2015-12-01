@@ -24,13 +24,13 @@
     </div>
 </form>
 
+<h1 class="headline">Customize the map type</h1>
 <div class="map-control">
-    <button class="btn btn-default btn-xs" ng-click="changeMap()" id="roadmap">Roadmap</button>
-    <button class="btn btn-default btn-xs" ng-click="changeMap()" id="hybrid">Hybrid</button>
-    <button class="btn btn-default btn-xs" ng-click="changeMap()" id="satellite">Satellite</button>
-    <button class="btn btn-default btn-xs"ng-click="changeMap()" id="terrain">Terrain</button>
+    <a class="btn-maptype" id="map-control-first" ng-click="changeMap()" id="roadmap">Roadmap</a> |
+    <a class="btn-maptype" ng-click="changeMap()" id="hybrid">Hybrid</a> |
+    <a class="btn-maptype" ng-click="changeMap()" id="satellite">Satellite</a> |
+    <a class="btn-maptype" ng-click="changeMap()" id="terrain">Terrain</a>
 </div>
-
 <div class="logout">
     <button type="button" class="btn btn-lg btn-default" ng-click="logout()">
         <span class="glyphicon glyphicon-log-out"></span> Exit
