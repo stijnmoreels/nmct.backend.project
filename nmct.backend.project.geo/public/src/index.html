@@ -23,7 +23,7 @@
                         <a href="#">Geofeelings</a>
                     </div>
                     <div ng-view></div>
-                    <button type="button" class="info" aria-label="Left Align">
+                    <button type="button" class="info btn-group dropup" aria-label="Left Align" data-toggle="modal" data-target="#myModal">
                         <span aria-hidden="true"><i class="fa fa-question"></i></span>
                     </button>
                 </div>
@@ -33,6 +33,24 @@
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
                 <i class="fa fa-navicon fa-2x"></i>
             </a>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Application info</h4>
+                </div>
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid culpa debitis ea exercitationem
+                    fuga ipsam minus nam nisi numquam odio praesentium provident quae quam quia quibusdam quo recusandae rerum, veniam!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
