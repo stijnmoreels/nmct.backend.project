@@ -6,6 +6,7 @@
  =============================================================================*/
 
 var client = (function () {
+    "use-strict";
     var token, socket, callbackAddShare, callbackAddActivity, challenge;
     var setupSockets = function (user) {
         socket = io.connect(token ? ('?token=' + token) : '', {
