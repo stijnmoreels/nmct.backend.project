@@ -31,9 +31,14 @@ var client = (function () {
             //if (callbackAddActivity != null)
             //    callbackAddActivity(null, created);
             addActivityToMap(null, created);
-        }).on("newuser", function (user) { 
+        }).on("newuser", function (data) {
+            // TODO: show to frontend and save the socketIds
+
+            console.log("new user: " + data.user + ", socketId: " + data.socketId);
+        }).on("message", function (message) {
             // TODO: show to frontend
-            console.log("new user");
+
+            console.log("message: " + message);
         }).on("challenge", function (challenge) {
             console.log(challenge);
         }).on("error", function (error) {
@@ -42,6 +47,8 @@ var client = (function () {
         
         if (user.isAvailable)
             socket.emit("newuser", user);
+
+        //socket.emit("message", { message: "Hello !!!", socketId: "" });
     },  
     // Connect Anonymous is needed for everyone to see the shares/activities
         connectAnonymous = function (callback) {
@@ -118,8 +125,6 @@ var client = (function () {
         // Add a new share
         addShare = function (share, callback) {
             var object = { error: null, share: share, token: token == null ? localStorage.token : token };
-            //if (callback != null)
-            //    callbackAddShare = callback;
             if (share.id == null || share.id === "")
                 callback("Error: 'id' is missing", null);
             else {
@@ -130,14 +135,15 @@ var client = (function () {
         // Add a new activity
         addActivity = function (activity, callback) {
             var object = { error: null, activity: activity, token: token == null ? localStorage.token : token };
-            //if (callback != null)
-            //    callbackAddActivity = callback;
             if (activity.id == null || activity.id === "")
                 callback("Error: 'id' is missing", null);
             else {
                 socket.emit("addactivity", object);
                 callback(null, object);
             }
+        }, sendMessage = function (message, socketId, callback) {
+            socket.emit("message", { message: message, socketId: socketId });
+            callback(null, "message send");
         };
     
     // Public methods
@@ -152,6 +158,7 @@ var client = (function () {
         addShare: addShare,
         addActivity: addActivity,
         receiveAddShare: callbackAddShare,
-        receiveAddActivity: callbackAddActivity
+        receiveAddActivity: callbackAddActivity,
+        sendMessage: sendMessage
     };
 })();

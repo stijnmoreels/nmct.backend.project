@@ -29,7 +29,12 @@ var Communication = (function () {
             socket.on("newuser", function (user) {
                 // if the user don't want to chat with anyone (Registration)
                 if (user.isAvailable)
-                    sio.sockets.emit("newuser", user.username);
+                    sio.sockets.emit("newuser", { user: user.username, socketId: socket.id });
+            });
+            
+            // chat functionality (send only to one client)
+            socket.on("message", function (data) {
+                socket.to(data.socketId).emit("message", data.message);
             });
             
             // user adds share to map

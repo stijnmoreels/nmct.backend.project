@@ -30,7 +30,7 @@ communication.listen(server);
 // the socket communication with his/hers token
 app.post('/login', function (request, response) {
     var Request = require("./http/request.js"),
-        user = {};
+        loggedInUser = {};
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
     });
@@ -57,6 +57,7 @@ app.post('/login', function (request, response) {
             response.json({ token: null, user: null, error: "No user found" });
         } else if (user != null && user.length != 0) {
             // We are sending the profile inside the token
+            loggedInUser = user;
             communication.sign(user, getToken);
         }
     }
@@ -64,7 +65,7 @@ app.post('/login', function (request, response) {
     // get token to send back to the client
     function getToken(error, token) {
         if (error) { throw error }
-        else response.json({ token: token, user: user });
+        else response.json({ token: token, user: loggedInUser[0] });
     }
 });
 
