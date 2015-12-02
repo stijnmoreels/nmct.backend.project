@@ -1,21 +1,43 @@
-<h2 class="headline">Add a new activity !</h2>
+<h2 class="headline">Share your feelings!</h2>
 <form class="form-box" ng-submit="addShareDb()" role="form">
     <div class="form-content">
-        <label for="activity">Name of event</label>
-
-        <div class="form-group">
-            <input type="text" class="form-control" id="activity" required ng-model="activityName">
-        </div>
         <div class="form-group">
             <label for="feelings">What's the mood over there ?</label>
-            <select class="form-control" id="feelings" required ng-model="feelings">
-                <option value="happy">Happy</option>
-                <option value="excited">Excited</option>
-                <option value="tender">Tender</option>
-                <option value="scared">Scared</option>
-                <option value="sad">Sad</option>
-                <option value="angry">Angry</option>
-            </select>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="list-group" id="feelings">
+                            <button value="happy" class="list-group-item feeling-btn">
+                                <img class="feeling-icon" src="./images/happy@xs.png" alt="happy">
+                                <span class="feeling-text">Happy</span></button>
+                            <button value="excited" class="list-group-item feeling-btn">
+                                <img class="feeling-icon" src="./images/excited@xs.png" alt="excited">
+                                <span class="feeling-text">Excited</span></button>
+                            <button value="tender" class="list-group-item feeling-btn">
+                                <img class="feeling-icon" src="./images/tender@xs.png" alt="tender"/>
+                                <span class="feeling-text">Tender</span></button>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="list-group feelings-right">
+                            <button value="scared" class="list-group-item feeling-btn">
+                                <img class="feeling-icon" src="./images/scared@xs.png" alt="scared"/>
+                                <span class="feeling-text">Scared</span></button>
+                            <button value="sad" class="list-group-item feeling-btn">
+                                <img class="feeling-icon" src="./images/sad@xs.png" alt="sad"/>
+                                <span class="feeling-text">Sad</span></button>
+                            <button value="angry" class="list-group-item feeling-btn">
+                                <img class="feeling-icon" src="./images/angry@xs.png" alt="angry"/>
+                                <span class="feeling-text">Angry</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label for="activity">Name of event</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="activity" ng-model="activityName">
+            </div>
         </div>
         <div>
             <input type="hidden" id="activityID" ng-model="activityID"/>
@@ -31,12 +53,7 @@
     <a class="btn-maptype" ng-click="changeMap()" id="satellite">Satellite</a> |
     <a class="btn-maptype" ng-click="changeMap()" id="terrain">Terrain</a>
 </div>
-<div class="logout">
-    <a ng-click="logout()">
-        <img src="../images/logout-2.png" alt="logout">
-    </a>
 
-<!--    <button type="button" class="btn btn-lg btn-default" ng-click="logout()">
-        <span class="glyphicon glyphicon-log-out"></span> Exit
-    </button>-->
-</div>
+<button type="button" class="logout" aria-label="Left Align">
+    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+</button>

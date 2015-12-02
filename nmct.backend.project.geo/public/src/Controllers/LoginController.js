@@ -17,7 +17,6 @@
                     //$cookieStore.put("username", $scope.username);
                     $rootScope.loggedInUser = $scope.username;
                     localStorage.username = $scope.username;
-                    /*$location.path("/main");*/
                     location.href = "/#/main";
                 }
             });

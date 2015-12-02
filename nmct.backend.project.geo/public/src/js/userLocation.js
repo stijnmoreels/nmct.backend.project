@@ -38,11 +38,6 @@ function placeMarkerAndPanTo(latlng, map) {
         content: contentString
     });
 
-/*    google.maps.event.addListener(infowindow, 'domready', function () {
-     document.getElementById("btnAdd").addEventListener("click", function (e) {
-     console.log("add share to activity");
-     });
-     });*/
 
     marker.addListener('click', function () {
         infowindow.open(map, marker);

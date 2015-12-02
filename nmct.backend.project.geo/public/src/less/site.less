@@ -84,6 +84,25 @@ html, body, #map-canvas {
         }
       }
     }
+    .list-group{
+      .feeling-btn {
+        width: 120px;
+        text-align: left;
+        &:hover{
+          background-color: lighten(@startColor, 20%);
+          -webkit-transition: background-color 0.3s;
+          -moz-transition: background-color 0.3s;
+          -ms-transition: background-color 0.3s;
+          -o-transition: background-color 0.3s;
+          transition: background-color 0.3s;
+          color: @cloud;
+        }
+        .feeling-text{
+          margin-left:5px;
+        }
+      }
+      
+    }
   }
 }
 
@@ -137,8 +156,23 @@ html, body, #map-canvas {
   position: fixed;
   bottom: 0;
   margin-bottom: 20px;
+  background-color: @endColor;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
   &:hover{
     cursor: pointer;
+    background-color: darken(@endColor, 10%);
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+  }
+  span{
+    font-size: 20px;
   }
 }
 .info{
@@ -146,8 +180,23 @@ html, body, #map-canvas {
   bottom: 0;
   margin-bottom: 20px;
   left: 340px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+  background-color: @endColor;
   &:hover{
     cursor: pointer;
+    background-color: darken(@endColor, 10%);
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+  }
+  span{
+    font-size: 35px;
   }
 }
 
