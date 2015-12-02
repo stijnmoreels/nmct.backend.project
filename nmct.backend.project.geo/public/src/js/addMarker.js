@@ -43,11 +43,11 @@ function addActivityToMap(error, activity) {
         '<div class="form-group">' +
         '<ul class="list-group">' +
         '<li class="list-group-item"><span id="' + activity.id + '_happy" class="badge">' + feelings["happy"] + '</span><img src="../images/happy@xs.png" alt="happy">   Happy</li>' +
-        '<li class="list-group-item"><span id="' + activity.id + '_tender" class="badge">' + feelings["excited"] + '</span><img src="../images/excited@xs.png" alt="excited">    Excited</li>' +
-        '<li class="list-group-item"><span id="' + activity.id + '_scared" class="badge">' + feelings["tender"] + '</span><img src="../images/tender@xs.png" alt="tender">    Tender</li>' +
-        '<li class="list-group-item"><span id="' + activity.id + '_angry" class="badge">' + feelings["scared"] + '</span><img src="../images/scared@xs.png" alt="scared">    Scared</li>' +
-        '<li class="list-group-item"><span id="' + activity.id + '_excited" class="badge">' + feelings["sad"] + '</span><img src="../images/sad@xs.png" alt="sad">    Sad</li>' +
-        '<li class="list-group-item"><span id="' + activity.id + '_sad" class="badge">' + feelings["angry"] + '</span><img src="../images/angry@xs.png" alt="angry">    Angry</li>' +
+        '<li class="list-group-item"><span id="' + activity.id + '_excited" class="badge">' + feelings["excited"] + '</span><img src="../images/excited@xs.png" alt="excited">    Excited</li>' +
+        '<li class="list-group-item"><span id="' + activity.id + '_tender" class="badge">' + feelings["tender"] + '</span><img src="../images/tender@xs.png" alt="tender">    Tender</li>' +
+        '<li class="list-group-item"><span id="' + activity.id + '_scared" class="badge">' + feelings["scared"] + '</span><img src="../images/scared@xs.png" alt="scared">    Scared</li>' +
+        '<li class="list-group-item"><span id="' + activity.id + '_sad" class="badge">' + feelings["sad"] + '</span><img src="../images/sad@xs.png" alt="sad">    Sad</li>' +
+        '<li class="list-group-item"><span id="' + activity.id + '_angry" class="badge">' + feelings["angry"] + '</span><img src="../images/angry@xs.png" alt="angry">    Angry</li>' +
         '</ul>' +
         '</div>' +
         '<div class="form-group"><select id="feeling_' + activity.id + '" class="form-control" required>' +

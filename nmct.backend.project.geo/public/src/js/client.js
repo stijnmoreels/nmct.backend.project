@@ -9,6 +9,11 @@ var client = (function () {
     "use-strict";
     var token, socket, callbackAddShare, callbackAddActivity, challenge;
     var setupSockets = function (user) {
+        if (socket != null) {
+            // disconnect a current connected client
+            // -> to make sure we only have ONE connected socket/client
+            socket.disconnect();
+        }
         socket = io.connect(token ? ('?token=' + token) : '', {
             'forceNew': true
         });
@@ -25,31 +30,26 @@ var client = (function () {
         }).on("unauthorized", function (error) {
             console.log("- unauthorized");
         }).on("addshare", function (created) {
-            //if (callbackAddShare != null)
-            //    callbackAddShare(null, created);
             addShareToMap(null, created);
         }).on("addactivity", function (created) {
-            //if (callbackAddActivity != null)
-            //    callbackAddActivity(null, created);
             addActivityToMap(null, created);
         }).on("newuser", function (data) {
             // TODO: show to frontend and save the socketIds
-
-            console.log("new user: " + data.user + ", socketId: " + data.socketId);
+            
+            console.log("- new user: " + data.user + ", socketId: " + data.socketId);
         }).on("message", function (message) {
             // TODO: show to frontend
-
-            console.log("message: " + message);
+            
+            console.log("- message: " + message);
         }).on("challenge", function (challenge) {
             console.log(challenge);
         }).on("error", function (error) {
-            console.log("Socket error: " + error);
+            console.log("- Socket error: " + error);
         });
         
+        // inform other connected clients that there's a new user connected
         if (user.isAvailable)
             socket.emit("newuser", user);
-
-        //socket.emit("message", { message: "Hello !!!", socketId: "" });
     },  
     // Connect Anonymous is needed for everyone to see the shares/activities
         connectAnonymous = function (callback) {

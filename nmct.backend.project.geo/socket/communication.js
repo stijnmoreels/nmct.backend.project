@@ -25,6 +25,11 @@ var Communication = (function () {
         function connection(socket) {
             console.log("connected: " + socket.id);
             
+            socket.on("disconnect", function () {
+                console.log("disconnected: " + socket.id);
+                socket.disconnect();
+            });
+
             // inform other users that there's a new user connected
             socket.on("newuser", function (user) {
                 // if the user don't want to chat with anyone (Registration)
