@@ -171,14 +171,11 @@ var Communication = (function () {
                 }
             });
             
+            // global callback
             function userExists(user, callback) {
                 //var password = sh1.hash(user.password);
                 var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
-                var parameters = [{
-                        name: "@username", value: user.username + ""
-                    }, {
-                        name: "@password", value: user.password + ""
-                    }];
+                var parameters = [{ name: "@username", value: user.username + "" }, { name: "@password", value: user.password + "" }];
                 DocumentDB.query("users", { query: query, parameters: parameters }, callback);
             }
         }

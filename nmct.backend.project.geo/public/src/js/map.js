@@ -1,6 +1,10 @@
-/**
- * Created by Arne on 10/24/15.
- */
+/* =============================================================================
+ * @project: GEOFEELINGS
+ * @author: Arne Tesch
+ * @language: Javascript
+ * @purpose: Client Side Google Maps Integration
+ =============================================================================*/
+
 var map = (function () {
     "use strict";
     var initialize = function (element) {};

@@ -1,3 +1,10 @@
+/* =============================================================================
+ * @project: GEOFEELINGS
+ * @author: Arne Tesch / Stijn Moreels
+ * @language: Javascript
+ * @purpose: Client Side Angluar.js
+ =============================================================================*/
+
 var allShares = [[]];
 (function () {
 

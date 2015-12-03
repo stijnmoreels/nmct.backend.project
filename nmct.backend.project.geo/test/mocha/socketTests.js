@@ -16,6 +16,7 @@ describe("Socket tests", function () {
         socket;
     
     // Get token from server and set it as global "testToken"
+    // The only ajax relation with the server is when the user gets its token
     it("Should return a user token", function (done) {
         var body = "";
         var request = http.request({
@@ -40,7 +41,7 @@ describe("Socket tests", function () {
                 }
             });
         });
-        // anonymous credentials
+        // anonymous credentials (hashed password)
         request.write(querystring.stringify({
             username: "anonymous",
             password: "40bd001563085fc35165329ea1ff5c5ecbdbbeef"
@@ -71,6 +72,7 @@ describe("Socket tests", function () {
             done();
         });
         
+        // dummy share with happy feeling
         var share = { id: "0", feeling: "happy" };
         var object = { error: null, share: share, token: testToken };
         socket.emit("addshare", object);
