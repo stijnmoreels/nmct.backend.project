@@ -23,15 +23,50 @@ function placeMarkerAndPanTo(latlng, map) {
     map.panTo(latlng);
 
     var contentString =
-        '<div id="iw-container">' +
-            '<h1 class="iw-title">Event Name !</h1>' +
-            '<div class="iw-content">'+
-            '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-            'Assumenda at atque, corporis cupiditate debitis eaque eligendi, ' +
-            'eos facilis, in laborum maxime odio porro quam recusandae sapiente sed sunt tempore vitae.</p>'+
-            '<div><button class="btn btn-primary">Add Share</button></div>'+
-            '</div>' +
+        '<div id="iw-container" class="container">' +
+            '<div class="row">' +
+            '<h1 class="iw-title">Add your feeling</h1>'+
+                '<div class="col-sm-5">' +
+                    '<div class="list-group">' +
+                        '<button id="feeling_id" value="happy" class="list-group-item feeling-btn">'+
+                            '<img class="feeling-icon" src="./images/happy@xs.png" alt="happy">'+
+                            '<span class="feeling-text">Happy </span>'+
+                            ' <span class="badge share-count">12</span>'+
+                        '</button>'+
+                        '<button value="excited" class="list-group-item feeling-btn">'+
+                            '<img class="feeling-icon" src="./images/excited@xs.png" alt="excited">'+
+                            '<span class="feeling-text">Excited</span>'+
+                            ' <span class="badge share-count">12</span>'+
+                        '</button>'+
+                        '<button value="tender" class="list-group-item feeling-btn">'+
+                            '<img class="feeling-icon" src="./images/tender@xs.png" alt="tender">'+
+                            '<span class="feeling-text">Tender</span>'+
+                            '<span class="badge share-count">12</span>'+
+                        '</button>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-sm-5">' +
+                    '<div class="list-group feelings-right">' +
+                        '<button value="scared" class="list-group-item feeling-btn">'+
+                            '<img class="feeling-icon" src="./images/scared@xs.png" alt="scared">'+
+                            '<span class="feeling-text">Scared</span>'+
+                            '<span class="badge share-count">12</span>'+
+                        '</button>'+
+                        '<button value="sad" class="list-group-item feeling-btn">'+
+                            '<img class="feeling-icon" src="./images/sad@xs.png" alt="sad">'+
+                            '<span class="feeling-text">Sad</span>'+
+                            '<span class="badge share-count">12</span>'+
+                        '</button>'+
+                        '<button value="angry" class="list-group-item feeling-btn">'+
+                            '<img class="feeling-icon" src="./images/angry@xs.png" alt="angry">'+
+                            '<span class="feeling-text">Angry</span>'+
+                            '<span class="badge share-count">12</span>'+
+                        '</button>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
         '</div>';
+
 
 
     var infowindow = new google.maps.InfoWindow({
@@ -41,6 +76,14 @@ function placeMarkerAndPanTo(latlng, map) {
 
     marker.addListener('click', function () {
         infowindow.open(map, marker);
+    });
+
+    google.maps.event.addListener(infowindow, 'domready', function () {
+       document.getElementById("feeling_id").addEventListener("click", function (e) {
+           var feeling = document.getElementById("feeling_id").value;
+           console.log(feeling);
+           var btnfeeling = document.getElementById("feeling_id").setAttribute("class", "chosen-feeling list-group-item feeling-btn");
+       })
     });
 }
 

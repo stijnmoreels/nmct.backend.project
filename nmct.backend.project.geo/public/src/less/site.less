@@ -36,6 +36,25 @@ html, body, #map-canvas {
   right: 0;
 }
 
+#main-tabs-nav{
+  width: 350px;
+  .nav-tab{
+
+  }
+  >li.active>a{
+    background-color: lighten(@startColor, 10%);
+    color: @cloud;
+  }
+  >li>a{
+    border: none;
+    border-radius: 1px;
+    border-bottom: 1px solid @startColor;
+  }
+  #main-tab{
+    border-right: 1px solid @startColor;
+  }
+}
+
 .form-box {
   background-color: #FFF;
   padding: 20px;
@@ -270,15 +289,53 @@ html, body, #map-canvas {
   color: @midnightBlue;
   font-family: @fontFamily;
   font-size: 16px;
-  width: 250px;
-  max-width: 450px;
+  width: 330px;
   .iw-title {
     font-size: 20px;
+    padding: 0 0 0 15px;
   }
   .iw-content {
     p {
       font-size: 14px;
     }
+  }
+
+  .list-group{
+    .feeling-btn {
+      width: 150px;
+      text-align: left;
+      &:hover{
+        background-color: lighten(@startColor, 20%);
+        -webkit-transition: background-color 0.3s;
+        -moz-transition: background-color 0.3s;
+        -ms-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
+        transition: background-color 0.3s;
+        color: @cloud;
+      }
+      &:active, &:focus{
+        border: none;
+        background-color: lighten(@startColor, 20%);
+        -webkit-transition: background-color 0.3s;
+        -moz-transition: background-color 0.3s;
+        -ms-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
+        transition: background-color 0.3s;
+        color: @cloud;
+        outline: none;
+      }
+      .feeling-text{
+        margin-left:5px;
+      }
+      .share-count{
+        margin-left: 5px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+  .feelings-right{
+    margin-left: 25px;
   }
 }
 

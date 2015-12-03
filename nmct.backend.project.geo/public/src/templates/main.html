@@ -1,58 +1,75 @@
-<h2 class="headline">Share your feelings!</h2>
-<form class="form-box" ng-submit="addShareDb()" role="form">
-    <div class="form-content">
-        <div class="form-group">
-            <label for="feelings">What's the mood over there ?</label>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="list-group" id="feelings">
-                            <button value="happy" class="list-group-item feeling-btn">
-                                <img class="feeling-icon" src="./images/happy@xs.png" alt="happy">
-                                <span class="feeling-text">Happy</span></button>
-                            <button value="excited" class="list-group-item feeling-btn">
-                                <img class="feeling-icon" src="./images/excited@xs.png" alt="excited">
-                                <span class="feeling-text">Excited</span></button>
-                            <button value="tender" class="list-group-item feeling-btn">
-                                <img class="feeling-icon" src="./images/tender@xs.png" alt="tender"/>
-                                <span class="feeling-text">Tender</span></button>
+<ul class="nav nav-tabs nav-justified" id="main-tabs-nav">
+    <li id="main-tab" class="active nav-tab"><a showtab="" data-toggle="tab" href="#main">Main</a></li>
+    <li id="chat-tab" class="nav-tab"><a showtab="" data-toggle="tab" href="#chat">Chat</a></li>
+</ul>
+
+
+<div class="tab-content">
+    <div id="main" class="tab-pane fade in active">
+        <h2 class="headline">Share your feelings!</h2>
+        <form class="form-box" ng-submit="addShareDb()" role="form">
+            <div class="form-content">
+                <div class="form-group">
+                    <label for="feelings">What's the mood over there ?</label>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="list-group" id="feelings">
+                                    <button value="happy" class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/happy@xs.png" alt="happy">
+                                        <span class="feeling-text">Happy</span></button>
+                                    <button value="excited" class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/excited@xs.png" alt="excited">
+                                        <span class="feeling-text">Excited</span></button>
+                                    <button value="tender" class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/tender@xs.png" alt="tender"/>
+                                        <span class="feeling-text">Tender</span></button>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="list-group">
+                                    <button value="scared" class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/scared@xs.png" alt="scared"/>
+                                        <span class="feeling-text">Scared</span></button>
+                                    <button value="sad" class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/sad@xs.png" alt="sad"/>
+                                        <span class="feeling-text">Sad</span></button>
+                                    <button value="angry" class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/angry@xs.png" alt="angry"/>
+                                        <span class="feeling-text">Angry</span></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-5">
-                        <div class="list-group feelings-right">
-                            <button value="scared" class="list-group-item feeling-btn">
-                                <img class="feeling-icon" src="./images/scared@xs.png" alt="scared"/>
-                                <span class="feeling-text">Scared</span></button>
-                            <button value="sad" class="list-group-item feeling-btn">
-                                <img class="feeling-icon" src="./images/sad@xs.png" alt="sad"/>
-                                <span class="feeling-text">Sad</span></button>
-                            <button value="angry" class="list-group-item feeling-btn">
-                                <img class="feeling-icon" src="./images/angry@xs.png" alt="angry"/>
-                                <span class="feeling-text">Angry</span></button>
-                        </div>
+                    <label for="activity">Name of event</label>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="activity" ng-model="activityName">
                     </div>
                 </div>
+                <div>
+                    <input type="hidden" id="activityID" ng-model="activityID"/>
+                </div>
+                <input type="submit" class="btn btn-lg btn-block btn-submit" value="Submit"/>
             </div>
-            <label for="activity">Name of event</label>
+        </form>
 
-            <div class="form-group">
-                <input type="text" class="form-control" id="activity" ng-model="activityName">
-            </div>
+        <h1 class="headline">Customize the map type</h1>
+        <div class="map-control">
+            <a class="btn-maptype" id="map-control-first" ng-click="changeMap()" id="roadmap">Roadmap</a> |
+            <a class="btn-maptype" ng-click="changeMap()" id="hybrid">Hybrid</a> |
+            <a class="btn-maptype" ng-click="changeMap()" id="satellite">Satellite</a> |
+            <a class="btn-maptype" ng-click="changeMap()" id="terrain">Terrain</a>
         </div>
-        <div>
-            <input type="hidden" id="activityID" ng-model="activityID"/>
-        </div>
-        <input type="submit" class="btn btn-lg btn-block btn-submit" value="Submit"/>
     </div>
-</form>
+    <div id="chat" class="tab-pane fade">
+        <h2 class="headline">Chatbox!</h2>
+        <div class="form-box">
 
-<h1 class="headline">Customize the map type</h1>
-<div class="map-control">
-    <a class="btn-maptype" id="map-control-first" ng-click="changeMap()" id="roadmap">Roadmap</a> |
-    <a class="btn-maptype" ng-click="changeMap()" id="hybrid">Hybrid</a> |
-    <a class="btn-maptype" ng-click="changeMap()" id="satellite">Satellite</a> |
-    <a class="btn-maptype" ng-click="changeMap()" id="terrain">Terrain</a>
+        </div>
+    </div>
 </div>
+
 
 <button type="button" class="logout" aria-label="Left Align">
     <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
