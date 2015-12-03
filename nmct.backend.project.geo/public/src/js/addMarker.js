@@ -1,19 +1,24 @@
 /* =============================================================================
  * @project: GEOFEELINGS
- * @author: Arne Tesch
+ * @author: Arne Tesch / Stijn Moreels
  * @language: Javascript
  * @purpose: Client Side Google Maps Integration
  =============================================================================*/
 
 var markers = [];
 var contentString = "";
+var previousShareId = "";
 
 // Add share to infowindow activity
 function addShareToMap(error, share) {
-    var marker = markers[share.activityId]; // get marker for the given "activityId"
-    var badge = document.getElementById(share.activityId + "_" + share.feeling.toLocaleLowerCase()); // get the right badge in the infowindow 
-    var innerValue = parseInt(badge.innerHTML);
-    badge.innerHTML = isNaN(innerValue) || innerValue === 0 ? 1 : ++innerValue; // set the new value to the badge
+    // Check if the previousShareId is the new Share
+    if (share.id !== previousShareId) {
+        previousShareId = share.id;
+        var marker = markers[share.activityId]; // get marker for the given "activityId"
+        var badge = document.getElementById(share.activityId + "_" + share.feeling.toLocaleLowerCase()); // get the right badge in the infowindow 
+        var innerValue = parseInt(badge.innerHTML);
+        badge.innerHTML = isNaN(innerValue) || innerValue === 0 ? 1 : ++innerValue; // set the new value to the badge
+    }
 }
 
 // Add activity to map with an infowindow
@@ -71,7 +76,7 @@ function addActivityToMap(error, activity) {
         document.getElementById("btnAdd_" + activity.id).addEventListener("click", function (e) {
             // block event if the user already has a share in this activity
             // TODO: (above)
-
+            
             var activityID = activity.id;
             //document.getElementById("activityID").value = activityID;
             var feeling = document.getElementById("feeling_" + activity.id).value;

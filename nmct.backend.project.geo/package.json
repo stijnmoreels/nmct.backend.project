@@ -1,6 +1,6 @@
 {
     "name": "nmct.backend.project.geofeelings",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "nmct.backend.project.geofeelings",
     "main": "server.js",
     "author": {
