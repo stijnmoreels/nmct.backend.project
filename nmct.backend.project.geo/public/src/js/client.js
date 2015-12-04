@@ -105,6 +105,24 @@ var client = (function () {
             });
             socket.emit("signedshares", null);
         },
+        // Get all unsigned shares 
+        getUnsignedShares = function (callback) {
+            socket.on("unsignedshares", function (shares) {
+                if (shares)
+                    callback(null, shares);
+                else callback("no shares", null);
+            });
+            socket.emit("unsingedshares", null);
+        },
+        // Get shares generic
+        getGenericShares = function (subscription, callback) {
+            socket.on(subscription, function (shares) { 
+                if (shares)
+                    callback(null, shares);
+                else callback("no shares", null);
+            });
+            socket.emit(subscription, null);
+        },
         // Get all shares for a given "activityId"
         getSharesForActivity = function (activityId, callback) {
             socket.on("sharesactivity", function (shares) {
@@ -155,6 +173,7 @@ var client = (function () {
         getShares: getShares,
         getSignedShares: getSignedShares,
         getSharesForActivity: getSharesForActivity,
+        getGenericShares: getGenericShares,
         getActivities: getActivities,
         addShare: addShare,
         addActivity: addActivity,

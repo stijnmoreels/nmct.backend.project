@@ -140,14 +140,19 @@ var Communication = (function () {
                 var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId=0" };
                 DocumentDB.query("shares", query, queryDocumentCallback);
                 function queryDocumentCallback(error, shares) {
-                    if (error) { throw error; sio.emit("error", "Get shares faild"); }
+                    if (error) { throw error; sio.emit("error", "Get signed shares faild"); }
                     sio.emit(shares);
                 }
             });
             
             // get all unsigned shares
             socket.on("unsignedshares", function () {
-                // TODO: ...
+                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId!=0" };
+                DocumentDB.query("shares", query, queryDocumentCallback);
+                function queryDocumentCallback(error, shares) {
+                    if (error) { throw error; sio.emit("error", "Get unsigned shares faild"); }
+                    sio.emit(shares);
+                }
             });
             
             // get all shares for activity

@@ -53,7 +53,7 @@ var allShares = [[]];
             } else {
                 // TODO: get only the signed shares
                 // get shares from database
-                client.getShares(function (error, shares) {
+                client.getGenericShares("shares", function (error, shares) {
                     if (error) {
                         connsole.log(error);
                     }
