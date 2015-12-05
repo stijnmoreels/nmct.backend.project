@@ -30,13 +30,19 @@ var client = (function () {
         }).on("unauthorized", function (error) {
             console.log("- unauthorized");
         }).on("addshare", function (created) {
+            // Add share to Maps
             addShareToMap(null, created);
         }).on("addactivity", function (created) {
+            // Add activity to Maps
             addActivityToMap(null, created);
         }).on("newuser", function (data) {
-            // TODO: show to frontend and save the socketIds
-            
+            // Show new online user
+            addUserToOnlineUsers(null, { username: data.user, socketId: data.socketId });
             console.log("- new user: " + data.user + ", socketId: " + data.socketId);
+        }).on("deleteuser", function (data) { 
+            // Delete online user
+            deleteUserToOnlineusers(null, data.socketId);
+            console.log("- delete user: " + data.socketId);
         }).on("message", function (message) {
             // TODO: show to frontend
             

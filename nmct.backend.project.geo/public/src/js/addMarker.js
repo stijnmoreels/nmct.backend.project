@@ -34,7 +34,7 @@ function addActivityToMap(error, activity) {
     
     // find out how much shares each feeling has in this activity
     var feelings = { "happy": 0, "sad": 0, "excited": 0, "tender": 0, "angry": 0, "scared": 0 };
-    var shares = allShares[activity.id];
+    var shares = allSignedShares[activity.id];
     if (shares !== undefined)
         for (var i = 0, l = shares.length; i < l; i++) {
             feelings[shares[i].feeling]++;

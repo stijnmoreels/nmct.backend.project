@@ -39,6 +39,7 @@
     <Compile Include="public\src\Controllers\RegisterController.js" />
     <Compile Include="public\src\js\addMarker.js" />
     <Compile Include="public\src\js\app.js" />
+    <Compile Include="public\src\js\chat.js" />
     <Compile Include="public\src\js\client.js" />
     <Compile Include="crypto\encrypt.js" />
     <Compile Include="model\share.js" />
@@ -51,6 +52,14 @@
     <Compile Include="socket\communication.js" />
     <Compile Include="test\mocha\socketTests.js" />
     <Content Include="public\src\index.html" />
+    <Content Include="public\src\stylesheets\bootstrap.css" />
+    <Content Include="public\src\stylesheets\bootstrap.min.css" />
+    <Content Include="public\src\stylesheets\font-awesome.css" />
+    <Content Include="public\src\stylesheets\font-awesome.min.css" />
+    <Content Include="public\src\stylesheets\main.css" />
+    <Content Include="public\src\stylesheets\normalize.css" />
+    <Content Include="public\src\stylesheets\simple-sidebar.css" />
+    <Content Include="public\src\stylesheets\style.styl" />
     <Content Include="public\src\templates\login.html" />
     <Content Include="public\src\templates\main.html" />
     <Content Include="public\src\templates\register.html" />
@@ -70,6 +79,7 @@
     <Folder Include="model\" />
     <Folder Include="crypto\" />
     <Folder Include="http\" />
+    <Folder Include="public\src\stylesheets\" />
     <Folder Include="test\" />
     <Folder Include="public\src\" />
     <Folder Include="public\src\Controllers\" />

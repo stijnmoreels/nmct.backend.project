@@ -28,6 +28,7 @@ var Communication = (function () {
             socket.on("disconnect", function () {
                 console.log("disconnected: " + socket.id);
                 socket.disconnect();
+                sio.sockets.emit("deleteuser", { socketId: socket.id });
             });
 
             // inform other users that there's a new user connected
@@ -129,7 +130,7 @@ var Communication = (function () {
             socket.on("shares", function () {
                 var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false" };
                 DocumentDB.query("shares", query, queryDocumentsCallback);
-                function queryDocumentsCallback(error, shares) {
+                function queryDocumentsCallback(error, shares) {    
                     if (error) { throw error; sio.emit("error", "Get shares failed"); }
                     sio.emit("shares", shares);
                 }
@@ -137,21 +138,21 @@ var Communication = (function () {
             
             // get all shares that are signed to an Activity
             socket.on("signedshares", function () {
-                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId=0" };
+                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId!=0" };
                 DocumentDB.query("shares", query, queryDocumentCallback);
                 function queryDocumentCallback(error, shares) {
                     if (error) { throw error; sio.emit("error", "Get signed shares faild"); }
-                    sio.emit(shares);
+                    sio.emit("signedshares", shares);
                 }
             });
             
             // get all unsigned shares
             socket.on("unsignedshares", function () {
-                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId!=0" };
+                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId=0" };
                 DocumentDB.query("shares", query, queryDocumentCallback);
                 function queryDocumentCallback(error, shares) {
                     if (error) { throw error; sio.emit("error", "Get unsigned shares faild"); }
-                    sio.emit(shares);
+                    sio.emit("unsignedshares", shares);
                 }
             });
             

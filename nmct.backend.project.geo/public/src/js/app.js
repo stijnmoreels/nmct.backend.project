@@ -5,7 +5,7 @@
  * @purpose: Client Side Angluar.js
  =============================================================================*/
 
-var allShares = [[]];
+var allSignedShares = [[]];
 (function () {
 
     map.initialize("map-canvas");
@@ -53,7 +53,7 @@ var allShares = [[]];
             } else {
                 // TODO: get only the signed shares
                 // get shares from database
-                client.getGenericShares("shares", function (error, shares) {
+                client.getGenericShares("signedshares", function (error, shares) {
                     if (error) {
                         connsole.log(error);
                     }
@@ -61,12 +61,11 @@ var allShares = [[]];
                         var share = shares[i],
                             shareActivity = share.activityId + "";
                         // "allShares" is a global variable 
-                        if (allShares[shareActivity] === undefined) {
-                            allShares[shareActivity] = [];
+                        if (allSignedShares[shareActivity] === undefined) {
+                            allSignedShares[shareActivity] = [];
                         }
-                        allShares[shareActivity].push(share);
+                        allSignedShares[shareActivity].push(share);
                     }
-                    ;
                     // get activities from database
                     client.getActivities(function (error, activities) {
                         if (error) {
