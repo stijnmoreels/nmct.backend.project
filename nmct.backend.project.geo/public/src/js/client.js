@@ -29,6 +29,7 @@ var client = (function () {
             console.log('- disconnected');
         }).on("unauthorized", function (error) {
             console.log("- unauthorized");
+        
         }).on("addshare", function (created) {
             // Add share to Maps
             addShareToMap(null, created);
@@ -39,6 +40,11 @@ var client = (function () {
             // Show new online user
             addUserToOnlineUsers(null, { username: data.user, socketId: data.socketId });
             console.log("- new user: " + data.user + ", socketId: " + data.socketId);
+        }).on("users", function (users) {
+            // Add all current online users to the chatbox
+            for (var i = 0, l = users.length; i < l; i++) {
+                addUserToOnlineUsers(null, { username: users[i].username, socketId: users[i].socketId });
+            };
         }).on("deleteuser", function (data) { 
             // Delete online user
             deleteUserToOnlineusers(null, data.socketId);
@@ -46,6 +52,7 @@ var client = (function () {
         }).on("message", function (message) {
             // TODO: show to frontend
             
+              
             console.log("- message: " + message);
         }).on("challenge", function (challenge) {
             console.log(challenge);
@@ -93,60 +100,15 @@ var client = (function () {
                 callback(null, user);
             }
         }, 
-        // Get all shares
-        getShares = function (callback) {
-            socket.on("shares", function (shares) {
-                if (shares)
-                    callback(null, shares);
-                else callback("no shares", null);
-            });
-            socket.emit("shares", null);
-        },
-        // Get all shares that are signed to an Activity
-        getSignedShares = function (callback) {
-            socket.on("signedshares", function (shares) {
-                if (shares)
-                    callback(null, shares);
-                else callback("no shares", null);
-            });
-            socket.emit("signedshares", null);
-        },
-        // Get all unsigned shares 
-        getUnsignedShares = function (callback) {
-            socket.on("unsignedshares", function (shares) {
-                if (shares)
-                    callback(null, shares);
-                else callback("no shares", null);
-            });
-            socket.emit("unsingedshares", null);
-        },
         // Get shares generic
-        getGenericShares = function (subscription, callback) {
+        getAllGeneric = function (subscription, callback) {
             socket.on(subscription, function (shares) { 
                 if (shares)
                     callback(null, shares);
-                else callback("no shares", null);
+                else callback("no " + subscription + " found", null);
             });
             socket.emit(subscription, null);
         },
-        // Get all shares for a given "activityId"
-        getSharesForActivity = function (activityId, callback) {
-            socket.on("sharesactivity", function (shares) {
-                if (shares)
-                    callback(null, shares);
-                else callback("no shares", null);
-            });
-            socket.emit("sharesactivity", null);
-        }, 
-        // Get all activities
-        getActivities = function (callback) {
-            socket.on("activities", function (activities) {
-                if (activities)
-                    callback(null, activities);
-                else callback("no activities", null);
-            });
-            socket.emit("activities", null);
-        }, 
         // Add a new share
         addShare = function (share, callback) {
             var object = { error: null, share: share, token: token == null ? localStorage.token : token };
@@ -176,15 +138,13 @@ var client = (function () {
         login: login,
         register: register,
         connectAnonymous: connectAnonymous,
-        getShares: getShares,
-        getSignedShares: getSignedShares,
-        getSharesForActivity: getSharesForActivity,
-        getGenericShares: getGenericShares,
-        getActivities: getActivities,
+        //getShares: getShares,
+        //getSignedShares: getSignedShares,
+        //getSharesForActivity: getSharesForActivity,
+        getAllGeneric: getAllGeneric, // shares, unsignedshares, signedshares & sharesactivity
+        //getActivities: getActivities,
         addShare: addShare,
         addActivity: addActivity,
-        receiveAddShare: callbackAddShare,
-        receiveAddActivity: callbackAddActivity,
         sendMessage: sendMessage
     };
 })();

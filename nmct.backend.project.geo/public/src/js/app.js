@@ -53,7 +53,7 @@ var allSignedShares = [[]];
             } else {
                 // TODO: get only the signed shares
                 // get shares from database
-                client.getGenericShares("signedshares", function (error, shares) {
+                client.getAllGeneric("signedshares", function (error, shares) {
                     if (error) {
                         connsole.log(error);
                     }
@@ -67,7 +67,7 @@ var allSignedShares = [[]];
                         allSignedShares[shareActivity].push(share);
                     }
                     // get activities from database
-                    client.getActivities(function (error, activities) {
+                    client.getAllGeneric("activities", function (error, activities) {
                         if (error) {
                             console.log(error);
                         } else {

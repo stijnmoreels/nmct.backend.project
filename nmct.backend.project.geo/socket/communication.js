@@ -17,6 +17,7 @@ var Communication = (function () {
         sh1 = require("../crypto/hash.js");
     
     var listen = function (server) {
+        var clients = [];
         sio = socketIo.listen(server);
         authorize();
         sio.sockets.on('connection', connection);
@@ -34,8 +35,14 @@ var Communication = (function () {
             // inform other users that there's a new user connected
             socket.on("newuser", function (user) {
                 // if the user don't want to chat with anyone (Registration)
+                clients.push({ user: user.username, socketId: socket.id });
                 if (user.isAvailable)
                     sio.sockets.emit("newuser", { user: user.username, socketId: socket.id });
+            });
+            
+            // get all current online users (sockets)
+            socket.on("users", function () {
+                sio.emit("users", clients);
             });
             
             // chat functionality (send only to one client)
@@ -153,17 +160,6 @@ var Communication = (function () {
                 function queryDocumentCallback(error, shares) {
                     if (error) { throw error; sio.emit("error", "Get unsigned shares faild"); }
                     sio.emit("unsignedshares", shares);
-                }
-            });
-            
-            // get all shares for activity
-            socket.on("sharesactivity", function (activityId) {
-                var query = "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId=@activityId";
-                var parameters = [{ name: "@activityId", value: activityId + "" }];
-                DocumentDB.query("shares", { query: query, parameters: parameters }, queryDocumentsCallback);
-                function queryDocumentsCallback(error, shares) {
-                    if (error) { throw error; sio.emit("error", "Get shares for activity failed"); }
-                    sio.emit("sharesactivity", shares);
                 }
             });
             
