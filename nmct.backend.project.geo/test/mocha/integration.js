@@ -2,12 +2,12 @@
  * @project: GEOFEELINGS
  * @author: Stijn Moreels
  * @language: Node.js
- * @purpose: Tests for the Geofeelings Project 
+ * @purpose: Integration Tests for the Geofeelings Project 
  *           (tests the socket connection and authorization)
  =============================================================================*/
 
 "use-strict";
-describe("Socket tests", function () {
+describe("Integration: Socket tests", function () {
     var assert = require("assert"),
         querystring = require('querystring'),
         http = require('http'),
@@ -33,6 +33,7 @@ describe("Socket tests", function () {
                 if (token) {
                     testToken = token;
                     // setup socket connection with the just received token
+                    // TODO: remove 'localhost' and replace with deployment URL
                     socket = io.connect('http://localhost:9000', {
                         'forceNew': true,
                         'query': "token=" + token

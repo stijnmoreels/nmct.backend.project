@@ -50,7 +50,8 @@
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
     <Compile Include="socket\communication.js" />
-    <Compile Include="test\mocha\socketTests.js" />
+    <Compile Include="test\mocha\integration.js" />
+    <Compile Include="test\mocha\unit.js" />
     <Content Include="public\src\index.html" />
     <Content Include="public\src\stylesheets\bootstrap.css" />
     <Content Include="public\src\stylesheets\bootstrap.min.css" />
