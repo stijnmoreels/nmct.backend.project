@@ -7,39 +7,39 @@
 
 var allSignedShares = [[]];
 (function () {
-
+    
     map.initialize("map-canvas");
-
+    
     var app = angular.module("app", ['ngRoute', 'ngCookies']);
-
+    
     app.config(function ($logProvider, $routeProvider) {
-
+        
         $logProvider.debugEnabled(true);
         $routeProvider
             .when('/', {
-                controller: 'LoginController',
-                controllerAs: 'login',
-                templateUrl: './templates/login.html'
-            })
+            controller: 'LoginController',
+            controllerAs: 'login',
+            templateUrl: './templates/login.html'
+        })
             .when('/register', {
-                controller: 'RegisterController',
-                controllerAs: 'register',
-                templateUrl: './templates/register.html'
-            })
+            controller: 'RegisterController',
+            controllerAs: 'register',
+            templateUrl: './templates/register.html'
+        })
             .when('/main', {
-                controller: 'MainController',
-                controllerAs: 'main',
-                templateUrl: './templates/main.html',
-                resolve: {
-                    addUsers: function () {
+            controller: 'MainController',
+            controllerAs: 'main',
+            templateUrl: './templates/main.html',
+            resolve: {
+                addUsers: function () {
                         // Add users to chat
                         //return client.getAllGeneric("users", function (error, users) { });
-                    }
                 }
-            })
+            }
+        })
             .otherwise({
-                redirectTo: '/'
-            });
+            redirectTo: '/'
+        });
     })
     /*.run(function ($rootScope, $location) {
      $rootScope.$on("$routeChangeStart", function (event, next, current) {
@@ -82,12 +82,12 @@ var allSignedShares = [[]];
                         }
                     });
                 });
-
+                
                 client.getAllGeneric("unsignedshares", function (error, shares) {
-                    if(error){
+                    if (error) {
                         console.log(error);
                     }
-                    for(var i= 0, l=shares.length; i<l;i++){
+                    for (var i = 0, l = shares.length; i < l; i++) {
                         addUnsignedShareToMap(null, shares[i]);
                     }
                 });

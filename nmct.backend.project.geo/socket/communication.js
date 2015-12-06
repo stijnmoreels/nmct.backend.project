@@ -31,7 +31,7 @@ var Communication = (function () {
                 socket.disconnect();
                 sio.sockets.emit("deleteuser", { socketId: socket.id });
             });
-
+            
             // inform other users that there's a new user connected
             socket.on("newuser", function (user) {
                 // if the user don't want to chat with anyone (Registration)
@@ -78,8 +78,8 @@ var Communication = (function () {
                     if (error) { throw error; }
                     
                     // only add a share if the user hasn't add a share in the past
-                   /* if (shares == null || shares == undefined || shares.length == 0) {*/
-                    if(true){
+                    /* if (shares == null || shares == undefined || shares.length == 0) {*/
+                    if (true) {
                         data.share.isActivity = false; // we use the same document list
                         DocumentDB.insert("shares", data.share, 
                             function (error, document) {
@@ -107,8 +107,8 @@ var Communication = (function () {
                     else userExists(user, userExistsCallback);
                 } function userExistsCallback(error, user) {
                     if (error) { throw error; }
+                    // user exists
                     else {
-                        // user exists
                         data.activity.isActivity = true; // we use the same document list
                         DocumentDB.insert("shares", data.activity, 
                             function (error, document) {
@@ -119,9 +119,29 @@ var Communication = (function () {
                 }
             });
             
-            // TODO: admin has the authority to delete shares and activities
+            // delete activity in the database
             socket.on("deleteactivity", function (data) {
-
+                if (data.error) { throw error; }
+                jwt.verify(data.token, jwt_secret, getDecoded);
+                // Get verified by JsonWebToken
+                function getDecoded(error, user) {
+                    if (error) { throw error; };
+                    // Only the Admins have the rights to delete activities
+                    if (user.username === "anonymous" || user.password === 123 || user.isAdmin == false)
+                        sio.emit("unauthorized", "You have no rights to delete a Activity");
+                    else userExists(user, userExistsCallback);
+                } function userExistsCallback(error, user) {
+                    if (error) { throw error; }
+                    // user exists
+                    else {
+                        if (data.activityId != undefined) {
+                            DocumentDB.deleteDocument("shares", data.activityId, deleteDocumentCallback);
+                        } else sio.emit("error", "Delete activity failed");
+                    }
+                } function deleteDocumentCallback(error, document) {
+                    if (error) { throw error; }
+                    else sio.sockets.emit("deleteactivity", data.activityId);
+                }
             });
             
             // register users
@@ -138,7 +158,7 @@ var Communication = (function () {
             socket.on("shares", function () {
                 var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false" };
                 DocumentDB.query("shares", query, queryDocumentsCallback);
-                function queryDocumentsCallback(error, shares) {    
+                function queryDocumentsCallback(error, shares) {
                     if (error) { throw error; sio.emit("error", "Get shares failed"); }
                     sio.emit("shares", shares);
                 }

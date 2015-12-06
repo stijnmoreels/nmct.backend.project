@@ -17,13 +17,18 @@ var DocumentDB = (function () {
     }, 
         // insert document in DocumentDB (from collection Id)
         insertDocument = function (collection, document, callback) {
-        client.createDocument(config.collectionId + collection, document, callback);
-    };
+            client.createDocument(config.collectionId + collection, document, callback);
+        },
+        // delete document in DocumentDB (from document Id)
+        deleteDocument = function (collection, documentId, callback) {
+            client.deleteDocument(config.collectionId + collection + "/docs/" + documentId, callback);
+        };
     
     // public methods
     return {
         query: queryDocuments,
-        insert: insertDocument
+        insert: insertDocument,
+        deleteDocument: deleteDocument
     };
 })();
 

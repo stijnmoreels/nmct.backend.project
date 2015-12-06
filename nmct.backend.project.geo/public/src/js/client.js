@@ -30,12 +30,18 @@ var client = (function () {
         }).on("unauthorized", function (error) {
             console.log("- unauthorized");
         
+        // Geofeelings registration
         }).on("addshare", function (created) {
             // Add share to Maps
             addShareToMap(null, created);
         }).on("addactivity", function (created) {
             // Add activity to Maps
             addActivityToMap(null, created);
+        }).on("deleteactivity", function (activityId) { 
+            // Delete activity on Map (deleted by an Admin)
+            // TODO: ...
+
+        // User registration
         }).on("newuser", function (data) {
             // Show new online user
             addUserToOnlineUsers(null, { username: data.user, socketId: data.socketId });
@@ -52,8 +58,9 @@ var client = (function () {
         }).on("message", function (message) {
             // TODO: show to frontend
             
-              
             console.log("- message: " + message);
+
+        // Extra registration
         }).on("challenge", function (challenge) {
             console.log(challenge);
         }).on("error", function (error) {
@@ -79,6 +86,7 @@ var client = (function () {
             }).done(function (result) {
                 if (result.error) { callback(result.error, null); }
                 else if (result.token) {
+                    // Token returned = login succeeded
                     token = result.token;
                     localStorage.token = token;
                     setupSockets(result.user);
@@ -100,7 +108,7 @@ var client = (function () {
                 callback(null, user);
             }
         }, 
-        // Get shares generic
+        // Get all generic
         getAllGeneric = function (subscription, callback) {
             socket.on(subscription, function (shares) { 
                 if (shares)
@@ -128,9 +136,18 @@ var client = (function () {
                 socket.emit("addactivity", object);
                 callback(null, object);
             }
-        }, sendMessage = function (message, socketId, callback) {
+        }, 
+        // Send message to a single connected client (socket)
+        sendMessage = function (message, socketId, callback) {
             socket.emit("message", { message: message, socketId: socketId });
             callback(null, "message send");
+        },
+        // (Only Admin) Delete activity
+        deleteActivity = function (activityId, callback) {
+            if (activityId) {
+                socket.emit("deleteactivity", { error: null, activityId: activityId, token: token == null ? localStorage.token : token });
+                callback(null, activityId);
+            } else callback("no 'id' found in activityId", null);
         };
     
     // Public methods
@@ -138,11 +155,7 @@ var client = (function () {
         login: login,
         register: register,
         connectAnonymous: connectAnonymous,
-        //getShares: getShares,
-        //getSignedShares: getSignedShares,
-        //getSharesForActivity: getSharesForActivity,
-        getAllGeneric: getAllGeneric, // shares, unsignedshares, signedshares & sharesactivity
-        //getActivities: getActivities,
+        getAllGeneric: getAllGeneric, // users, shares, unsignedshares, signedshares & sharesactivity
         addShare: addShare,
         addActivity: addActivity,
         sendMessage: sendMessage
