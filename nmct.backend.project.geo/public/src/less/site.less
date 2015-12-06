@@ -36,21 +36,21 @@ html, body, #map-canvas {
   right: 0;
 }
 
-#main-tabs-nav{
+#main-tabs-nav {
   width: 350px;
-  .nav-tab{
+  .nav-tab {
 
   }
-  >li.active>a{
+  > li.active > a {
     background-color: lighten(@startColor, 10%);
     color: @cloud;
   }
-  >li>a{
+  > li > a {
     border: none;
     border-radius: 1px;
     border-bottom: 1px solid lighten(@startColor, 10%);
   }
-  #main-tab{
+  #main-tab {
     border-right: 1px solid lighten(@startColor, 10%);
   }
 }
@@ -103,24 +103,56 @@ html, body, #map-canvas {
         }
       }
     }
-    .list-group{
-      .feeling-btn {
-        width: 120px;
-        text-align: left;
-        &:hover{
-          background-color: lighten(@startColor, 20%);
-          -webkit-transition: background-color 0.3s;
-          -moz-transition: background-color 0.3s;
-          -ms-transition: background-color 0.3s;
-          -o-transition: background-color 0.3s;
-          transition: background-color 0.3s;
-          color: @cloud;
-        }
-        .feeling-text{
-          margin-left:5px;
-        }
+    .feeling-btn {
+      width: 130px;
+      text-align: left;
+      margin-bottom: -1px;
+      margin-left: 0;
+      border-radius: 1px;
+      &:hover {
+        background-color: lighten(@startColor, 20%);
+        -webkit-transition: background-color 0.3s;
+        -moz-transition: background-color 0.3s;
+        -ms-transition: background-color 0.3s;
+        -o-transition: background-color 0.3s;
+        transition: background-color 0.3s;
+        color: @cloud;
       }
-      
+      .feeling-text {
+        margin-left: 5px;
+      }
+    }
+    .btn > input[type="radio"] {
+      display: none;
+    }
+    .btn > input[type="radio"]:checked {
+      .feeling-btn {
+        background-color: @startColor;
+
+      }
+    }
+    .feeling-btn.active {
+      border: none;
+      background-color: lighten(@startColor, 20%);
+      -webkit-transition: background-color 0.3s;
+      -moz-transition: background-color 0.3s;
+      -ms-transition: background-color 0.3s;
+      -o-transition: background-color 0.3s;
+      transition: background-color 0.3s;
+      color: @cloud;
+      outline: none;
+    }
+    .btn-group .btn:last-child:not(:first-child) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+    .btn-group .btn:first-child:not(:last-child) {
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
     }
   }
 }
@@ -167,7 +199,8 @@ html, body, #map-canvas {
     }
   }
 }
-#map-control-first{
+
+#map-control-first {
   margin-left: 0;
 }
 
@@ -182,7 +215,7 @@ html, body, #map-canvas {
   border: none;
   outline: none;
   border-radius: 50%;
-  &:hover{
+  &:hover {
     cursor: pointer;
     background-color: darken(@endColor, 10%);
     -webkit-transition: background-color 0.3s;
@@ -191,11 +224,12 @@ html, body, #map-canvas {
     -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
   }
-  span{
+  span {
     font-size: 20px;
   }
 }
-.info{
+
+.info {
   position: fixed;
   bottom: 0;
   margin-bottom: 20px;
@@ -207,7 +241,7 @@ html, body, #map-canvas {
   border-radius: 50%;
   outline: none;
   background-color: @endColor;
-  &:hover{
+  &:hover {
     cursor: pointer;
     background-color: darken(@endColor, 10%);
     -webkit-transition: background-color 0.3s;
@@ -216,7 +250,7 @@ html, body, #map-canvas {
     -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
   }
-  span{
+  span {
     font-size: 35px;
   }
 }
@@ -302,11 +336,11 @@ html, body, #map-canvas {
     }
   }
 
-  .list-group{
+  .list-group {
     .feeling-btn {
       width: 150px;
       text-align: left;
-      &:hover{
+      &:hover {
         background-color: lighten(@startColor, 20%);
         -webkit-transition: background-color 0.3s;
         -moz-transition: background-color 0.3s;
@@ -315,7 +349,7 @@ html, body, #map-canvas {
         transition: background-color 0.3s;
         color: @cloud;
       }
-      &:active, &:focus{
+      &:active, &:focus {
         border: none;
         background-color: lighten(@startColor, 20%);
         -webkit-transition: background-color 0.3s;
@@ -326,22 +360,23 @@ html, body, #map-canvas {
         color: @cloud;
         outline: none;
       }
-      .feeling-text{
-        margin-left:5px;
+      .feeling-text {
+        margin-left: 5px;
       }
-      .share-count{
+      .share-count {
         margin-left: 5px;
         display: inline-block;
         vertical-align: middle;
       }
     }
   }
-  .feelings-right{
+  .feelings-right {
     margin-left: 25px;
   }
 }
 
-#myModal{
+#myModal {
   z-index: 100000;
   color: @startColor;
 }
+

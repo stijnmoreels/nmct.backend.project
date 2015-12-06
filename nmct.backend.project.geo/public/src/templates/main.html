@@ -8,53 +8,61 @@
 <div class="tab-content">
     <div id="main" class="tab-pane fade in active">
         <h2 class="headline">Share your feelings!</h2>
+
         <form class="form-box" role="form">
             <div class="form-content">
                 <div class="form-group">
                     <label for="feelings">What's the mood over there ?</label>
+
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-5">
                                 <div class="list-group" id="feelings">
-                                    <label class="btn btn-default feeling-btn">
-                                    <input type="radio" id="happy" name="feelings" autocomplete="off" ng-model="feeling" value="happy">
+                                    <label class="btn btn-default feeling-btn" id="happy">
+                                        <input type="radio" name="feelings" autocomplete="off" ng-model="feeling"
+                                               value="happy">
                                         <img class="feeling-icon" src="./images/happy@xs.png" alt="happy">
                                         <span class="feeling-text">Happy</span>
-                                    </input>
+                                        </input>
                                     </label>
-                                    <label class="btn btn-default feeling-btn">
-                                    <input type="radio" name="feelings" id="excited" ng-model="feeling" value="excited" class="list-group-item feeling-btn">
+                                    <label class="btn btn-default feeling-btn" id="excited">
+                                        <input type="radio" name="feelings" ng-model="feeling" autocomplete="off"
+                                               value="excited" class="list-group-item feeling-btn">
                                         <img class="feeling-icon" src="./images/excited@xs.png" alt="excited">
                                         <span class="feeling-text">Excited</span>
-                                    </input>
+                                        </input>
                                     </label>
-                                    <label class="btn btn-default feeling-btn">
-                                    <input type="radio" name="feelings" id="tender" ng-model="feeling" value="tender" class="list-group-item feeling-btn">
-                                        <img class="feeling-icon" src="./images/tender@xs.png" alt="tender" />
+                                    <label class="btn btn-default feeling-btn" id="tender">
+                                        <input type="radio" name="feelings" ng-model="feeling" value="tender"
+                                               class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/tender@xs.png" alt="tender"/>
                                         <span class="feeling-text">Tender</span>
-                                    </input>
+                                        </input>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-sm-5">
                                 <div class="list-group">
-                                    <label class="btn btn-default feeling-btn">
-                                    <input type="radio" name="feelings" id="scared" ng-model="feeling" value="scared" class="list-group-item feeling-btn">
-                                        <img class="feeling-icon" src="./images/scared@xs.png" alt="scared" />
+                                    <label class="btn btn-default feeling-btn" id="scared">
+                                        <input type="radio" name="feelings" ng-model="feeling" value="scared"
+                                               class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/scared@xs.png" alt="scared"/>
                                         <span class="feeling-text">Scared</span>
-                                    </input>
+                                        </input>
                                     </label>
-                                    <label class="btn btn-default feeling-btn">
-                                    <input type="radio" name="feelings" id="sad" ng-model="feeling" value="sad" class="list-group-item feeling-btn">
-                                        <img class="feeling-icon" src="./images/sad@xs.png" alt="sad" />
+                                    <label class="btn btn-default feeling-btn" id="sad">
+                                        <input type="radio" name="feelings" ng-model="feeling" value="sad"
+                                               class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/sad@xs.png" alt="sad"/>
                                         <span class="feeling-text">Sad</span>
-                                    </input>
+                                        </input>
                                     </label>
-                                    <label class="btn btn-default feeling-btn">
-                                    <input type="radio" name="feelings" id="angry" ng-model="feeling" value="angry" class="list-group-item feeling-btn">
-                                        <img class="feeling-icon" src="./images/angry@xs.png" alt="angry" />
+                                    <label class="btn btn-default feeling-btn" id="angry">
+                                        <input type="radio" name="feelings" ng-model="feeling" value="angry"
+                                               class="list-group-item feeling-btn">
+                                        <img class="feeling-icon" src="./images/angry@xs.png" alt="angry"/>
                                         <span class="feeling-text">Angry</span>
-                                    </input>
+                                        </input>
                                     </label>
                                 </div>
                             </div>
@@ -67,13 +75,14 @@
                     </div>
                 </div>
                 <div>
-                    <input type="hidden" id="activityID" ng-model="activityID" />
+                    <input type="hidden" id="activityID" ng-model="activityID"/>
                 </div>
-                <input type="submit" ng-click="addActivityDb()" class="btn btn-lg btn-block btn-submit" value="Submit" />
+                <input type="submit" ng-click="addActivityDb()" class="btn btn-lg btn-block btn-submit" value="Submit"/>
             </div>
         </form>
 
         <h1 class="headline">Customize the map type</h1>
+
         <div class="map-control">
             <a class="btn-maptype" id="map-control-first" ng-click="changeMap()" id="roadmap">Roadmap</a> |
             <a class="btn-maptype" ng-click="changeMap()" id="hybrid">Hybrid</a> |
@@ -83,10 +92,11 @@
     </div>
     <div id="chat" class="tab-pane fade">
         <ul id="users" class="list-group">
-           
+
         </ul>
-        
+
         <h2 class="headline">Chatbox!</h2>
+
         <div class="form-box">
 
         </div>
