@@ -30,7 +30,12 @@ var allSignedShares = [[]];
                 controller: 'MainController',
                 controllerAs: 'main',
                 templateUrl: './templates/main.html',
-                resolve: {}
+                resolve: {
+                    addUsers: function () {
+                        // Add users to chat
+                        //return client.getAllGeneric("users", function (error, users) { });
+                    }
+                }
             })
             .otherwise({
                 redirectTo: '/'
@@ -51,11 +56,10 @@ var allSignedShares = [[]];
             if (error) {
                 console.log(error)
             } else {
-                // TODO: get only the signed shares
                 // get shares from database
                 client.getAllGeneric("signedshares", function (error, shares) {
                     if (error) {
-                        connsole.log(error);
+                        console.log(error);
                     }
                     for (var i = 0, l = shares.length; i < l; i++) {
                         var share = shares[i],
@@ -77,6 +81,15 @@ var allSignedShares = [[]];
                             }
                         }
                     });
+                });
+
+                client.getAllGeneric("unsignedshares", function (error, shares) {
+                    if(error){
+                        console.log(error);
+                    }
+                    for(var i= 0, l=shares.length; i<l;i++){
+                        addUnsignedShareToMap(null, shares[i]);
+                    }
                 });
             }
         });

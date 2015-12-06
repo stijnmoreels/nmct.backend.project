@@ -78,7 +78,8 @@ var Communication = (function () {
                     if (error) { throw error; }
                     
                     // only add a share if the user hasn't add a share in the past
-                    if (shares == null || shares == undefined || shares.length == 0) {
+                   /* if (shares == null || shares == undefined || shares.length == 0) {*/
+                    if(true){
                         data.share.isActivity = false; // we use the same document list
                         DocumentDB.insert("shares", data.share, 
                             function (error, document) {
