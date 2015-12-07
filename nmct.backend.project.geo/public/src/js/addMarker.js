@@ -91,44 +91,10 @@ function addActivityToMap(error, activity) {
         content: contentString
     });
     
-    function handleClick(feeling) {
-        // block event if the user already has a share in this activity
-        // TODO: (above)
-        
-        var activityID = activity.id;
-        //document.getElementById("activityID").value = activityID;
-        
-        var lat, lng;
-        var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
-        
-        function getPosition(position) {
-            lat = position.coords.latitude;
-            lng = position.coords.longitude;
-            
-            // Register ShareModel
-            shareModel.id = new Date().getTime() + "-" + localStorage.username;
-            shareModel.feeling = feeling;
-            shareModel.latitude = lat;
-            shareModel.longitude = lng;
-            shareModel.timestamp = new Date().toLocaleDateString();
-            shareModel.author = localStorage.username;
-            shareModel.activityId = activityID;
-            
-            // Add share to database
-            client.addShare(shareModel, function (error, share) {
-                if (error) {
-                    console.log(error);
-                }
-                // just a callback check, the new share will be added in the "addShareToMap" method
-                console.log('share added');
-            });
-        }
-    }
+    
     
     google.maps.event.addListener(infoWindow, 'domready', function () {
-        
         var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
-        
         
         for (var i = 0, l = feelings.length; i < l; i++) {
             (function (i) {
@@ -137,6 +103,62 @@ function addActivityToMap(error, activity) {
                     handleClick(feelings[i]);
                 });
             })(i);
+        }
+
+        function handleClick(feeling) {
+            // block event if the user already has a share in this activity
+            //getUserSharesForActivity(localStorage.username, activity.id, function (error, share) {
+            //    if (error) { console.log(error); }
+            //    if (share == null)
+            //        // continue add share
+            //    else
+            //        // block 
+
+            //});
+            
+            var activityID = activity.id;
+            //document.getElementById("activityID").value = activityID;
+            
+            var lat, lng;
+            var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
+            
+            function getPosition(position) {
+                lat = position.coords.latitude;
+                lng = position.coords.longitude;
+                
+                // Register ShareModel
+                shareModel.id = new Date().getTime() + "-" + localStorage.username;
+                shareModel.feeling = feeling;
+                shareModel.latitude = lat;
+                shareModel.longitude = lng;
+                shareModel.timestamp = new Date().toLocaleDateString();
+                shareModel.author = localStorage.username;
+                shareModel.activityId = activityID;
+                
+                // Add share to database
+                client.addShare(shareModel, function (error, share) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    // just a callback check, the new share will be added in the "addShareToMap" method
+                    console.log('share added');
+                });
+            }
+        }
+        
+        // check if the user already has a share in the activity
+        // if so ? return that share
+        function getUserSharesForActivity(username, activityId, callback) {
+            // reference array based on activityId
+            var shares = allSignedShares[activityId];
+            if (shares == null || shares.length <= 0)
+                callback(null, null);
+            for (var i = 0, l = shares.length; i < l; i++)
+                if (shares[i].author === username)
+                    // share found
+                    callback(null, share);
+            // make sure we always return the callback
+            callback(null, null);
         }
     });
     
