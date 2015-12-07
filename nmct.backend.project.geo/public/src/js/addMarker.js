@@ -21,6 +21,13 @@ function addShareToMap(error, share) {
     }
 }
 
+// Delete activity from map
+function deleteActivityFromMap(error, activityId) {
+    if (error) { console.log(error); }
+    var marker = markers[activityId];
+    marker.remove(); // TODO: function '.remove()' exists?
+}
+
 // Add activity to map with an infowindow
 function addActivityToMap(error, activity) {
     var marker = new google.maps.Marker({
@@ -84,7 +91,8 @@ function addActivityToMap(error, activity) {
                         '</div>' +
                     '</div>' +
                 '</div>' +
-        '<div class="alert alert-success alert-dismissable" role="alert"></div>' +
+        '<div class="alert alert-success alert-dismissable" role="alert"></div>' + 
+         '<button ng-show="isAdmin" id="btnDelete_' + activity.id + '" class="btn btn-danger" >Delete</button>' +
         '</div>';
     
     var infoWindow = new google.maps.InfoWindow({
@@ -94,8 +102,9 @@ function addActivityToMap(error, activity) {
     
     
     google.maps.event.addListener(infoWindow, 'domready', function () {
-        var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
         
+        // set click listener for each feeling (for each infowindow)
+        var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
         for (var i = 0, l = feelings.length; i < l; i++) {
             (function (i) {
                 // Click listener for button within infowindow
@@ -104,7 +113,8 @@ function addActivityToMap(error, activity) {
                 });
             })(i);
         }
-
+        
+        // callback for click listenser (add share)
         function handleClick(feeling) {
             // block event if the user already has a share in this activity
             //getUserSharesForActivity(localStorage.username, activity.id, function (error, share) {
@@ -113,7 +123,7 @@ function addActivityToMap(error, activity) {
             //        // continue add share
             //    else
             //        // block 
-
+            
             //});
             
             var activityID = activity.id;
@@ -146,6 +156,13 @@ function addActivityToMap(error, activity) {
             }
         }
         
+        // admin only
+        document.getElementById("btnDelete_" + activity.id).addEventListener("click", function (e) {
+            client.deleteActivity(activity.id, function (error, activityId) { 
+                console.log("delete activity");
+            });
+        });
+
         // check if the user already has a share in the activity
         // if so ? return that share
         function getUserSharesForActivity(username, activityId, callback) {

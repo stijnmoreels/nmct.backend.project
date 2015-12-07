@@ -39,7 +39,7 @@ var client = (function () {
             addActivityToMap(null, created);
         }).on("deleteactivity", function (activityId) { 
             // Delete activity on Map (deleted by an Admin)
-            // TODO: ...
+            deleteActivityFromMap(null, activityId);
 
         // User registration
         }).on("newuser", function (data) {

@@ -78,7 +78,7 @@ var allSignedShares = [[]];
                             allActivities = activities;
                             for (var i = 0, l = activities.length; i < l; i++) {
                                 addActivityToMap(null, activities[i]);
-                            }
+                            } 
                         }
                     });
                 });

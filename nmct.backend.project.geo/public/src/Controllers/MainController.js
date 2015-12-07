@@ -2,7 +2,9 @@
     var app = angular.module("app");
 
     var MainController = function ($scope, $rootScope, $location) {
-
+        
+        // pure designwise, has no security issues
+        $scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
 
         $scope.addActivityDb = function () {
 
@@ -45,8 +47,7 @@
 
             }
         };
-
-
+        
         $scope.logout = function () {
             $rootScope.loggedInUser = null;
             $location.path("/");
