@@ -25,7 +25,7 @@ function addShareToMap(error, share) {
 function deleteActivityFromMap(error, activityId) {
     if (error) { console.log(error); }
     var marker = markers[activityId];
-    marker.remove(); // TODO: function '.remove()' exists?
+    marker.setMap(null);
 }
 
 // Add activity to map with an infowindow

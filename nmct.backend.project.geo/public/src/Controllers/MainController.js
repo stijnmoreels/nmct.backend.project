@@ -4,7 +4,8 @@
     var MainController = function ($scope, $rootScope, $location) {
         
         // pure designwise, has no security issues
-        $scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
+        //$scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
+        $scope.isAdmin = false;
 
         $scope.addActivityDb = function () {
 
