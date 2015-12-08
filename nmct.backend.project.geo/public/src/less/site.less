@@ -131,7 +131,19 @@ html, body, #map-canvas {
 
       }
     }
-    .feeling-btn.active {
+  /*  .list-group .btn:last-child:not(:first-child) .active {
+      border: none;
+      background-color: lighten(@startColor, 20%);
+      -webkit-transition: background-color 0.3s;
+      -moz-transition: background-color 0.3s;
+      -ms-transition: background-color 0.3s;
+      -o-transition: background-color 0.3s;
+      transition: background-color 0.3s;
+      color: @cloud;
+      outline: none;
+    }*/
+
+    .btn-default.active{
       border: none;
       background-color: lighten(@startColor, 20%);
       -webkit-transition: background-color 0.3s;
@@ -142,13 +154,13 @@ html, body, #map-canvas {
       color: @cloud;
       outline: none;
     }
-    .btn-group .btn:last-child:not(:first-child) {
+    .list-group .btn:last-child:not(:first-child) {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px;
     }
-    .btn-group .btn:first-child:not(:last-child) {
+    .list-group .btn:first-child:not(:last-child) {
       border-top-right-radius: 3px;
       border-top-left-radius: 3px;
       border-bottom-right-radius: 0;

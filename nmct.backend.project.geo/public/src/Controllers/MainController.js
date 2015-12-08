@@ -4,6 +4,17 @@
     var MainController = function ($scope, $rootScope, $location) {
 
 
+        var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
+        for (var i = 0, l = feelings.length; i < l; i++) {
+            (function (i) {
+                // Click listener for button within infowindow
+                $("#"+feelings[i]).bind("click", function (e) {
+
+                    $("#"+feelings[i]).addClass("active");
+                });
+            })(i);
+        }
+
         $scope.addActivityDb = function () {
 
             var lat, lng;
