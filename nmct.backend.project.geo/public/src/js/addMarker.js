@@ -121,6 +121,7 @@ function addActivityToMap(error, activity) {
                 }
                 // just a callback check, the new share will be added in the "addShareToMap" method
                 console.log('share added');
+
             });
         }
     }

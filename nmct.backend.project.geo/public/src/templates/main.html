@@ -1,5 +1,4 @@
-<ul class="nav nav-tabs nav-justified" id="main-tabs-nav" xmlns="http://www.w3.org/1999/html"
-    xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<ul class="nav nav-tabs nav-justified" id="main-tabs-nav">
     <li id="main-tab" class="active nav-tab"><a showtab="" data-toggle="tab" href="#main">Main</a></li>
     <li id="chat-tab" class="nav-tab"><a showtab="" data-toggle="tab" href="#chat">Chat</a></li>
 </ul>
@@ -91,14 +90,26 @@
         </div>
     </div>
     <div id="chat" class="tab-pane fade">
-        <ul id="users" class="list-group">
-
-        </ul>
-
-        <h2 class="headline">Chatbox!</h2>
-
-        <div class="form-box">
-
+        <div class="container">
+            <div class="row">
+                <h2 class="headline">Chatbox!</h2>
+                    <div class="form-box chatbox">
+                        <div class="form-content chatbox-content">
+                            <div id="conversation"></div>
+                            <textarea id="messages" class="form-control" placeholder="Type your message..."></textarea>
+                            <button id="btn-send" class="btn btn-default">Send</button>
+                        </div>
+                    </div>
+                <h2 class="headline">Online people</h2>
+                    <ul id="users" class="list-group online-list">
+                        <li class="list-group-item"><div class="chat-status"></div><span>arnetesch@gmail.com</span></li>
+                        <li class="list-group-item"><div class="chat-status"></div>stijnmoreels@gmail.com</li>
+                        <li class="list-group-item"><div class="chat-status"></div>kevinderudder@howest.be</li>
+                        <li class="list-group-item"><div class="chat-status"></div>johanv@howest.be</li>
+                        <li class="list-group-item"><div class="chat-status"></div>johanv@howest.be</li>
+                        <li class="list-group-item"><div class="chat-status"></div>johanv@howest.be</li>
+                    </ul>
+            </div>
         </div>
     </div>
 </div>
