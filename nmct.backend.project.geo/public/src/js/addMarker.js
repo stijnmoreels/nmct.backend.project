@@ -21,6 +21,13 @@ function addShareToMap(error, share) {
     }
 }
 
+// Delete activity from map
+function deleteActivityFromMap(error, activityId) {
+    if (error) { console.log(error); }
+    var marker = markers[activityId];
+    marker.setMap(null);
+}
+
 // Add activity to map with an infowindow
 function addActivityToMap(error, activity) {
     var marker = new google.maps.Marker({
@@ -84,13 +91,14 @@ function addActivityToMap(error, activity) {
                         '</div>' +
                     '</div>' +
                 '</div>' +
-        '<div class="alert alert-success alert-dismissable" role="alert"></div>' +
+        '<div class="alert alert-success alert-dismissable" role="alert"></div>' + 
+         '<button ng-show="isAdmin" id="btnDelete_' + activity.id + '" class="btn btn-danger" >Delete</button>' +
         '</div>';
     
     var infoWindow = new google.maps.InfoWindow({
         content: contentString
     });
-    
+
     function handleClick(feeling) {
         // block event if the user already has a share in this activity
         // TODO: (above)
@@ -125,12 +133,11 @@ function addActivityToMap(error, activity) {
             });
         }
     }
-    
+
     google.maps.event.addListener(infoWindow, 'domready', function () {
         
+        // set click listener for each feeling (for each infowindow)
         var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
-        
-        
         for (var i = 0, l = feelings.length; i < l; i++) {
             (function (i) {
                 // Click listener for button within infowindow
@@ -138,6 +145,70 @@ function addActivityToMap(error, activity) {
                     handleClick(feelings[i]);
                 });
             })(i);
+        }
+        
+        // callback for click listenser (add share)
+        function handleClick(feeling) {
+            // block event if the user already has a share in this activity
+            //getUserSharesForActivity(localStorage.username, activity.id, function (error, share) {
+            //    if (error) { console.log(error); }
+            //    if (share == null)
+            //        // continue add share
+            //    else
+            //        // block 
+            
+            //});
+            
+            var activityID = activity.id;
+            //document.getElementById("activityID").value = activityID;
+            
+            var lat, lng;
+            var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
+            
+            function getPosition(position) {
+                lat = position.coords.latitude;
+                lng = position.coords.longitude;
+                
+                // Register ShareModel
+                shareModel.id = new Date().getTime() + "-" + localStorage.username;
+                shareModel.feeling = feeling;
+                shareModel.latitude = lat;
+                shareModel.longitude = lng;
+                shareModel.timestamp = new Date().toLocaleDateString();
+                shareModel.author = localStorage.username;
+                shareModel.activityId = activityID;
+                
+                // Add share to database
+                client.addShare(shareModel, function (error, share) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    // just a callback check, the new share will be added in the "addShareToMap" method
+                    console.log('share added');
+                });
+            }
+        }
+        
+        // admin only
+        document.getElementById("btnDelete_" + activity.id).addEventListener("click", function (e) {
+            client.deleteActivity(activity.id, function (error, activityId) { 
+                console.log("delete activity");
+            });
+        });
+
+        // check if the user already has a share in the activity
+        // if so ? return that share
+        function getUserSharesForActivity(username, activityId, callback) {
+            // reference array based on activityId
+            var shares = allSignedShares[activityId];
+            if (shares == null || shares.length <= 0)
+                callback(null, null);
+            for (var i = 0, l = shares.length; i < l; i++)
+                if (shares[i].author === username)
+                    // share found
+                    callback(null, share);
+            // make sure we always return the callback
+            callback(null, null);
         }
     });
     

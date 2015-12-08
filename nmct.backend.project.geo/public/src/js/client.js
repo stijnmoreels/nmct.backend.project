@@ -39,7 +39,7 @@ var client = (function () {
             addActivityToMap(null, created);
         }).on("deleteactivity", function (activityId) { 
             // Delete activity on Map (deleted by an Admin)
-            // TODO: ...
+            deleteActivityFromMap(null, activityId);
 
         // User registration
         }).on("newuser", function (data) {
@@ -51,7 +51,7 @@ var client = (function () {
             for (var i = 0, l = users.length; i < l; i++) {
                 addUserToOnlineUsers(null, { username: users[i].username, socketId: users[i].socketId });
             };
-        }).on("deleteuser", function (data) { 
+        }).on("deleteuser", function (data) {
             // Delete online user
             deleteUserToOnlineusers(null, data.socketId);
             console.log("- delete user: " + data.socketId);
@@ -110,7 +110,7 @@ var client = (function () {
         }, 
         // Get all generic
         getAllGeneric = function (subscription, callback) {
-            socket.on(subscription, function (shares) { 
+            socket.on(subscription, function (shares) {
                 if (shares)
                     callback(null, shares);
                 else callback("no " + subscription + " found", null);
@@ -136,7 +136,17 @@ var client = (function () {
                 socket.emit("addactivity", object);
                 callback(null, object);
             }
-        }, 
+        },
+        // Delete an activity (only Admin)
+        deleteActivity = function (activityId, callback) {
+            var object = { error: null, activityId: activityId, token: token == null ? localStorage.token : token };
+            if (activityId == null || activityId === "")
+                callback("Error: 'id' is missing", null);
+            else {
+                socket.emit("deleteactivity", object);
+                callback(null, object);
+            }
+        },
         // Send message to a single connected client (socket)
         sendMessage = function (message, socketId, callback) {
             socket.emit("message", { message: message, socketId: socketId });
@@ -158,6 +168,7 @@ var client = (function () {
         getAllGeneric: getAllGeneric, // users, shares, unsignedshares, signedshares & sharesactivity
         addShare: addShare,
         addActivity: addActivity,
+        deleteActivity: deleteActivity,
         sendMessage: sendMessage
     };
 })();

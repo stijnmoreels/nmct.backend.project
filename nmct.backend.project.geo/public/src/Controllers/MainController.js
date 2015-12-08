@@ -2,7 +2,10 @@
     var app = angular.module("app");
 
     var MainController = function ($scope, $rootScope, $location) {
-
+        
+        // pure designwise, has no security issues
+        //$scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
+        $scope.isAdmin = false;
 
         var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
         for (var i = 0, l = feelings.length; i < l; i++) {
@@ -61,8 +64,7 @@
 
             }
         };
-
-
+        
         $scope.logout = function () {
             $rootScope.loggedInUser = null;
             $location.path("/");

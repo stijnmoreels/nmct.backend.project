@@ -6,9 +6,11 @@
         var allShares = [];
         var allActivities = [];
         
+        // pure designwise, has no security issues
+        $scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
+
         $scope.userLogin = function () {
             //$location.path("/main");
-
             $rootScope.loggedInUser = null;
             client.login($scope.username, $scope.password, function (error, user) {
                 if (error) {
