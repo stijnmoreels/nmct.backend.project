@@ -9,8 +9,11 @@
             (function (i) {
                 // Click listener for button within infowindow
                 $("#"+feelings[i]).bind("click", function (e) {
-
-                    $("#"+feelings[i]).addClass("active");
+                    if(feelings[i] == $scope.feeling){
+                        $("#"+$scope.feeling).addClass("active");
+                    }else {
+                        $("#"+$scope.feeling).removeClass("active");
+                    }
                 });
             })(i);
         }
@@ -19,6 +22,8 @@
 
             var lat, lng;
             var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
+
+            /*var feeling = $('.feelings input:radio:checked').val()*/
 
 
             function getPosition(position) {
