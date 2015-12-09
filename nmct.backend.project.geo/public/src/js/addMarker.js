@@ -98,7 +98,7 @@ function addActivityToMap(error, activity) {
     var infoWindow = new google.maps.InfoWindow({
         content: contentString
     });
-
+    
     function handleClick(feeling) {
         // block event if the user already has a share in this activity
         // TODO: (above)
@@ -133,7 +133,7 @@ function addActivityToMap(error, activity) {
             });
         }
     }
-
+    
     google.maps.event.addListener(infoWindow, 'domready', function () {
         
         // set click listener for each feeling (for each infowindow)
@@ -191,11 +191,11 @@ function addActivityToMap(error, activity) {
         
         // admin only
         document.getElementById("btnDelete_" + activity.id).addEventListener("click", function (e) {
-            client.deleteActivity(activity.id, function (error, activityId) { 
+            client.deleteActivity(activity.id, function (error, activityId) {
                 console.log("delete activity");
             });
         });
-
+        
         // check if the user already has a share in the activity
         // if so ? return that share
         function getUserSharesForActivity(username, activityId, callback) {
@@ -222,5 +222,20 @@ function addUnsignedShareToMap(error, share) {
         position: { lat: share.latitude, lng: share.longitude },
         icon: '../images/' + share.feeling + '-pin.png',
         map: map
+    });
+    
+    var contentStringShare = '<div id="iw-container" class="container">' +
+                                '<div class="row">' +
+                                    '<h1 class="iw-title">@' + share.author + '</h1>' + 
+                                    '<p>' + share.feeling + '</p>' +
+                                '</div>' + 
+                             '</div>';
+    
+    var infoWindow = new google.maps.InfoWindow({
+        content: contentStringShare
+    });
+    
+    marker.addListener('click', function () {
+        infoWindow.open(map, marker);
     });
 }
