@@ -47,6 +47,7 @@
     <Compile Include="http\request.js" />
     <Compile Include="public\src\js\hash.js" />
     <Compile Include="public\src\js\map.js" />
+    <Compile Include="repository\generic.js" />
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
     <Compile Include="socket\communication.js" />
@@ -80,6 +81,7 @@
     <Folder Include="model\" />
     <Folder Include="crypto\" />
     <Folder Include="http\" />
+    <Folder Include="repository\" />
     <Folder Include="public\src\stylesheets\" />
     <Folder Include="test\" />
     <Folder Include="public\src\" />

@@ -9,7 +9,7 @@ var client = (function () {
     "use-strict";
     var token, socket, callbackAddShare, callbackAddActivity, challenge;
     var setupSockets = function (user) {
-        if (socket !== null) {
+        if (socket !== undefined) {
             // disconnect a current connected client
             // -> to make sure we only have ONE connected socket/client
             socket.disconnect();
