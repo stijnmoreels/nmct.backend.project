@@ -83,7 +83,7 @@
         <h1 class="headline">Customize the map type</h1>
 
         <div class="map-control">
-            <a class="btn-maptype" id="map-control-first" ng-click="changeMap()" id="roadmap">Roadmap</a> |
+            <a class="btn-maptype" ng-click="changeMap()" id="roadmap">Roadmap</a> |
             <a class="btn-maptype" ng-click="changeMap()" id="hybrid">Hybrid</a> |
             <a class="btn-maptype" ng-click="changeMap()" id="satellite">Satellite</a> |
             <a class="btn-maptype" ng-click="changeMap()" id="terrain">Terrain</a>
@@ -95,8 +95,13 @@
                 <h2 class="headline">Chatbox!</h2>
                     <div class="form-box chatbox">
                         <div class="form-content chatbox-content">
-                            <div id="conversation"></div>
-                            <textarea id="messages" class="form-control" placeholder="Type your message..."></textarea>
+                            <div id="conversation">
+                                <div class="sent-message"><span>my message my message my message my message my message my message</span></div>
+                                <div class="received-message"><span>received message received message received message
+                                    received message received message received message received message received
+                                    message received message received message received message</span></div>
+                            </div>
+                            <textarea id="messages" class="form-control" ng-model="message" placeholder="Type your message..."></textarea>
                             <button id="btn-send" ng-click="sendMessage()" class="btn btn-default">Send</button>
                         </div>
                     </div>

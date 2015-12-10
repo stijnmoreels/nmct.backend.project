@@ -194,8 +194,7 @@ html, body, #map-canvas {
     }
   }
 }
-
-#map-control-first {
+#roadmap{
   margin-left: 0;
 }
 
@@ -387,6 +386,34 @@ html, body, #map-canvas {
     background-color: @cloud;
     overflow-y: scroll;
     overflow-x: hidden;
+    .sent-message{
+      background-color: @startColor;
+      color: @white;
+      float: right;
+      border-radius: 10px;
+      padding: 5px;
+      margin: 5px;
+      max-width: 135px;
+      p{
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+      }
+    }
+    .received-message{
+      background-color: @endColor;
+      color: @white;
+      padding: 5px;
+      float: left;
+      border-radius: 10px;
+      margin: 5px;
+      max-width: 135px;
+      p{
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+      }
+    }
   }
   #messages{
     margin-top: 10px;
