@@ -39,7 +39,7 @@ app.post('/login', function (request, response) {
     function parseRequestCallback(error, data) {
         // TODO: make "userExists"-method public in "Communication" so it can be used in here
         if (error) { throw error; }
-
+        
         var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
         var parameters = [{
                 name: "@username", value: data.username + ""
@@ -52,10 +52,10 @@ app.post('/login', function (request, response) {
     // sign user in the application
     function signUserCallback(error, user) {
         if (error) { throw error; }
-        else if (user.length == 0) {
+        else if (user.length === 0) {
             // No user found
             response.json({ token: null, user: null, error: "No user found" });
-        } else if (user != null && user.length != 0) {
+        } else if (user !== null && user.length !== 0) {
             // We are sending the profile inside the token
             loggedInUser = user;
             communication.sign(user, getToken);
@@ -64,7 +64,7 @@ app.post('/login', function (request, response) {
     
     // get token to send back to the client
     function getToken(error, token) {
-        if (error) { throw error }
+        if (error) { throw error; }
         else response.json({ token: token, user: loggedInUser[0] });
     }
 });

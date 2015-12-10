@@ -9,7 +9,7 @@ var client = (function () {
     "use-strict";
     var token, socket, callbackAddShare, callbackAddActivity, challenge;
     var setupSockets = function (user) {
-        if (socket != null) {
+        if (socket !== null) {
             // disconnect a current connected client
             // -> to make sure we only have ONE connected socket/client
             socket.disconnect();
@@ -50,7 +50,7 @@ var client = (function () {
             // Add all current online users to the chatbox
             for (var i = 0, l = users.length; i < l; i++) {
                 addUserToOnlineUsers(null, { username: users[i].username, socketId: users[i].socketId });
-            };
+            }
         }).on("deleteuser", function (data) {
             // Delete online user
             deleteUserToOnlineusers(null, data.socketId);
@@ -100,11 +100,11 @@ var client = (function () {
         }, 
         // Register method
         register = function (name, firstname, username, password, callback) {
-            var user = { id: username, name: name, firstname: firstname, username: username, password: Sha1.hash(password + "") }
-            if (user.id == null || user.id === "")
+            var user = { id: username, name: name, firstname: firstname, username: username, password: Sha1.hash(password + "") };
+            if (user.id === null || user.id === "")
                 callback("Error: 'id' is missing", null);
             else {
-                socket.emit("register", { error: null, user: user, token: token == null ? localStorage.token : token });
+                socket.emit("register", { error: null, user: user, token: token === null ? localStorage.token : token });
                 callback(null, user);
             }
         }, 
@@ -119,8 +119,8 @@ var client = (function () {
         },
         // Add a new share
         addShare = function (share, callback) {
-            var object = { error: null, share: share, token: token == null ? localStorage.token : token };
-            if (share.id == null || share.id === "")
+            var object = { error: null, share: share, token: token === null ? localStorage.token : token };
+            if (share.id === null || share.id === "")
                 callback("Error: 'id' is missing", null);
             else {
                 socket.emit("addshare", object);
@@ -129,24 +129,24 @@ var client = (function () {
         }, 
         // Add a new activity
         addActivity = function (activity, callback) {
-            var object = { error: null, activity: activity, token: token == null ? localStorage.token : token };
-            if (activity.id == null || activity.id === "")
+            var object = { error: null, activity: activity, token: token === null ? localStorage.token : token };
+            if (activity.id === null || activity.id === "")
                 callback("Error: 'id' is missing", null);
             else {
                 socket.emit("addactivity", object);
                 callback(null, object);
             }
         },
-        // Delete an activity (only Admin)
-        deleteActivity = function (activityId, callback) {
-            var object = { error: null, activityId: activityId, token: token == null ? localStorage.token : token };
-            if (activityId == null || activityId === "")
-                callback("Error: 'id' is missing", null);
-            else {
-                socket.emit("deleteactivity", object);
-                callback(null, object);
-            }
-        },
+        //// Delete an activity (only Admin)
+        //deleteActivity = function (activityId, callback) {
+        //    var object = { error: null, activityId: activityId, token: token === null ? localStorage.token : token };
+        //    if (activityId === null || activityId === "")
+        //        callback("Error: 'id' is missing", null);
+        //    else {
+        //        socket.emit("deleteactivity", object);
+        //        callback(null, object);
+        //    }
+        //},
         // Send message to a single connected client (socket)
         sendMessage = function (message, socketId, callback) {
             socket.emit("message", { message: message, socketId: socketId });
@@ -155,7 +155,7 @@ var client = (function () {
         // (Only Admin) Delete activity
         deleteActivity = function (activityId, callback) {
             if (activityId) {
-                socket.emit("deleteactivity", { error: null, activityId: activityId, token: token == null ? localStorage.token : token });
+                socket.emit("deleteactivity", { error: null, activityId: activityId, token: token === null ? localStorage.token : token });
                 callback(null, activityId);
             } else callback("no 'id' found in activityId", null);
         };

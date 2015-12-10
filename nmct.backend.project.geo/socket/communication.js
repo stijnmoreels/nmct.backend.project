@@ -83,7 +83,7 @@ var Communication = (function () {
                         data.share.isActivity = false; // we use the same document list
                         DocumentDB.insert("shares", data.share, 
                             function (error, document) {
-                            if (error) { throw error; sio.emit("error", "Insert share failed"); }
+                            if (error) { sio.emit("error", "Insert share failed"); throw error;}
                             //sio.emit("addshare", document);
                             sio.sockets.emit("addshare", document); //-> maybe?
                         });
@@ -112,7 +112,7 @@ var Communication = (function () {
                         data.activity.isActivity = true; // we use the same document list
                         DocumentDB.insert("shares", data.activity, 
                             function (error, document) {
-                            if (error) { throw error; sio.emit("error", "Insert activity failed"); }
+                            if (error) { sio.emit("error", "Insert activity failed"); throw error; }
                             sio.sockets.emit("addactivity", document);
                         });
                     }
@@ -125,16 +125,16 @@ var Communication = (function () {
                 jwt.verify(data.token, jwt_secret, getDecoded);
                 // Get verified by JsonWebToken
                 function getDecoded(error, user) {
-                    if (error) { throw error; };
+                    if (error) { throw error; }
                     // Only the Admins have the rights to delete activities
-                    if (user.username === "anonymous" || user.password === 123 || user.isAdmin == false)
+                    if (user.username === "anonymous" || user.password === 123 || user.isAdmin === false)
                         sio.emit("unauthorized", "You have no rights to delete a Activity");
                     else userExists(user, userExistsCallback);
                 } function userExistsCallback(error, user) {
                     if (error) { throw error; }
                     // user exists
                     else {
-                        if (data.activityId != undefined) {
+                        if (data.activityId !== undefined) {
                             DocumentDB.deleteDocument("shares", data.activityId, deleteDocumentCallback);
                         } else sio.emit("error", "Delete activity failed");
                     }
@@ -149,7 +149,7 @@ var Communication = (function () {
                 if (data.error) { throw error; }
                 //data.user.password = sh1.hash(data.user.password);
                 DocumentDB.insert("users", data.user, function (error, user) {
-                    if (error) { throw error; sio.emit("error", "Register user failed"); }
+                    if (error) { sio.emit("error", "Register user failed"); throw error; }
                     sio.emit("register", data.user);
                 });
             });
@@ -159,7 +159,7 @@ var Communication = (function () {
                 var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false" };
                 DocumentDB.query("shares", query, queryDocumentsCallback);
                 function queryDocumentsCallback(error, shares) {
-                    if (error) { throw error; sio.emit("error", "Get shares failed"); }
+                    if (error) { sio.emit("error", "Get shares failed"); throw error; }
                     sio.emit("shares", shares);
                 }
             });
@@ -169,7 +169,7 @@ var Communication = (function () {
                 var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId!=0" };
                 DocumentDB.query("shares", query, queryDocumentCallback);
                 function queryDocumentCallback(error, shares) {
-                    if (error) { throw error; sio.emit("error", "Get signed shares faild"); }
+                    if (error) { sio.emit("error", "Get signed shares faild"); throw error; }
                     sio.emit("signedshares", shares);
                 }
             });
@@ -179,7 +179,7 @@ var Communication = (function () {
                 var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId=0" };
                 DocumentDB.query("shares", query, queryDocumentCallback);
                 function queryDocumentCallback(error, shares) {
-                    if (error) { throw error; sio.emit("error", "Get unsigned shares faild"); }
+                    if (error) { sio.emit("error", "Get unsigned shares faild"); throw error; }
                     sio.emit("unsignedshares", shares);
                 }
             });
@@ -189,7 +189,7 @@ var Communication = (function () {
                 var query = { query: "SELECT * FROM shares s WHERE s.isActivity=true" };
                 DocumentDB.query("shares", query, queryDocumentsCallback);
                 function queryDocumentsCallback(error, activities) {
-                    if (error) { throw error; sio.emit("error", "Get activities failed"); }
+                    if (error) { sio.emit("error", "Get activities failed"); throw error; }
                     sio.emit("activities", activities);
                 }
             });
