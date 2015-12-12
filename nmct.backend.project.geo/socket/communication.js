@@ -8,7 +8,7 @@
 var Communication = (function () {
     "use-strict";
     var jwt = require('jsonwebtoken'),
-        jwt_secret = 'BRZ8gRtRzmNMcEzSfA6wq8zC3ACZGvuFKGHGaNw78DvTtX8azxRCfyWAEZUvwUKkP6sNFZxL5trJSLZ4FKt5Dyc46bRMzt4Z2UjsT4zUKseaN6hAgxQHaTzn',
+        jwt_secret = require("../config/configuration.js").jwt_secret,
         socketIo = require("socket.io"),
         socketio_jwt = require('socketio-jwt'),
         sio = "",
@@ -30,25 +30,29 @@ var Communication = (function () {
             socket.on("disconnect", function () {
                 console.log("disconnected: " + socket.id);
                 socket.disconnect();
-                sio.sockets.emit("deleteuser", { socketId: socket.id });
+                sio.sockets.emit("deleteuser", socket.username);
             });
             
             // inform other users that there's a new user connected
             socket.on("newuser", function (user) {
                 // if the user don't want to chat with anyone (Registration)
-                clients.push({ user: user.username, socketId: socket.id });
-                if (user.isAvailable)
-                    sio.sockets.emit("newuser", { user: user.username, socketId: socket.id });
+                if (user.isAvailable) {
+                    //clients.push({ username: user.username, socketId: socket.id });
+                    socket.username = user.username;
+                    clients[user.username] = socket.id;
+                    sio.sockets.emit("newuser", user.username);
+                }
             });
             
             // get all current online users (sockets)
             socket.on("users", function () {
-                sio.emit("users", clients);
+                sio.emit("users", Object.keys(clients));
             });
             
             // chat functionality (send only to one client)
             socket.on("message", function (data) {
-                socket.to(data.socketId).emit("message", data.message);
+                var socketId = clients[data.username];
+                socket.to(socketId).emit("message", data.message);
             });
             
             // user adds share to map
@@ -177,14 +181,6 @@ var Communication = (function () {
                     sio.emit("activities", activities);
                 });
             });
-            
-            //// global callback
-            //function userExists(user, callback) {
-            //    //var password = sh1.hash(user.password);
-            //    var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
-            //    var parameters = [{ name: "@username", value: user.username + "" }, { name: "@password", value: user.password + "" }];
-            //    DocumentDB.query("users", { query: query, parameters: parameters }, callback);
-            //}
         }
         
         // authorize any socket communication

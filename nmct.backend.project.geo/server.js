@@ -19,8 +19,7 @@ app.use(bodyParser.json());
 var server = http.createServer(app);
 
 // sockets
-var communication = require('./socket/communication.js'),
-    documentDb = require("./database/documentdb.js");
+var communication = require('./socket/communication.js');
 communication.listen(server);
 
 // login (can see map but can't add shares)
@@ -38,17 +37,7 @@ app.post('/login', function (request, response) {
     
     // get the data from the POST and find the right user
     function parseRequestCallback(error, data) {
-        // TODO: make "userExists"-method public in "Communication" so it can be used in here
         if (error) { throw error; }
-        
-        //var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
-        //var parameters = [{
-        //        name: "@username", value: data.username + ""
-        //    }, {
-        //        name: "@password", value: data.password + ""
-        //    }];
-        //documentDb.query("users", { query: query, parameters: parameters }, signUserCallback);
-
         repository.getOne(data, "users", signUserCallback);
     }
     

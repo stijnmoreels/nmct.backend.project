@@ -44,17 +44,17 @@ var client = (function () {
         // User registration
         }).on("newuser", function (data) {
             // Show new online user
-            addUserToOnlineUsers(null, { username: data.user, socketId: data.socketId });
-            console.log("- new user: " + data.user + ", socketId: " + data.socketId);
+            chat.addUser(null, data.username);
+            console.log("- new user: " + data.username);
         }).on("users", function (users) {
             // Add all current online users to the chatbox
             for (var i = 0, l = users.length; i < l; i++) {
-                addUserToOnlineUsers(null, { username: users[i].username, socketId: users[i].socketId });
+                chat.addUser(null, users[i]);
             }
         }).on("deleteuser", function (data) {
             // Delete online user
-            deleteUserToOnlineusers(null, data.socketId);
-            console.log("- delete user: " + data.socketId);
+            chat.deleteUser(null, data.username);
+            console.log("- delete user: " + data.username);
         }).on("message", function (message) {
             // TODO: show to frontend
             
@@ -68,8 +68,10 @@ var client = (function () {
         });
         
         // inform other connected clients that there's a new user connected
-        if (user.isAvailable)
+        if (user.isAvailable) {
             socket.emit("newuser", user);
+            socket.emit("users", null);
+        }
     },  
     // Connect Anonymous is needed for everyone to see the shares/activities
         connectAnonymous = function (callback) {
@@ -137,19 +139,9 @@ var client = (function () {
                 callback(null, object);
             }
         },
-        //// Delete an activity (only Admin)
-        //deleteActivity = function (activityId, callback) {
-        //    var object = { error: null, activityId: activityId, token: token === null ? localStorage.token : token };
-        //    if (activityId === null || activityId === "")
-        //        callback("Error: 'id' is missing", null);
-        //    else {
-        //        socket.emit("deleteactivity", object);
-        //        callback(null, object);
-        //    }
-        //},
         // Send message to a single connected client (socket)
-        sendMessage = function (message, socketId, callback) {
-            socket.emit("message", { message: message, socketId: socketId });
+        sendMessage = function (message, username, callback) {
+            socket.emit("message", { message: message, username: username });
             callback(null, "message send");
         },
         // (Only Admin) Delete activity
