@@ -14,6 +14,7 @@ var Communication = (function () {
         sio = "",
         Share = require("../model/share.js"),
         DocumentDB = require("../database/documentdb.js"),
+        repository = require("../repository/generic.js"),
         sh1 = require("../crypto/hash.js");
     
     var listen = function (server) {
@@ -58,20 +59,15 @@ var Communication = (function () {
                 function getDecoded(error, user) {
                     if (error) { throw error; }
                     // Anonymous has no rights to add shares/activities
-                    if (user[0].username === "anonymous" || user[0].password === 123) {
+                    if (user[0].username === "anonymous" || user[0].password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
-                    } else {
-                        userExists(user[0], userExistsCallback);
-                    }
+                    // Get correct user (dubble check)
+                    else repository.getOne(user[0], "users", userExistsCallback);
                 } function userExistsCallback(error, user) {
                     if (error) { throw error; }
-                    else {
-                        // user exists
-                        // check if this user has already a share in this activity
-                        var query = "SELECT * FROM shares s WHERE s.isActivity=false AND s.author=@username AND s.activityId=@activityId";
-                        var parameters = [{ name: "@username", value: user[0].username }, { name: "@activityId", value: data.share.activityId }];
-                        DocumentDB.query("shares", { query: query, parameters: parameters }, queryDocumentsCallback);
-                    }
+                        // (user exists) -> check if this user has already a share in this activity
+                    else repository.getOne({ username: user[0].username, activityId: data.share.activityId }, 
+                            "shares", queryDocumentsCallback);
                 }
                 // callback that checks for the single or multiple shares
                 function queryDocumentsCallback(error, shares) {
@@ -81,16 +77,14 @@ var Communication = (function () {
                     /* if (shares == null || shares == undefined || shares.length == 0) {*/
                     if (true) {
                         data.share.isActivity = false; // we use the same document list
-                        DocumentDB.insert("shares", data.share, 
-                            function (error, document) {
-                            if (error) { sio.emit("error", "Insert share failed"); throw error;}
-                            //sio.emit("addshare", document);
+                        repository.insertOne(data.share, "shares", function (error, document) {
+                            if (error) { sio.emit("error", "Insert share failed"); throw error; }
                             sio.sockets.emit("addshare", document); //-> maybe?
                         });
-                    } else if (shares.length > 0) {
+
+                    } else if (shares.length > 0)
                         // send default error message back to client
                         sio.emit("error", "Insert share failed");
-                    }
                 }
             });
             
@@ -107,11 +101,10 @@ var Communication = (function () {
                     else userExists(user, userExistsCallback);
                 } function userExistsCallback(error, user) {
                     if (error) { throw error; }
-                    // user exists
                     else {
+                        // user exists
                         data.activity.isActivity = true; // we use the same document list
-                        DocumentDB.insert("shares", data.activity, 
-                            function (error, document) {
+                        repository.insertOne(data.activity, "shares", function (error, document) {
                             if (error) { sio.emit("error", "Insert activity failed"); throw error; }
                             sio.sockets.emit("addactivity", document);
                         });
@@ -134,9 +127,9 @@ var Communication = (function () {
                     if (error) { throw error; }
                     // user exists
                     else {
-                        if (data.activityId !== undefined) {
-                            DocumentDB.deleteDocument("shares", data.activityId, deleteDocumentCallback);
-                        } else sio.emit("error", "Delete activity failed");
+                        if (data.activityId !== undefined)
+                            repository.deleteOne(data.activityId, "shares", deleteDocumentCallback);
+                        else sio.emit("error", "Delete activity failed");
                     }
                 } function deleteDocumentCallback(error, document) {
                     if (error) { throw error; }
@@ -147,8 +140,7 @@ var Communication = (function () {
             // register users
             socket.on("register", function (data) {
                 if (data.error) { throw error; }
-                //data.user.password = sh1.hash(data.user.password);
-                DocumentDB.insert("users", data.user, function (error, user) {
+                repository.insertOne(data.user, "users", function (error, user) {
                     if (error) { sio.emit("error", "Register user failed"); throw error; }
                     sio.emit("register", data.user);
                 });
@@ -156,51 +148,43 @@ var Communication = (function () {
             
             // user get all curent shares
             socket.on("shares", function () {
-                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false" };
-                DocumentDB.query("shares", query, queryDocumentsCallback);
-                function queryDocumentsCallback(error, shares) {
+                repository.getAll("shares", function (error, shares) {
                     if (error) { sio.emit("error", "Get shares failed"); throw error; }
                     sio.emit("shares", shares);
-                }
+                });
             });
             
             // get all shares that are signed to an Activity
             socket.on("signedshares", function () {
-                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId!=0" };
-                DocumentDB.query("shares", query, queryDocumentCallback);
-                function queryDocumentCallback(error, shares) {
+                repository.getAll("signedshares", function (error, shares) {
                     if (error) { sio.emit("error", "Get signed shares faild"); throw error; }
                     sio.emit("signedshares", shares);
-                }
+                });
             });
             
             // get all unsigned shares
             socket.on("unsignedshares", function () {
-                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=false AND s.activityId=0" };
-                DocumentDB.query("shares", query, queryDocumentCallback);
-                function queryDocumentCallback(error, shares) {
+                repository.getAll("unsignedshares", function (error, shares) {
                     if (error) { sio.emit("error", "Get unsigned shares faild"); throw error; }
                     sio.emit("unsignedshares", shares);
-                }
+                });
             });
             
             // user get all curent activities
             socket.on("activities", function () {
-                var query = { query: "SELECT * FROM shares s WHERE s.isActivity=true" };
-                DocumentDB.query("shares", query, queryDocumentsCallback);
-                function queryDocumentsCallback(error, activities) {
+                repository.getAll("activities", function (error, activities) {
                     if (error) { sio.emit("error", "Get activities failed"); throw error; }
                     sio.emit("activities", activities);
-                }
+                });
             });
             
-            // global callback
-            function userExists(user, callback) {
-                //var password = sh1.hash(user.password);
-                var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
-                var parameters = [{ name: "@username", value: user.username + "" }, { name: "@password", value: user.password + "" }];
-                DocumentDB.query("users", { query: query, parameters: parameters }, callback);
-            }
+            //// global callback
+            //function userExists(user, callback) {
+            //    //var password = sh1.hash(user.password);
+            //    var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
+            //    var parameters = [{ name: "@username", value: user.username + "" }, { name: "@password", value: user.password + "" }];
+            //    DocumentDB.query("users", { query: query, parameters: parameters }, callback);
+            //}
         }
         
         // authorize any socket communication

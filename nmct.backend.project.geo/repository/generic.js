@@ -8,15 +8,15 @@
 var Generic = (function () {
     var documentDb = require("../database/documentdb.js");
     var sharesDefaultQuery = "SELECT * FROM shares s WHERE s.isActivity=false";
-    var activitiesDefaultQuery = "SELECT * FROM shares s WHERE s.isActivity=false";
+    var activitiesDefaultQuery = "SELECT * FROM shares s WHERE s.isActivity=true";
     
     // Abstract: Act as a generic method that handles all the query lists of the database collection
     getAll = function (collection, callback) {
         switch (collection) {
-            case "shares": getShares(null, callback);
-            case "signedshares": getSignedShares(sharesDefaultQuery + " AND s.activityId!=0", callback);
-            case "unsignedshares": getUnsignedShares(activitiesDefaultQuery + " AND s.activityId=0" , callback);
-            case "activities": getActivities(callback);
+            case "shares": getShares(null, callback); break;
+            case "signedshares": getShares(sharesDefaultQuery + " AND s.activityId!=0", callback); break;
+            case "unsignedshares": getShares(sharesDefaultQuery + " AND s.activityId=0" , callback); break;
+            case "activities": getActivities(callback); break;
             default: callback("No such collection found", null);
         }
     }, 
@@ -33,8 +33,8 @@ var Generic = (function () {
     // Abstract: Act as a generic method that handles the where query of the database collection
     getOne = function (wheres, collection, callback) {
         switch (collection) {
-            case "users": getOneUser(wheres, callback);
-            case "shares": getOneShare(wheres, callback);
+            case "users": getOneUser(wheres, callback); break;
+            case "shares": getOneShare(wheres, callback); break;
             default: callback("No such WHERE implementation found", null);
         }
     },

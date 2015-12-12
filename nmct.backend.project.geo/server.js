@@ -30,6 +30,7 @@ communication.listen(server);
 // the socket communication with his/hers token
 app.post('/login', function (request, response) {
     var Request = require("./http/request.js"),
+        repository = require("./repository/generic.js"),
         loggedInUser = {};
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
@@ -40,13 +41,15 @@ app.post('/login', function (request, response) {
         // TODO: make "userExists"-method public in "Communication" so it can be used in here
         if (error) { throw error; }
         
-        var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
-        var parameters = [{
-                name: "@username", value: data.username + ""
-            }, {
-                name: "@password", value: data.password + ""
-            }];
-        documentDb.query("users", { query: query, parameters: parameters }, signUserCallback);
+        //var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
+        //var parameters = [{
+        //        name: "@username", value: data.username + ""
+        //    }, {
+        //        name: "@password", value: data.password + ""
+        //    }];
+        //documentDb.query("users", { query: query, parameters: parameters }, signUserCallback);
+
+        repository.getOne(data, "users", signUserCallback);
     }
     
     // sign user in the application
