@@ -64,6 +64,7 @@ var chat = (function () {
 
         for (var i = 0, l = messages[chat.selectedUser].currentUser.length; i < l; i++) {
             var div = document.createElement('div');
+            div.setAttribute("class", "sent-message-box");
             div.innerHTML = messages[chat.selectedUser].currentUser[i];
             sentMessage.appendChild(div);
         }
