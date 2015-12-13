@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e66483d-93e0-4cda-a513-68b467adde9f" name="Default" comment="" />
+    <list default="true" id="1e66483d-93e0-4cda-a513-68b467adde9f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/Controllers/RegisterController.js" afterPath="$PROJECT_DIR$/public/src/Controllers/RegisterController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/templates/register.html" afterPath="$PROJECT_DIR$/public/src/templates/register.html" />
+    </list>
     <ignored path="nmct.backend.project.geo.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,18 +27,48 @@
       <file leaf-file-name="site.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/less/site.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.490196">
+            <state vertical-scroll-proportion="0.0">
               <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/templates/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.086444005">
+            <state vertical-scroll-proportion="-53.125">
               <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/src/Controllers/RegisterController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.1869806">
+              <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/templates/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.0">
+              <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/js/client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="157" column="8" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -44,7 +77,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="-1.25">
               <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
               <folding />
             </state>
@@ -69,7 +102,6 @@
               <folding>
                 <marker date="1449770224000" expanded="true" signature="1249:5536" placeholder="{...}" />
                 <marker date="1449770224000" expanded="true" signature="11105:11111" placeholder="{...}" />
-                <marker date="1449770224000" expanded="true" signature="11105:11115" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -80,16 +112,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="92" column="32" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
-              <folding>
-                <marker date="1449770224000" expanded="true" signature="329:3913" placeholder="{...}" />
-                <marker date="1449770224000" expanded="true" signature="1732:3906" placeholder="{...}" />
-                <marker date="1449770224000" expanded="true" signature="1789:3898" placeholder="{...}" />
-                <marker date="1449770224000" expanded="true" signature="1870:3888" placeholder="{...}" />
-                <marker date="1449770224000" expanded="true" signature="1994:3499" placeholder="{...}" />
-                <marker date="1449770224000" expanded="true" signature="2732:3479" placeholder="{...}" />
-                <marker date="1449770224000" expanded="true" signature="2850:3457" placeholder="{...}" />
-                <marker date="1449770224000" expanded="true" signature="2987:3089" placeholder="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,16 +122,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -160,14 +173,12 @@
         <option value="$PROJECT_DIR$/public/src/js/showErrorMsg.js" />
         <option value="$PROJECT_DIR$/public/src/Controllers/MapController.js" />
         <option value="$PROJECT_DIR$/public/src/templates/map.html" />
-        <option value="$PROJECT_DIR$/public/src/Controllers/RegisterController.js" />
         <option value="$PROJECT_DIR$/public/src/js/map.js" />
         <option value="$PROJECT_DIR$/public/models/ShareModel.js" />
         <option value="$PROJECT_DIR$/public/models/ActivityModel.js" />
         <option value="$PROJECT_DIR$/public/src/js/password.js" />
         <option value="$PROJECT_DIR$/public/src/models/ActivityModel.js" />
         <option value="$PROJECT_DIR$/public/src/models/ShareModel.js" />
-        <option value="$PROJECT_DIR$/public/src/templates/register.html" />
         <option value="$PROJECT_DIR$/public/src/less/register.less" />
         <option value="$PROJECT_DIR$/public/src/less/variables.less" />
         <option value="$PROJECT_DIR$/public/src/less/sidebar.less" />
@@ -187,6 +198,8 @@
         <option value="$PROJECT_DIR$/public/src/js/addMarker.js" />
         <option value="$PROJECT_DIR$/public/src/less/site.less" />
         <option value="$PROJECT_DIR$/public/src/templates/main.html" />
+        <option value="$PROJECT_DIR$/public/src/templates/register.html" />
+        <option value="$PROJECT_DIR$/public/src/Controllers/RegisterController.js" />
       </list>
     </option>
   </component>
@@ -235,8 +248,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -319,7 +330,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -361,12 +372,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/3NMCT/Frontend Webdevelopment/Week8/Slack" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/3NMCT/Frontend Webdevelopment/Herhaling/Angular-RoutingDemo" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="list.type.of.created.stylesheet" value="Less" />
@@ -473,7 +486,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.252" sideWeight="0.49722221" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.252" sideWeight="0.49722221" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17291667" sideWeight="0.50596255" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -685,20 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="61" selection-start-line="0" selection-start-column="61" selection-end-line="0" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/Controllers/RegisterController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/less/sidebar.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.74766356">
@@ -790,13 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/templates/chat.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.029469548">
@@ -827,7 +819,6 @@
           <folding>
             <marker date="1449770224000" expanded="true" signature="1249:5536" placeholder="{...}" />
             <marker date="1449770224000" expanded="true" signature="11105:11111" placeholder="{...}" />
-            <marker date="1449770224000" expanded="true" signature="11105:11115" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -836,16 +827,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="92" column="32" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
-          <folding>
-            <marker date="1449770224000" expanded="true" signature="329:3913" placeholder="{...}" />
-            <marker date="1449770224000" expanded="true" signature="1732:3906" placeholder="{...}" />
-            <marker date="1449770224000" expanded="true" signature="1789:3898" placeholder="{...}" />
-            <marker date="1449770224000" expanded="true" signature="1870:3888" placeholder="{...}" />
-            <marker date="1449770224000" expanded="true" signature="1994:3499" placeholder="{...}" />
-            <marker date="1449770224000" expanded="true" signature="2732:3479" placeholder="{...}" />
-            <marker date="1449770224000" expanded="true" signature="2850:3457" placeholder="{...}" />
-            <marker date="1449770224000" expanded="true" signature="2987:3089" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -853,9 +835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -867,17 +846,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/less/site.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.490196">
+        <state vertical-scroll-proportion="0.0">
           <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
           <folding />
         </state>
@@ -885,8 +856,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/src/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.086444005">
+        <state vertical-scroll-proportion="-53.125">
           <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/js/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="157" column="8" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/Controllers/RegisterController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1869806">
+          <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
           <folding />
         </state>
       </provider>

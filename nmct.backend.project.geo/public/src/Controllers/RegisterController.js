@@ -5,9 +5,11 @@
 
         $rootScope.loggedInUser = null;
 
+
         $scope.userRegister = function () {
-            client.register($scope.lname, $scope.fname, $scope.email, $scope.password, function(error, user){
-               if(error){
+            var username = $scope.fname.toUpperCase() + "" + $scope.lname.toUpperCase();
+            client.register($scope.lname, $scope.fname, $scope.username , $scope.password, function(error, user){
+                if(error){
                    console.log(error);
                }else{
                    $rootScope.loggedInUser = $scope.email;
