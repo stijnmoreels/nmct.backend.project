@@ -8,6 +8,8 @@
 var chat = (function () {
 
     var selectedUser;
+    var messages = [];
+    var message = { currentUser: [], chatPartner: [] };
 
     function addUserToOnlineUsers(error, user) {
         // anonymous check (debug)
@@ -27,6 +29,9 @@ var chat = (function () {
             // add to list
             var ul = document.getElementById("users");
             ul.appendChild(li);
+            
+            // init messages
+            messages[user] = { currentUser: [], chatPartner: [] };
 
             getUsers();
         }
@@ -50,7 +55,8 @@ var chat = (function () {
     return {
         addUser: addUserToOnlineUsers,
         deleteUser: deleteUserToOnlineusers,
-        selectedUser: selectedUser
+        selectedUser: selectedUser,
+        messages: messages
     }
 })
 ();

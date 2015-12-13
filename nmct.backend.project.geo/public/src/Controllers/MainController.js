@@ -76,8 +76,9 @@
             // TODO: get message typed by user
             // TODO: send message to this user
             // TIP: only send when a user is selected
-
-
+            
+            var message = $scope.message;
+            chat.messages[chat.selectedUser].currentUser.push(message);
 
             client.sendMessage(message, chat.selectedUser, function (error, message) {
                 if(error) { console.log(error); }

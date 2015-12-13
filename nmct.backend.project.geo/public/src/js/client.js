@@ -58,6 +58,7 @@ var client = (function () {
         }).on("message", function (message) {
             // TODO: show to frontend
             
+            chat.messages[chat.selectedUser].chatPartner.push(message);
             console.log("- message: " + message);
 
         // Extra registration
