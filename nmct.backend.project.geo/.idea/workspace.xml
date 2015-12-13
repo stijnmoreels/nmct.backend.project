@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e66483d-93e0-4cda-a513-68b467adde9f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/Controllers/RegisterController.js" afterPath="$PROJECT_DIR$/public/src/Controllers/RegisterController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/templates/register.html" afterPath="$PROJECT_DIR$/public/src/templates/register.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/templates/login.html" afterPath="$PROJECT_DIR$/public/src/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/templates/main.html" afterPath="$PROJECT_DIR$/public/src/templates/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/dist/css/site.css" afterPath="$PROJECT_DIR$/public/src/dist/css/site.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/less/site.less" afterPath="$PROJECT_DIR$/public/src/less/site.less" />
     </list>
     <ignored path="nmct.backend.project.geo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +29,8 @@
       <file leaf-file-name="site.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/less/site.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
+            <state vertical-scroll-proportion="-10.0">
+              <caret line="403" column="35" selection-start-line="403" selection-start-column="35" selection-end-line="403" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -37,17 +39,17 @@
       <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/templates/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-53.125">
-              <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+            <state vertical-scroll-proportion="-6.25">
+              <caret line="99" column="68" selection-start-line="99" selection-start-column="68" selection-end-line="99" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegisterController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/Controllers/RegisterController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1869806">
+            <state vertical-scroll-proportion="0.0">
               <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
               <folding />
             </state>
@@ -64,16 +66,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/src/js/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="157" column="8" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -84,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/src/Controllers/MainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-1.2795497">
               <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
               <folding />
             </state>
@@ -107,21 +99,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/src/js/app.js">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="32" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
+            <state vertical-scroll-proportion="-1.875">
+              <caret line="3" column="85" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/src/Controllers/LoginController.js">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/src/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+              <caret line="92" column="32" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -184,7 +176,6 @@
         <option value="$PROJECT_DIR$/public/src/less/sidebar.less" />
         <option value="$PROJECT_DIR$/public/src/less/mixins.less" />
         <option value="$PROJECT_DIR$/public/src/js/mapType.js" />
-        <option value="$PROJECT_DIR$/public/src/templates/login.html" />
         <option value="$PROJECT_DIR$/public/src/Controllers/LoginController.js" />
         <option value="$PROJECT_DIR$/public/src/Controllers/ChatController.js" />
         <option value="$PROJECT_DIR$/public/src/templates/chat.html" />
@@ -196,10 +187,11 @@
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/public/src/index.html" />
         <option value="$PROJECT_DIR$/public/src/js/addMarker.js" />
-        <option value="$PROJECT_DIR$/public/src/less/site.less" />
-        <option value="$PROJECT_DIR$/public/src/templates/main.html" />
         <option value="$PROJECT_DIR$/public/src/templates/register.html" />
         <option value="$PROJECT_DIR$/public/src/Controllers/RegisterController.js" />
+        <option value="$PROJECT_DIR$/public/src/templates/login.html" />
+        <option value="$PROJECT_DIR$/public/src/less/site.less" />
+        <option value="$PROJECT_DIR$/public/src/templates/main.html" />
       </list>
     </option>
   </component>
@@ -331,6 +323,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nmct.backend.project.geo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nmct.backend.project.geo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -486,7 +500,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.252" sideWeight="0.49722221" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.252" sideWeight="0.49722221" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17291667" sideWeight="0.50596255" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -754,13 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29821074">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/Controllers/HomeController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -812,6 +819,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/js/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/Controllers/RegisterController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/js/addMarker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -823,6 +853,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.875">
+          <caret line="3" column="85" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -831,49 +869,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/chat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/Controllers/MainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/less/site.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="403" column="35" selection-start-line="403" selection-start-column="35" selection-end-line="403" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/src/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-53.125">
-          <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="99" column="68" selection-start-line="99" selection-start-column="68" selection-end-line="99" selection-end-column="68" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/src/js/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="4.0525327">
           <caret line="157" column="8" selection-start-line="157" selection-start-column="8" selection-end-line="157" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.25">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -886,10 +901,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/Controllers/RegisterController.js">
+    <entry file="file://$PROJECT_DIR$/public/src/Controllers/MainController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1869806">
-          <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
+        <state vertical-scroll-proportion="-1.2795497">
+          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
           <folding />
         </state>
       </provider>
