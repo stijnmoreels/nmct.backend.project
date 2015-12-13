@@ -69,18 +69,20 @@
 
             }
         };
-        
+
+
         $scope.sendMessage = function () {
             // TODO: get selected user (li with id == socketId)
             // TODO: get message typed by user
             // TODO: send message to this user
             // TIP: only send when a user is selected
-            
 
-            //client.sendMessage(message, socketId, function (error, message) {
-            //    if(error) { console.log(error); }
-            //    console.log(message);
-            //});
+
+
+            client.sendMessage(message, chat.selectedUser, function (error, message) {
+                if(error) { console.log(error); }
+                console.log(message);
+            });
         };
 
         $scope.logout = function () {
@@ -96,3 +98,4 @@
     
     app.controller("MainController", ["$scope", "$rootScope", "$location", MainController]);
 })();
+
