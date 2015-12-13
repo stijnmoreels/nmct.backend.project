@@ -7,8 +7,8 @@
 
 
         $scope.userRegister = function () {
-            //var username = $scope.fname.toUpperCase() + "" + $scope.lname.toUpperCase();
-            client.register($scope.lname, $scope.fname, $scope.email , $scope.password, function(error, user){
+            var username = $scope.lname + "" + $scope.fname;
+            client.register($scope.lname, $scope.fname, username, $scope.password, function(error, user){
                 if(error){
                    console.log(error);
                }else{
