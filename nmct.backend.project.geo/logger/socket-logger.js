@@ -1,10 +1,17 @@
-﻿var logger = function (socket, next) {
-    var fs = fs = require('fs');
-    var time = socket.handshake.time;
-    var url = socket.handshake.url;
-    fs.appendFile("./logger/events.log", time + " - " + url + "\n", function (error) {
-        if(error) { throw error; }
-        next();    
+﻿/* =============================================================================
+ * @project: GEOFEELINGS
+ * @author: Stijn Moreels
+ * @language: Node.js
+ * @purpose: Socket logger (middleware)
+ =============================================================================*/
+
+var logger = function (socket, next) {
+    var fileLogger = require('./file-logger.js'),
+        time = socket.handshake.time,
+        url = socket.handshake.url;
+    fileLogger(time + "-" + url, function (error) {
+        if (error) { console.log(error); }
+        next();
     });
 };
 

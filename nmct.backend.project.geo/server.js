@@ -30,6 +30,7 @@ communication.listen(server);
 app.post('/login', function (request, response) {
     var Request = require("./http/request.js"),
         repository = require("./repository/generic.js"),
+        fileLogger = require("./logger/file-logger.js"),
         loggedInUser = {};
     request.on('data', function (data) {
         Request.parseRequest(data, parseRequestCallback);
@@ -37,13 +38,13 @@ app.post('/login', function (request, response) {
     
     // get the data from the POST and find the right user
     function parseRequestCallback(error, data) {
-        if (error) { throw error; }
+        if (error) { fileLogger(error); }
         repository.getOne(data, "users", signUserCallback);
     }
     
     // sign user in the application
     function signUserCallback(error, user) {
-        if (error) { throw error; }
+        if (error) { fileLogger(error); }
         else if (user.length === 0) {
             // No user found
             response.json({ token: null, user: null, error: "No user found" });
@@ -56,7 +57,7 @@ app.post('/login', function (request, response) {
     
     // get token to send back to the client
     function getToken(error, token) {
-        if (error) { throw error; }
+        if (error) { fileLogger(error); }
         else response.json({ token: token, user: loggedInUser[0] });
     }
 });

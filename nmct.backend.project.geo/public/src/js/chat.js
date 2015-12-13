@@ -1,15 +1,15 @@
 ﻿/* =============================================================================
  * @project: GEOFEELINGS
- * @author: Stijn Moreels
+ * @author: Stijn Moreels / Arne Tesch
  * @language: Javascript
  * @purpose: Client Side Chat Integration
  =============================================================================*/
 
 var chat = (function () {
 
-    var selectedUser;
-    var messages = [];
-    var message = {currentUser: [], chatPartner: []};
+    var selectedUser,
+        messages = [],
+        message = {currentUser: [], chatPartner: []};
 
     function addUserToOnlineUsers(error, user) {
         // anonymous check (debug)

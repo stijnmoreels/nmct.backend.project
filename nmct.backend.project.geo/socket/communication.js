@@ -11,7 +11,8 @@ var Communication = (function () {
         jwt_secret = require("../config/configuration.js").jwt_secret,
         socketIo = require("socket.io"),
         socketio_jwt = require('socketio-jwt'),
-        logger = require("../logger/socket-logger.js"),
+        socketLogger = require("../logger/socket-logger.js"),
+        fileLogger = require("../logger/file-logger.js"),
         sio = "",
         Share = require("../model/share.js"),
         DocumentDB = require("../database/documentdb.js"),
@@ -21,14 +22,14 @@ var Communication = (function () {
     var listen = function (server) {
         var clients = [];
         sio = socketIo.listen(server);
-        sio.use(logger);
+        sio.use(socketLogger);
         authorize();
         sio.sockets.on('connection', connection);
         
         // Connection Callback
         function connection(socket) {
             console.log("connected: " + socket.id);
-            
+
             socket.on("disconnect", function () {
                 console.log("disconnected: " + socket.id);
                 socket.disconnect();
@@ -59,32 +60,32 @@ var Communication = (function () {
             
             // user adds share to map
             socket.on("addshare", function (data) {
-                if (data.error) { throw error; }
+                if (data.error) { fileLogger(data.error); }
                 jwt.verify(data.token, jwt_secret, getDecoded);
                 // Get verified by JsonWebToken
                 function getDecoded(error, user) {
-                    if (error) { throw error; }
+                    if (error) { fileLogger(error); }
                     // Anonymous has no rights to add shares/activities
                     if (user[0].username === "anonymous" || user[0].password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
                     // Get correct user (dubble check)
                     else repository.getOne(user[0], "users", userExistsCallback);
                 } function userExistsCallback(error, user) {
-                    if (error) { throw error; }
+                    if (error) { fileLogger(error); }
                         // (user exists) -> check if this user has already a share in this activity
                     else repository.getOne({ username: user[0].username, activityId: data.share.activityId }, 
                             "shares", queryDocumentsCallback);
                 }
                 // callback that checks for the single or multiple shares
                 function queryDocumentsCallback(error, shares) {
-                    if (error) { throw error; }
+                    if (error) { fileLogger(error); }
                     
                     // only add a share if the user hasn't add a share in the past
                     /* if (shares == null || shares == undefined || shares.length == 0) {*/
                     if (true) {
                         data.share.isActivity = false; // we use the same document list
                         repository.insertOne(data.share, "shares", function (error, document) {
-                            if (error) { sio.emit("error", "Insert share failed"); throw error; }
+                            if (error) { sio.emit("error", "Insert share failed"); fileLogger(error); }
                             sio.sockets.emit("addshare", document); //-> maybe?
                         });
 
@@ -96,22 +97,22 @@ var Communication = (function () {
             
             // user adds activity to map
             socket.on("addactivity", function (data) {
-                if (data.error) { throw error; }
+                if (data.error) { fileLogger(error); }
                 jwt.verify(data.token, jwt_secret, getDecoded);
                 // Get verified by JsonWebToken
                 function getDecoded(error, user) {
-                    if (error) { throw error; }
+                    if (error) { fileLogger(error); }
                     // Anonymous has no rights to add shares/activities
                     if (user.username === "anonymous" || user.password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
                     else repository.getOne(user[0], "users", userExistsCallback);
                 } function userExistsCallback(error, user) {
-                    if (error) { throw error; }
+                    if (error) { fileLogger(error); }
                     else {
                         // user exists
                         data.activity.isActivity = true; // we use the same document list
                         repository.insertOne(data.activity, "shares", function (error, document) {
-                            if (error) { sio.emit("error", "Insert activity failed"); throw error; }
+                            if (error) { sio.emit("error", "Insert activity failed"); fileLogger(error); }
                             sio.sockets.emit("addactivity", document);
                         });
                     }
@@ -120,17 +121,17 @@ var Communication = (function () {
             
             // delete activity in the database
             socket.on("deleteactivity", function (data) {
-                if (data.error) { throw error; }
+                if (data.error) { fileLogger(error); }
                 jwt.verify(data.token, jwt_secret, getDecoded);
                 // Get verified by JsonWebToken
                 function getDecoded(error, user) {
-                    if (error) { throw error; }
+                    if (error) { fileLogger(error); }
                     // Only the Admins have the rights to delete activities
                     if (user.username === "anonymous" || user.password === 123 || user.isAdmin === false)
                         sio.emit("unauthorized", "You have no rights to delete a Activity");
                     else repository.getOne(user[0], "users", userExistsCallback);
                 } function userExistsCallback(error, user) {
-                    if (error) { throw error; }
+                    if (error) { fileLogger(error); }
                     // user exists
                     else {
                         if (data.activityId !== undefined)
@@ -138,16 +139,16 @@ var Communication = (function () {
                         else sio.emit("error", "Delete activity failed");
                     }
                 } function deleteDocumentCallback(error, document) {
-                    if (error) { throw error; }
+                    if (error) { fileLogger(error); }
                     else sio.sockets.emit("deleteactivity", data.activityId);
                 }
             });
             
             // register users
             socket.on("register", function (data) {
-                if (data.error) { throw error; }
+                if (data.error) { fileLogger(error); }
                 repository.insertOne(data.user, "users", function (error, user) {
-                    if (error) { sio.emit("error", "Register user failed"); throw error; }
+                    if (error) { sio.emit("error", "Register user failed"); fileLogger(error); }
                     sio.emit("register", data.user);
                 });
             });
@@ -155,7 +156,7 @@ var Communication = (function () {
             // user get all curent shares
             socket.on("shares", function () {
                 repository.getAll("shares", function (error, shares) {
-                    if (error) { sio.emit("error", "Get shares failed"); throw error; }
+                    if (error) { sio.emit("error", "Get shares failed"); fileLogger(error); }
                     sio.emit("shares", shares);
                 });
             });
@@ -163,7 +164,7 @@ var Communication = (function () {
             // get all shares that are signed to an Activity
             socket.on("signedshares", function () {
                 repository.getAll("signedshares", function (error, shares) {
-                    if (error) { sio.emit("error", "Get signed shares faild"); throw error; }
+                    if (error) { sio.emit("error", "Get signed shares faild"); fileLogger(error); }
                     sio.emit("signedshares", shares);
                 });
             });
@@ -171,7 +172,7 @@ var Communication = (function () {
             // get all unsigned shares
             socket.on("unsignedshares", function () {
                 repository.getAll("unsignedshares", function (error, shares) {
-                    if (error) { sio.emit("error", "Get unsigned shares faild"); throw error; }
+                    if (error) { sio.emit("error", "Get unsigned shares faild"); fileLogger(error); }
                     sio.emit("unsignedshares", shares);
                 });
             });
@@ -179,7 +180,7 @@ var Communication = (function () {
             // user get all curent activities
             socket.on("activities", function () {
                 repository.getAll("activities", function (error, activities) {
-                    if (error) { sio.emit("error", "Get activities failed"); throw error; }
+                    if (error) { sio.emit("error", "Get activities failed"); fileLogger(error); }
                     sio.emit("activities", activities);
                 });
             });

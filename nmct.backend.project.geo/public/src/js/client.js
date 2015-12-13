@@ -7,7 +7,7 @@
 
 var client = (function () {
     "use-strict";
-    var token, socket, callbackAddShare, callbackAddActivity, challenge;
+    var token, socket, callbackAddShare, callbackAddActivity, challenge, isAdmin;
     var setupSockets = function (user) {
         if (socket !== undefined) {
             // disconnect a current connected client
@@ -69,11 +69,12 @@ var client = (function () {
             console.log("- Socket error: " + error);
         });
         
+        client.isAdmin = user.isAdmin;
         // inform other connected clients that there's a new user connected
         if (user.isAvailable) {
             socket.emit("newuser", user);
             socket.emit("users", null);
-        }
+        } 
     },  
     // Connect Anonymous is needed for everyone to see the shares/activities
         connectAnonymous = function (callback) {
@@ -163,6 +164,7 @@ var client = (function () {
         addShare: addShare,
         addActivity: addActivity,
         deleteActivity: deleteActivity,
-        sendMessage: sendMessage
+        sendMessage: sendMessage,
+        isAdmin: isAdmin
     };
 })();

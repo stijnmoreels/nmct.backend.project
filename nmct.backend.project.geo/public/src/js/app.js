@@ -64,7 +64,7 @@ var allSignedShares = [[]];
                     for (var i = 0, l = shares.length; i < l; i++) {
                         var share = shares[i],
                             shareActivity = share.activityId + "";
-                        // "allShares" is a global variable 
+                        // "allSignedShares" is a global variable 
                         if (allSignedShares[shareActivity] === undefined) {
                             allSignedShares[shareActivity] = [];
                         }
@@ -79,11 +79,11 @@ var allSignedShares = [[]];
                             for (var i = 0, l = activities.length; i < l; i++) {
                                 addActivityToMap(null, activities[i]);
                             };
-                            // TODO: ...
-                            var buttons = document.querySelector('button[id^="btnDelete"]');
-                            for (var i = 0, l = buttons.length; i < l; i++) {
-                                buttons[i].style.display = "none";  
-                            };
+                            //// TODO: ...
+                            //var buttons = document.querySelector('button[id^="btnDelete"]');
+                            //for (var i = 0, l = buttons.length; i < l; i++) {
+                            //    buttons[i].style.display = "none";  
+                            //};
                             
                         }
                     });

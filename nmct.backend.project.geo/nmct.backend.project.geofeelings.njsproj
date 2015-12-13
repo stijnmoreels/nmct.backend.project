@@ -33,6 +33,7 @@
     <Compile Include="config\configuration.js" />
     <Compile Include="crypto\hash.js" />
     <Compile Include="database\documentdb.js" />
+    <Compile Include="logger\file-logger.js" />
     <Compile Include="logger\socket-logger.js" />
     <Compile Include="public\src\Controllers\HomeController.js" />
     <Compile Include="public\src\Controllers\LoginController.js" />

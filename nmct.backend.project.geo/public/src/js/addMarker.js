@@ -147,6 +147,11 @@ function addActivityToMap(error, activity) {
             })(i);
         }
         
+        if (!client.isAdmin) {
+            var button = document.querySelector('button[id^="btnDelete_' + activity.id + '"]');
+            button.style.display = "none";
+        }
+        
         // callback for click listenser (add share)
         function handleClick(feeling) {
             // block event if the user already has a share in this activity
