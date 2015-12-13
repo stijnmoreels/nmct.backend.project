@@ -13,7 +13,7 @@ var chat = (function () {
 
     function addUserToOnlineUsers(error, user) {
         // anonymous check (debug)
-        if (user !== undefined) {
+        if (user !== undefined && document.getElementById(user) === null) {
             var li = document.createElement("li");
 
             // chat status

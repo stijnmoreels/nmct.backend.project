@@ -41,7 +41,7 @@ var Communication = (function () {
                 if (user.isAvailable) {
                     //clients.push({ username: user.username, socketId: socket.id });
                     socket.username = user.username;
-                    clients[user.username] = socket.id;
+                    clients[user.username] = socket;
                     sio.sockets.emit("newuser", user.username);
                 }
             });
@@ -53,8 +53,8 @@ var Communication = (function () {
             
             // chat functionality (send only to one client)
             socket.on("message", function (data) {
-                var socketId = clients[data.username];
-                socket.to(socketId).emit("message", data.message);
+                partnerSocket = clients[data.username];
+                partnerSocket.emit("message", data.message);
             });
             
             // user adds share to map
