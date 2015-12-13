@@ -42,6 +42,11 @@ var chat = (function () {
 
         var sentMessage = document.getElementsByClassName("sent-message");
         var receivedMessage = document.getElementsByClassName("received-message");
+        var btnsend = document.getElementById("btn-send");
+
+        if(chat.selectedUser === "" || typeof(chat.selectedUser) === "undefined" || chat.selectedUser ===  null){
+            btnsend.setAttribute("disabled", true);
+        }
 
 
         for (var i = 0, l = users.length; i < l; i++) {
@@ -49,6 +54,9 @@ var chat = (function () {
             (function (index) {
                 users[index].addEventListener('click', function () {
                     chat.selectedUser = users[index].id;
+                    $(this).parent().children().removeClass("active");
+                    $(this).addClass("active");
+                    btnsend.removeAttribute("disabled");
                     sentMessage.innerHTML = "";
                     receivedMessage.innerHTML = "";
                 });

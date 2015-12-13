@@ -81,7 +81,8 @@
             chat.messages[chat.selectedUser].currentUser.push(message);
 
             chat.addMessageToChat();
-
+            var messagesInput = document.getElementById("messages");
+            messagesInput.value = "";
             client.sendMessage(message, chat.selectedUser, function (error, message) {
                 if(error) { console.log(error); }
                 console.log(message);

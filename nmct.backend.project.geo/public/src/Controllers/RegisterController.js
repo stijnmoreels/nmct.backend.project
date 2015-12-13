@@ -8,13 +8,13 @@
 
         $scope.userRegister = function () {
             var username = $scope.fname.toUpperCase() + "" + $scope.lname.toUpperCase();
-            client.register($scope.lname, $scope.fname, $scope.username , $scope.password, function(error, user){
+            client.register($scope.lname, $scope.fname, username , $scope.password, function(error, user){
                 if(error){
                    console.log(error);
                }else{
                    $rootScope.loggedInUser = $scope.email;
                    client.login($scope.email, $scope.password, function (error, user) {
-                       $location.path('/main');
+                       location.href = "/#/main";
                    });
                }
             });
