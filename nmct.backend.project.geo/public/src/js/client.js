@@ -44,8 +44,8 @@ var client = (function () {
         // User registration
         }).on("newuser", function (data) {
             // Show new online user
-            chat.addUser(null, data.username);
-            console.log("- new user: " + data.username);
+            chat.addUser(null, data);
+            console.log("- new user: " + data);
         }).on("users", function (users) {
             // Add all current online users to the chatbox
             for (var i = 0, l = users.length; i < l; i++) {
