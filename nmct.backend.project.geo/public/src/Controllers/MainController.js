@@ -80,6 +80,8 @@
             var message = $scope.message;
             chat.messages[chat.selectedUser].currentUser.push(message);
 
+            chat.addMessageToChat();
+
             client.sendMessage(message, chat.selectedUser, function (error, message) {
                 if(error) { console.log(error); }
                 console.log(message);
