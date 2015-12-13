@@ -33,6 +33,7 @@
     <Compile Include="config\configuration.js" />
     <Compile Include="crypto\hash.js" />
     <Compile Include="database\documentdb.js" />
+    <Compile Include="logger\socket-logger.js" />
     <Compile Include="public\src\Controllers\HomeController.js" />
     <Compile Include="public\src\Controllers\LoginController.js" />
     <Compile Include="public\src\Controllers\MainController.js" />
@@ -53,6 +54,7 @@
     <Compile Include="socket\communication.js" />
     <Compile Include="test\mocha\integration.js" />
     <Compile Include="test\mocha\unit.js" />
+    <Content Include="logger\events.log" />
     <Content Include="public\src\index.html" />
     <Content Include="public\src\stylesheets\bootstrap.css" />
     <Content Include="public\src\stylesheets\bootstrap.min.css" />
@@ -81,6 +83,7 @@
     <Folder Include="model\" />
     <Folder Include="crypto\" />
     <Folder Include="http\" />
+    <Folder Include="logger\" />
     <Folder Include="repository\" />
     <Folder Include="public\src\stylesheets\" />
     <Folder Include="test\" />

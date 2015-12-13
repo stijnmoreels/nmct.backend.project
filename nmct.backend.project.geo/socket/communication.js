@@ -11,6 +11,7 @@ var Communication = (function () {
         jwt_secret = require("../config/configuration.js").jwt_secret,
         socketIo = require("socket.io"),
         socketio_jwt = require('socketio-jwt'),
+        logger = require("../logger/socket-logger.js"),
         sio = "",
         Share = require("../model/share.js"),
         DocumentDB = require("../database/documentdb.js"),
@@ -20,6 +21,7 @@ var Communication = (function () {
     var listen = function (server) {
         var clients = [];
         sio = socketIo.listen(server);
+        sio.use(logger);
         authorize();
         sio.sockets.on('connection', connection);
         
@@ -102,7 +104,7 @@ var Communication = (function () {
                     // Anonymous has no rights to add shares/activities
                     if (user.username === "anonymous" || user.password === 123)
                         sio.emit("unauthorized", "Must login to add a share");
-                    else userExists(user, userExistsCallback);
+                    else repository.getOne(user[0], "users", userExistsCallback);
                 } function userExistsCallback(error, user) {
                     if (error) { throw error; }
                     else {
@@ -126,7 +128,7 @@ var Communication = (function () {
                     // Only the Admins have the rights to delete activities
                     if (user.username === "anonymous" || user.password === 123 || user.isAdmin === false)
                         sio.emit("unauthorized", "You have no rights to delete a Activity");
-                    else userExists(user, userExistsCallback);
+                    else repository.getOne(user[0], "users", userExistsCallback);
                 } function userExistsCallback(error, user) {
                     if (error) { throw error; }
                     // user exists
