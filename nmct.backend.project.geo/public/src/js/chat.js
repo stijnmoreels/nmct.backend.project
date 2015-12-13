@@ -71,6 +71,7 @@ var chat = (function () {
 
         for (var i = 0, l = messages[chat.selectedUser].chatPartner.length; i < l; i++) {
             var div = document.createElement('div');
+            div.setAttribute("class", "received-message-box");
             div.innerHTML = messages[chat.selectedUser].chatPartner[i];
             receivedMessage.appendChild(div);
         }
