@@ -387,7 +387,7 @@ html, body, #map-canvas {
     overflow-y: scroll;
     overflow-x: hidden;
     .sent-message{
-      background-color: @startColor;
+      background-color: @endColor;
       color: @white;
       float: right;
       border-radius: 10px;
@@ -401,7 +401,7 @@ html, body, #map-canvas {
       }
     }
     .received-message{
-      background-color: @endColor;
+      background-color: @startColor;
       color: @white;
       padding: 5px;
       float: left;
@@ -458,6 +458,8 @@ html, body, #map-canvas {
     line-height: 18px;
     border-top-right-radius: 1px;
     border-top-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
   }
   .chat-status{
     width: 15px;
