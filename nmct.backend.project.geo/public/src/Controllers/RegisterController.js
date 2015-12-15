@@ -7,8 +7,14 @@
 
 
         $scope.userRegister = function () {
+            // block event if the input fields doesn't match the Regular Expression
+            var regularExpression = new RegExp("^[a-zA-Z]*$");
+            if (!(regularExpression.test($scope.fname)) || !(regularExpression.test($scope.lname)))
+                return;
+
             var username = $scope.fname.toUpperCase() + "" + $scope.lname.toUpperCase();
-            client.register($scope.lname, $scope.fname, username , $scope.password, function(error, user){
+            var isAvailable = true; // TODO: get checkbox
+            client.register($scope.lname, $scope.fname, username , $scope.password, isAvailable, function(error, user){
                 if(error){
                    console.log(error);
                }else{

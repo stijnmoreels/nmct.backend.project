@@ -7,6 +7,7 @@
         //$scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
         $scope.isAdmin = false;
         
+        // feelings initialisation
         var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
         for (var i = 0, l = feelings.length; i < l; i++) {
             (function (i) {
@@ -19,6 +20,11 @@
                     }
                 });
             })(i);
+        }
+        
+        // chat initialisation
+        if (!localStorage.isAvailable) {
+            document.getElementById("chat").innerHTML = '<div class="container"><div class="row"><h2 class="headline">No chatbox available</h2></div></div>';
         }
         
         $scope.addActivityDb = function () {

@@ -44,17 +44,23 @@ var client = (function () {
         // User registration
         }).on("newuser", function (data) {
             // Show new online user
-            chat.addUser(null, data);
-            console.log("- new user: " + data);
+            if (localStorage.isAvailable) {
+                chat.addUser(null, data);
+                console.log("- new user: " + data);
+            }
         }).on("users", function (users) {
             // Add all current online users to the chatbox
-            for (var i = 0, l = users.length; i < l; i++) {
-                chat.addUser(null, users[i]);
+            if (localStorage.isAvailable) {
+                for (var i = 0, l = users.length; i < l; i++) {
+                    chat.addUser(null, users[i]);
+                }
             }
         }).on("deleteuser", function (data) {
             // Delete online user
-            chat.deleteUser(null, data.username);
-            console.log("- delete user: " + data.username);
+            if (localStorage.isAvailable) {
+                chat.deleteUser(null, data.username);
+                console.log("- delete user: " + data.username);
+            }
         }).on("message", function (message) {
             // TODO: show to frontend
             
@@ -94,6 +100,7 @@ var client = (function () {
                     // Token returned = login succeeded
                     token = result.token;
                     localStorage.token = token;
+                    localStorage.isAvailable = result.user.isAvailable; // chatbox
                     setupSockets(result.user);
                     callback(null, result.user);
                 } else callback("Unhandeld error", null);
@@ -104,8 +111,8 @@ var client = (function () {
             post(username, Sha1.hash(password.toString()), callback);
         }, 
         // Register method
-        register = function (name, firstname, username, password, callback) {
-            var user = { id: username, name: name, firstname: firstname, username: username, password: Sha1.hash(password + "") };
+        register = function (name, firstname, username, password, isAvailable, callback) {
+            var user = { id: username, name: name, firstname: firstname, username: username, password: Sha1.hash(password + ""), isAvailable: isAvailable };
             if (user.id === null || user.id === "")
                 callback("Error: 'id' is missing", null);
             else {

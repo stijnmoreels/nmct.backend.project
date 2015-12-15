@@ -52,47 +52,39 @@ var allSignedShares = [[]];
      })
      });*/
     var getData = (function () {
+        //window.onbeforeunload = function () {
+        //    return "The session will be expired when you reload the page.";
+        //}
         client.connectAnonymous(function (error, user) {
             if (error) {
                 console.log(error)
             } else {
-                // get shares from database
+                // get signed shares (related to an activity)
                 client.getAllGeneric("signedshares", function (error, shares) {
-                    if (error) {
-                        console.log(error);
-                    }
+                    if (error) { console.log(error); }
                     for (var i = 0, l = shares.length; i < l; i++) {
                         var share = shares[i],
                             shareActivity = share.activityId + "";
                         // "allSignedShares" is a global variable 
                         if (allSignedShares[shareActivity] === undefined) {
                             allSignedShares[shareActivity] = [];
-                        }
-                        allSignedShares[shareActivity].push(share);
+                        } allSignedShares[shareActivity].push(share);
                     }
                     // get activities from database
                     client.getAllGeneric("activities", function (error, activities) {
-                        if (error) {
-                            console.log(error);
-                        } else {
+                        if (error) { console.log(error); } 
+                        else {
                             allActivities = activities;
                             for (var i = 0, l = activities.length; i < l; i++) {
                                 addActivityToMap(null, activities[i]);
-                            };
-                            //// TODO: ...
-                            //var buttons = document.querySelector('button[id^="btnDelete"]');
-                            //for (var i = 0, l = buttons.length; i < l; i++) {
-                            //    buttons[i].style.display = "none";  
-                            //};
-                            
+                            };   
                         }
                     });
                 });
                 
+                // get unsigned shares (not related to an activity)
                 client.getAllGeneric("unsignedshares", function (error, shares) {
-                    if (error) {
-                        console.log(error);
-                    }
+                    if (error) { console.log(error); }
                     for (var i = 0, l = shares.length; i < l; i++) {
                         addUnsignedShareToMap(null, shares[i]);
                     }

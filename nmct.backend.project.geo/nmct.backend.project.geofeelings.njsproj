@@ -49,6 +49,7 @@
     <Compile Include="http\request.js" />
     <Compile Include="public\src\js\hash.js" />
     <Compile Include="public\src\js\map.js" />
+    <Compile Include="public\src\js\showErrorMsg.js" />
     <Compile Include="repository\generic.js" />
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
