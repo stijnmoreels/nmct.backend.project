@@ -101,6 +101,8 @@ var client = (function () {
                     token = result.token;
                     localStorage.token = token;
                     localStorage.isAvailable = result.user.isAvailable; // chatbox
+                    localStorage.hash = result.user.password;
+                    localStorage.username = result.user.username;
                     setupSockets(result.user);
                     callback(null, result.user);
                 } else callback("Unhandeld error", null);
@@ -109,7 +111,11 @@ var client = (function () {
         // Login method
         login = function (username, password, callback) {
             post(username, Sha1.hash(password.toString()), callback);
-        }, 
+        },
+        // Remember me login method
+        rememberMeLogin = function (username, password, callback) {
+            post(username, password, callback);
+        }
         // Register method
         register = function (name, firstname, username, password, isAvailable, callback) {
             var user = { id: username, name: name, firstname: firstname, username: username, password: Sha1.hash(password + ""), isAvailable: isAvailable };
@@ -165,6 +171,7 @@ var client = (function () {
     // Public methods
     return {
         login: login,
+        rememberMeLogin: rememberMeLogin,
         register: register,
         connectAnonymous: connectAnonymous,
         getAllGeneric: getAllGeneric, // users, shares, unsignedshares, signedshares & sharesactivity

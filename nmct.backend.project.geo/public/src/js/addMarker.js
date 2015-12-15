@@ -230,6 +230,7 @@ function addUnsignedShareToMap(error, share) {
         map: map
     });
     
+    var userShares = allUnsignedShares[share.author];
     var contentStringShare = '<div id="iw-container" class="container">' +
                                 '<div class="row">' +
                                     '<h1 class="iw-title">@' + share.author + '</h1>' + 
