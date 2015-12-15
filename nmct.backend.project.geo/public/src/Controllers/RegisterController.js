@@ -12,8 +12,8 @@
                 if(error){
                    console.log(error);
                }else{
-                   $rootScope.loggedInUser = $scope.email;
-                   client.login($scope.email, $scope.password, function (error, user) {
+                   $rootScope.loggedInUser = username;
+                   client.login(username, $scope.password, function (error, user) {
                        location.href = "/#/main";
                    });
                }
