@@ -12,7 +12,7 @@
             if (!(regularExpression.test($scope.fname)) || !(regularExpression.test($scope.lname)))
                 return;
 
-            var username = $scope.fname.toUpperCase() + "" + $scope.lname.toUpperCase();
+            var username = $scope.fname + "" + $scope.lname;
             var isAvailable = true; // TODO: get checkbox
             client.register($scope.lname, $scope.fname, username , $scope.password, isAvailable, function(error, user){
                 if(error){
