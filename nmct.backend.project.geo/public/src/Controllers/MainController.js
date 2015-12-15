@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module("app");
     
-    var MainController = function ($scope, $rootScope, $location) {
+    var MainController = function ($scope, $rootScope, $location, $cookies) {
         
         // pure designwise, has no security issues
         //$scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
@@ -46,14 +46,16 @@
                 
                 
                 if ($scope.activityName) {
-                    activityModel.id = new Date().getTime() + "-" + $rootScope.loggedInUser;
+                    //activityModel.id = new Date().getTime() + "-" + $rootScope.loggedInUser;
+                    activityModel.id = new Date().getTime() + "-" + $cookies.get("user");
                     activityModel.activityName = $scope.activityName;
                     activityModel.feeling = $scope.feeling;
                     activityModel.latitude = lat;
                     activityModel.longitude = lng;
                     activityModel.timestamp = new Date().toLocaleDateString();
-                    activityModel.author = $rootScope.loggedInUser;
-                    
+                    //activityModel.author = $rootScope.loggedInUser;
+                    activityModel.author = $cookies.get("user");
+
                     client.addActivity(activityModel, function (error, activity) {
                         //addActivityToMap(error, activity);
                         console.log("activity added");
@@ -65,8 +67,10 @@
                     shareModel.latitude = lat;
                     shareModel.longitude = lng;
                     shareModel.timestamp = new Date().toLocaleDateString();
-                    shareModel.author = $rootScope.loggedInUser;
-                    
+                    //shareModel.author = $rootScope.loggedInUser;
+                    shareModel.author = $cookies.get("user");
+
+
                     client.addShare(shareModel, function (error, share) {
                         console.log("share added")
                     });
@@ -96,6 +100,7 @@
         };
 
         $scope.logout = function () {
+            $cookies.remove("user");
             $rootScope.loggedInUser = null;
             $location.path("/");
         };
@@ -106,6 +111,6 @@
         };
     };
     
-    app.controller("MainController", ["$scope", "$rootScope", "$location", MainController]);
+    app.controller("MainController", ["$scope", "$rootScope", "$location","$cookies", MainController]);
 })();
 

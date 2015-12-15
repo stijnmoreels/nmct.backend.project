@@ -67,7 +67,7 @@ function addActivityToMap(error, activity) {
                         '<button id="btn' + activity.id + '_tender" value="tender" class="list-group-item feeling-btn">' +
                             '<img class="feeling-icon" src="./images/tender@xs.png" alt="tender">' +
                             '<span class="feeling-text">Tender</span>' +
-                            '<span class="badge share-count" id="badge_"' + activity.id + '_tender">' + feelings["tender"] + '</span>' +
+                            '<span class="badge share-count" id="badge_' + activity.id + '_tender">' + feelings["tender"] + '</span>' +
                         '</button>' +
                     '</div>' +
                 '</div>' +
@@ -190,6 +190,7 @@ function addActivityToMap(error, activity) {
                     }
                     // just a callback check, the new share will be added in the "addShareToMap" method
                     console.log('share added');
+                    //Feedback alert !!!!
                 });
             }
         }
