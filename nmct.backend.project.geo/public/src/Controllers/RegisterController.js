@@ -12,8 +12,15 @@
             if (!(regularExpression.test($scope.fname)) || !(regularExpression.test($scope.lname)))
                 return;
             var username = $scope.lname + "" + $scope.fname;
-            var isAvailable = true; // TODO: get checkbox
-            client.register($scope.lname, $scope.fname, username, $scope.password, function (error, user) {
+
+            var isAvailable = $scope.chatbox;
+            if(!isAvailable){
+                isAvailable = false;
+            }else{
+                isAvailable = true;
+            }
+
+            client.register($scope.lname, $scope.fname, username, $scope.password,$scope, isAvailable, function (error, user) {
                 if(error){
                    console.log(error);
                }else{
