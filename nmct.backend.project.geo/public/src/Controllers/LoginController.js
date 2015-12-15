@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module("app");
     
-    var LoginController = function ($scope, $location, $rootScope) {
+    var LoginController = function ($scope, $location, $rootScope, $cookies) {
         
         var allShares = [];
         var allActivities = [];
@@ -16,7 +16,7 @@
                 if (error) {
                     console.log(error);
                 } else {
-                    //$cookieStore.put("username", $scope.username);
+                    $cookies.put("user", $scope.username);
                     $rootScope.loggedInUser = $scope.username;
                     localStorage.username = $scope.username;
                     location.href = "/#/main";
@@ -24,7 +24,7 @@
             });
         };
 
-        //document.querySelector("#loginButton").addEventListener("click", l);
+/*        //document.querySelector("#loginButton").addEventListener("click", l);
         var l = function () {
             //$location.path("/main");
 
@@ -39,8 +39,8 @@
                     $location.path("/main");
                 }
             });
-        };
+        };*/
 
     };
-    app.controller("LoginController", ["$scope", "$location", "$rootScope", LoginController]);
+    app.controller("LoginController", ["$scope", "$location", "$rootScope","$cookies", LoginController]);
 })();

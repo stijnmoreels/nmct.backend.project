@@ -20,7 +20,7 @@
                 isAvailable = true;
             }
 
-            client.register($scope.lname, $scope.fname, username, $scope.password,$scope, isAvailable, function (error, user) {
+            client.register($scope.lname, $scope.fname, username, $scope.password, isAvailable, function (error, user) {
                 if(error){
                    console.log(error);
                }else{
