@@ -13,7 +13,7 @@
                 return;
             var username = $scope.lname + "" + $scope.fname;
             var isAvailable = true; // TODO: get checkbox
-            client.register($scope.lname, $scope.fname, username, $scope.password, function (error, user) {
+            client.register($scope.lname, $scope.fname, username, $scope.password, isAvailable, function (error, user) {
                 if(error){
                    console.log(error);
                }else{
