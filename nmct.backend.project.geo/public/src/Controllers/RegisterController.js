@@ -11,15 +11,14 @@
             var regularExpression = new RegExp("^[a-zA-Z]*$");
             if (!(regularExpression.test($scope.fname)) || !(regularExpression.test($scope.lname)))
                 return;
-
-            var username = $scope.fname + "" + $scope.lname;
+            var username = $scope.lname + "" + $scope.fname;
             var isAvailable = true; // TODO: get checkbox
-            client.register($scope.lname, $scope.fname, username , $scope.password, isAvailable, function(error, user){
+            client.register($scope.lname, $scope.fname, username, $scope.password, function (error, user) {
                 if(error){
                    console.log(error);
                }else{
-                   $rootScope.loggedInUser = $scope.email;
-                   client.login($scope.email, $scope.password, function (error, user) {
+                   $rootScope.loggedInUser = username;
+                   client.login(username, $scope.password, function (error, user) {
                        location.href = "/#/main";
                    });
                }

@@ -41,7 +41,7 @@ var allSignedShares = [[]];
             redirectTo: '/'
         });
     })
-    /*.run(function ($rootScope, $location) {
+    .run(function ($rootScope, $location) {
      $rootScope.$on("$routeChangeStart", function (event, next, current) {
      if ($rootScope.loggedInUser == null) {
      //console.log("no user");
@@ -50,7 +50,8 @@ var allSignedShares = [[]];
      }
      }
      })
-     });*/
+     });
+
     var getData = (function () {
         //window.onbeforeunload = function () {
         //    return "The session will be expired when you reload the page.";
