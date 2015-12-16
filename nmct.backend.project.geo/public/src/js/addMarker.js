@@ -91,7 +91,10 @@ function addActivityToMap(error, activity) {
                         '</div>' +
                     '</div>' +
                 '</div>' +
-        '<div class="alert alert-success alert-dismissable" role="alert"></div>' + 
+        '<div class="alert alert-success alert-dismissable share-success" role="alert">' +
+        '<span>Thanks for sharing!</span>' +
+        '<button class="close-alert" data-dismiss="alert">&times;</button>'+
+        '</div>' +
          '<button ng-show="isAdmin" id="btnDelete_' + activity.id + '" class="btn btn-danger" >Delete</button>' +
         '</div>';
     
@@ -190,7 +193,12 @@ function addActivityToMap(error, activity) {
                     }
                     // just a callback check, the new share will be added in the "addShareToMap" method
                     console.log('share added');
-                    //Feedback alert !!!!
+                    var alert = document.querySelector(".share-success");
+                    $(".share-success").animate({
+                        visibility: "visibile",
+                        opacity: 1
+                    }, 2000);
+
                 });
             }
         }
