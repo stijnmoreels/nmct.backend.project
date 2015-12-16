@@ -27,20 +27,15 @@ communication.listen(server);
 // the first communication between client - server
 // has to come from ajax calls so the client can sign 
 // the socket communication with his/hers token
-app.post('/login', function (request, response) {
-    var Request = require("./http/request.js"),
-        repository = require("./repository/generic.js"),
+var requestMiddleware = require("./http/request.js");
+app.post('/login', requestMiddleware, function (request, response) {
+    var repository = require("./repository/generic.js"),
         fileLogger = require("./logger/file-logger.js"),
         loggedInUser = {};
-    request.on('data', function (data) {
-        Request.parseRequest(data, parseRequestCallback);
-    });
     
-    // get the data from the POST and find the right user
-    function parseRequestCallback(error, data) {
-        if (error) { fileLogger(error); }
-        repository.getOne(data, "users", signUserCallback);
-    }
+    // get user from credentials
+    if (request.user)
+        repository.getOne(request.user, "users", signUserCallback);
     
     // sign user in the application
     function signUserCallback(error, user) {
