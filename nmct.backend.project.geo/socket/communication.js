@@ -55,7 +55,7 @@ var Communication = (function () {
             // chat functionality (send only to one client)
             socket.on("message", function (data) {
                 partnerSocket = clients[data.username];
-                partnerSocket.emit("message", data.message);
+                partnerSocket.emit("message", { message: data.message, username: socket.username });
             });
             
             // user adds share to map

@@ -92,7 +92,7 @@
             var message = $scope.message;
             chat.messages[chat.selectedUser].currentUser.push(message);
 
-            chat.addMessageToChat();
+            chat.addMessageToChat(chat.selectedUser);
             var messagesInput = document.getElementById("messages");
             messagesInput.value = "";
             client.sendMessage(message, chat.selectedUser, function (error, message) {

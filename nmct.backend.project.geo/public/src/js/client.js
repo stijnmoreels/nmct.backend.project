@@ -61,12 +61,12 @@ var client = (function () {
                 chat.deleteUser(null, data.username);
                 console.log("- delete user: " + data.username);
             }
-        }).on("message", function (message) {
+        }).on("message", function (data) {
             // TODO: show to frontend
             
-            chat.messages[chat.selectedUser].chatPartner.push(message);
-            chat.addMessageToChat();
-            console.log("- message: " + message);
+            chat.messages[data.username].chatPartner.push(data.message);
+            chat.addMessageToChat(data.username);
+            console.log("- message: " + data.message);
 
         // Extra registration
         }).on("challenge", function (challenge) {
