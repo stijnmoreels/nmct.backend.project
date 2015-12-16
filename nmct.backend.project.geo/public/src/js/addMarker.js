@@ -91,9 +91,9 @@ function addActivityToMap(error, activity) {
                         '</div>' +
                     '</div>' +
                 '</div>' +
-        '<div class="alert alert-success alert-dismissable share-success" role="alert">' +
+        '<div class="alert alert-success alert-dismissable " id="feedback" role="alert">' +
         '<span>Thanks for sharing!</span>' +
-        '<button class="close-alert" data-dismiss="alert">&times;</button>'+
+        '<button class="close-alert">&times;</button>'+
         '</div>' +
          '<button ng-show="isAdmin" id="btnDelete_' + activity.id + '" class="btn btn-danger" >Delete</button>' +
         '</div>';
@@ -183,24 +183,59 @@ function addActivityToMap(error, activity) {
                 shareModel.timestamp = new Date().toLocaleDateString();
                 shareModel.author = localStorage.username;
                 shareModel.activityId = activityID;
-                
+
+
                 // Add share to database
                 client.addShare(shareModel, function (error, share) {
+
+                    var infowindow = $("#iw-container");
+                    var feedback = $("#feedback");
+                    infowindow.animate({
+                     "height": 237
+                     }, 500);
+                    feedback.css("display","block");
+                    var close_alert = $(".close-alert");
+
                     if (error) {
                         console.log(error);
+                        feedback.addClass(" share-failed");
+                        $(".share-failed").animate({
+                            opacity: 1
+                        }, 1500);
+                        close_alert.click(function () {
+                            $(".share-failed").animate({
+                                opacity: 0
+                            }, 1500);
+
+                            infowindow.animate({
+                                "height": 205
+                            }, 500);
+
+                        });
                     }
                     // just a callback check, the new share will be added in the "addShareToMap" method
                     console.log('share added');
-                    var alert = document.querySelector(".share-success");
+
+                    feedback.addClass(" share-success");
+
                     $(".share-success").animate({
-                        visibility: "visibile",
                         opacity: 1
-                    }, 2000);
+                    }, 1500);
+
+                    close_alert.click(function () {
+                        $(".share-success").animate({
+                            opacity: 0
+                        }, 1500);
+
+                        infowindow.animate({
+                            "height": 205
+                        }, 500);
+                    });
 
                 });
             }
         }
-        
+
         // admin only
         document.getElementById("btnDelete_" + activity.id).addEventListener("click", function (e) {
             client.deleteActivity(activity.id, function (error, activityId) {
