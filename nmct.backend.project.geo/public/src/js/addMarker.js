@@ -285,7 +285,7 @@ function addUnsignedShareToMap(error, share) {
     });
 
 
-    //Example data ! 
+    //Example data !
     var data = {
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
