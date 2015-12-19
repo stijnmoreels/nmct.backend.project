@@ -5,6 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>nmct.backend.project.geofeelings</Name>
     <RootNamespace>nmct.backend.project.geofeelings</RootNamespace>
+    <NameOfLastUsedPublishProfile>geofeelings - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -58,6 +59,8 @@
     <Compile Include="socket\communication.js" />
     <Compile Include="test\mocha\integration.js" />
     <Compile Include="test\mocha\unit.js" />
+    <None Include="geofeelings - Web Deploy.pubxml" />
+    <None Include="geofeelings - FTP.pubxml" />
     <Content Include="logger\events.log" />
     <Content Include="public\src\index.html" />
     <Content Include="public\src\stylesheets\bootstrap.css" />
