@@ -30,6 +30,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="authentication\token.js" />
     <Compile Include="config\configuration.js" />
     <Compile Include="crypto\hash.js" />
     <Compile Include="database\documentdb.js" />
@@ -51,6 +52,7 @@
     <Compile Include="public\src\js\map.js" />
     <Compile Include="public\src\js\showErrorMsg.js" />
     <Compile Include="repository\generic.js" />
+    <Compile Include="routes\authentication.js" />
     <Compile Include="server %28backup%29.js" />
     <Compile Include="server.js" />
     <Compile Include="socket\communication.js" />
@@ -86,6 +88,8 @@
     <Folder Include="crypto\" />
     <Folder Include="http\" />
     <Folder Include="logger\" />
+    <Folder Include="authentication\" />
+    <Folder Include="routes\" />
     <Folder Include="repository\" />
     <Folder Include="public\src\stylesheets\" />
     <Folder Include="test\" />

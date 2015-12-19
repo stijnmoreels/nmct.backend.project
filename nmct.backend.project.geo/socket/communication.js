@@ -9,6 +9,7 @@ var Communication = (function () {
     "use-strict";
     var jwt = require('jsonwebtoken'),
         jwt_secret = require("../config/configuration.js").jwt_secret,
+        tokenService = require("../authentication/token.js"),
         socketIo = require("socket.io"),
         socketio_jwt = require('socketio-jwt'),
         socketLogger = require("../logger/socket-logger.js"),
@@ -29,7 +30,7 @@ var Communication = (function () {
         // Connection Callback
         function connection(socket) {
             console.log("connected: " + socket.id);
-
+            
             socket.on("disconnect", function () {
                 console.log("disconnected: " + socket.id);
                 socket.disconnect();
@@ -61,8 +62,8 @@ var Communication = (function () {
             // user adds share to map
             socket.on("addshare", function (data) {
                 if (data.error) { fileLogger(data.error); }
-                jwt.verify(data.token, jwt_secret, getDecoded);
                 // Get verified by JsonWebToken
+                tokenService.verify(data.token, getDecoded);
                 function getDecoded(error, user) {
                     if (error) { fileLogger(error); }
                     // Anonymous has no rights to add shares/activities
@@ -98,8 +99,8 @@ var Communication = (function () {
             // user adds activity to map
             socket.on("addactivity", function (data) {
                 if (data.error) { fileLogger(error); }
-                jwt.verify(data.token, jwt_secret, getDecoded);
                 // Get verified by JsonWebToken
+                tokenService.verify(data.token, getDecoded);
                 function getDecoded(error, user) {
                     if (error) { fileLogger(error); }
                     // Anonymous has no rights to add shares/activities
@@ -122,8 +123,8 @@ var Communication = (function () {
             // delete activity in the database
             socket.on("deleteactivity", function (data) {
                 if (data.error) { fileLogger(error); }
-                jwt.verify(data.token, jwt_secret, getDecoded);
                 // Get verified by JsonWebToken
+                tokenService.verify(data.token, getDecoded);
                 function getDecoded(error, user) {
                     if (error) { fileLogger(error); }
                     // Only the Admins have the rights to delete activities
@@ -185,7 +186,6 @@ var Communication = (function () {
                 });
             });
         }
-        
         // authorize any socket communication
         function authorize() {
             sio.use(socketio_jwt.authorize({
@@ -193,23 +193,11 @@ var Communication = (function () {
                 handshake: true
             }));
         }
-    }, 
-        // sign user, means he gets a token 
-        sign = function (user, callback) {
-            var token = jwt.sign(user, jwt_secret, { expiresIn: 60 * 5 }); // 5 min expiration time
-            if (token) callback(null, token);
-            else callback("error with token", null);
-        }, 
-        // get the user from the token
-        decoded = function (object, callback) {
-            var decoded = jwt.verify(object.token, jwt_secret, callback);
-        };
+    };
     
     // public methods    
     return {
-        listen: listen,
-        sign: sign,
-        verify: decoded
+        listen: listen
     };
 })();
 
