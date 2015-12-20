@@ -72,7 +72,6 @@
                     //shareModel.author = $rootScope.loggedInUser;
                     shareModel.author = $cookies.get("user");
 
-
                     client.addShare(shareModel, function (error, share) {
                         console.log("share added")
                     });
