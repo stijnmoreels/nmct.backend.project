@@ -33,13 +33,13 @@ var client = (function () {
                 // Geofeelings registration
             }).on("addshare", function (created) {
                 // Add share to Maps
-                addShareToMap(null, created);
+                createMap.addShareToMap(null, created);
             }).on("addactivity", function (created) {
                 // Add activity to Maps
-                addActivityToMap(null, created);
+                createMap.addActivityToMap(null, created);
             }).on("deleteactivity", function (activityId) {
                 // Delete activity on Map (deleted by an Admin)
-                deleteActivityFromMap(null, activityId);
+                createMap.deleteActivityFromMap(null, activityId);
 
                 // User registration
             }).on("newuser", function (data) {

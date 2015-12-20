@@ -1,9 +1,10 @@
-/* =============================================================================
+/*
+/!* =============================================================================
  * @project: GEOFEELINGS
  * @author: Arne Tesch / Stijn Moreels
  * @language: Javascript
  * @purpose: Client Side Google Maps Integration
- =============================================================================*/
+ =============================================================================*!/
 
 var markers = [];
 var contentString = "";
@@ -325,4 +326,4 @@ function addUnsignedShareToMap(error, share) {
         var myLineChart = new Chart(ctx).Line(data);
 
     });
-}
+}*/
