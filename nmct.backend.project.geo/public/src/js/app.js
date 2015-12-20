@@ -43,7 +43,7 @@ var allSignedShares = [[]],
             });
     }).run(function ($rootScope, $location, $cookies) {
             $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                if (!$cookies.get("user")) {
+                if (!$rootScope.loggedInUser) {
                     //console.log("no user");
                     if (next.templateUrl === "./templates/main.html") {
                         $location.path("/");

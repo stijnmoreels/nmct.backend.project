@@ -11,13 +11,18 @@ var previousShareId = "";
 
 // Add share to infowindow activity
 function addShareToMap(error, share) {
-    // Check if the previousShareId is the new Share
-    if (share.id !== previousShareId) {
-        previousShareId = share.id;
-        var marker = markers[share.activityId]; // get marker for the given "activityId"
-        var badge = document.getElementById("badge_" + share.activityId + "_" + share.feeling); // get the right badge in the infowindow
-        var innerValue = parseInt(badge.innerHTML);
-        badge.innerHTML = isNaN(innerValue) || innerValue === 0 ? 1 : ++innerValue; // set the new value to the badge
+
+    if(share.activityId == 0){
+        addUnsignedShareToMap(error, share);
+    }else{
+        // Check if the previousShareId is the new Share
+        if (share.id !== previousShareId) {
+            previousShareId = share.id;
+            var marker = markers[share.activityId]; // get marker for the given "activityId"
+            var badge = document.getElementById("badge_" + share.activityId + "_" + share.feeling); // get the right badge in the infowindow
+            var innerValue = parseInt(badge.innerHTML);
+            badge.innerHTML = isNaN(innerValue) || innerValue === 0 ? 1 : ++innerValue; // set the new value to the badge
+        }
     }
 }
 
@@ -193,6 +198,7 @@ function addActivityToMap(error, activity) {
                     var infowindow = $("#iw-container");
                     var feedback = $("#feedback");
                     var feedback_msg = $("#feedback-msg");
+
                     infowindow.animate({
                         "height": 237
                     }, 500);
@@ -202,7 +208,7 @@ function addActivityToMap(error, activity) {
                     if (error) {
                         console.log(error);
                         feedback.addClass(" share-failed");
-                        feedback_msg.innerHTML("An error occured!");
+                        feedback_msg.html("An error occured!");
                         $(".share-failed").animate({
                             opacity: 1
                         }, 750);
@@ -221,7 +227,7 @@ function addActivityToMap(error, activity) {
                         console.log('share added');
 
                         feedback.addClass(" share-success");
-                        feedback_msg.innerHTML("Thanks for sharing!")
+                        feedback_msg.html("Thanks for sharing!");
                         $(".share-success").animate({
                             opacity: 1
                         }, 750);
@@ -297,7 +303,6 @@ function addUnsignedShareToMap(error, share) {
         }
     }
 
-    //Example data !
     var data = {
         labels: ["Happy", "Excited", "Tender", "Scared", "Sad", "Angry"],
         datasets: [
