@@ -2,42 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e66483d-93e0-4cda-a513-68b467adde9f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/Web.Debug.config" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/Web.config" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/nmct.backend.project.web.njsproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/_references.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery-1.10.2.intellisense.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery-1.10.2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery-1.10.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery-1.10.2.min.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery.validate-vsdoc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery.validate.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery.validate.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery.validate.unobtrusive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/jquery.validate.unobtrusive.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/modernizr-2.6.2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/respond.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/javascripts/respond.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/stylesheets/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/stylesheets/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/stylesheets/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/public/stylesheets/style.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/routes/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/views/about.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/views/contact.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/views/index.jade" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../nmct.backend.project.web/views/layout.jade" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/app.js" afterPath="$PROJECT_DIR$/public/src/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/map.js" afterPath="$PROJECT_DIR$/public/src/js/map.js" />
     </list>
     <ignored path="nmct.backend.project.geo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,21 +36,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="map.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/src/js/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="377" column="0" selection-start-line="377" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.76886034">
+              <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
               <folding>
-                <element signature="e#454#808#0" expanded="false" />
-                <element signature="e#841#1067#0" expanded="false" />
-                <element signature="e#1115#2842#0" expanded="false" />
-                <element signature="e#2893#3608#0" expanded="false" />
-                <element signature="e#3667#5541#0" expanded="false" />
-                <element signature="e#5598#6324#0" expanded="false" />
-                <element signature="e#6388#6529#0" expanded="false" />
-                <element signature="e#6594#11461#0" expanded="false" />
-                <element signature="e#12007#14692#0" expanded="false" />
+                <element signature="e#1116#2843#0" expanded="false" />
+                <element signature="e#2894#3609#0" expanded="false" />
+                <element signature="e#3668#5542#0" expanded="false" />
+                <element signature="e#5599#6325#0" expanded="false" />
+                <element signature="e#6389#6530#0" expanded="false" />
+                <element signature="e#6595#11462#0" expanded="false" />
+                <element signature="e#12008#14693#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -114,10 +78,8 @@
         <entry file="file://$PROJECT_DIR$/public/src/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="129" column="21" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
-              <folding>
-                <marker date="1450631036000" expanded="true" signature="356:5124" placeholder="{...}" />
-              </folding>
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3739566">
+            <state vertical-scroll-proportion="-9.333333">
               <caret line="105" column="48" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -242,11 +204,11 @@
         <option value="$PROJECT_DIR$/public/src/templates/main.html" />
         <option value="$PROJECT_DIR$/public/src/less/site.less" />
         <option value="$PROJECT_DIR$/public/src/Controllers/MainController.js" />
-        <option value="$PROJECT_DIR$/public/src/js/map.js" />
-        <option value="$PROJECT_DIR$/public/src/js/app.js" />
         <option value="$PROJECT_DIR$/public/src/js/client.js" />
         <option value="$PROJECT_DIR$/public/src/js/addMarker.js" />
         <option value="$PROJECT_DIR$/public/src/index.html" />
+        <option value="$PROJECT_DIR$/public/src/js/app.js" />
+        <option value="$PROJECT_DIR$/public/src/js/map.js" />
       </list>
     </option>
   </component>
@@ -611,7 +573,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="819" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17291667" sideWeight="0.49403748" order="0" side_tool="false" content_ui="combo" />
@@ -620,7 +582,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.132" sideWeight="0.49722221" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.132" sideWeight="0.49722221" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17291667" sideWeight="0.50596255" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -986,34 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="377" column="0" selection-start-line="377" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
-          <folding>
-            <element signature="e#454#808#0" expanded="false" />
-            <element signature="e#841#1067#0" expanded="false" />
-            <element signature="e#1115#2842#0" expanded="false" />
-            <element signature="e#2893#3608#0" expanded="false" />
-            <element signature="e#3667#5541#0" expanded="false" />
-            <element signature="e#5598#6324#0" expanded="false" />
-            <element signature="e#6388#6529#0" expanded="false" />
-            <element signature="e#6594#11461#0" expanded="false" />
-            <element signature="e#12007#14692#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/src/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="21" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
-          <folding>
-            <marker date="1450631036000" expanded="true" signature="356:5124" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/src/js/client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1034,10 +968,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3739566">
+        <state vertical-scroll-proportion="-9.333333">
           <caret line="105" column="48" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/src/js/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76886034">
+          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+          <folding>
+            <element signature="e#1116#2843#0" expanded="false" />
+            <element signature="e#2894#3609#0" expanded="false" />
+            <element signature="e#3668#5542#0" expanded="false" />
+            <element signature="e#5599#6325#0" expanded="false" />
+            <element signature="e#6389#6530#0" expanded="false" />
+            <element signature="e#6595#11462#0" expanded="false" />
+            <element signature="e#12008#14693#0" expanded="false" />
           </folding>
         </state>
       </provider>

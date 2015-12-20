@@ -35,7 +35,7 @@ var createMap = (function () {
                 getInformationForTheMap();
             }
         });
-    }
+    };
 
     var getInformationForTheMap = function () {
         // get signed shares (related to an activity)
