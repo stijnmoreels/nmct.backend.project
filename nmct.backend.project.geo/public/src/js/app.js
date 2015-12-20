@@ -99,8 +99,7 @@ var allSignedShares = [[]],
                         allActivities = activities;
                         for (var i = 0, l = activities.length; i < l; i++) {
                             addActivityToMap(null, activities[i]);
-                        }
-                        ;
+                        };
                     }
                 });
             });
@@ -111,7 +110,11 @@ var allSignedShares = [[]],
                     console.log(error);
                 }
                 for (var i = 0, l = shares.length; i < l; i++) {
-                    allUnsignedShares[shares[i].author] = shares[i];
+                    var author = shares[i].author;
+                    if (allUnsignedShares[author] === undefined)
+                        allUnsignedShares[author] = [];
+                    
+                    allUnsignedShares[author].push(shares[i]);
                     addUnsignedShareToMap(null, shares[i]);
                 }
             });
