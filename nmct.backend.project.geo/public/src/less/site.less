@@ -64,6 +64,7 @@ html, body, #map-canvas {
   margin: 0 0 10px 0;
   .form-content {
     color: @midnightBlue;
+
     .icon-input {
       margin: 0 10px 0 2px;
     }
@@ -223,6 +224,10 @@ html, body, #map-canvas {
   }
 }
 
+.logout-mobile{
+  display: none;
+}
+
 .info {
   position: fixed;
   bottom: 0;
@@ -319,7 +324,7 @@ html, body, #map-canvas {
   color: @midnightBlue;
   font-family: @fontFamily;
   font-size: 16px;
-  width: 330px;
+  width: 350px;
   .iw-title {
     font-size: 20px;
     padding: 0 0 0 15px;
@@ -560,3 +565,197 @@ html, body, #map-canvas {
     margin-right: 10px;
   }
 }
+//Hide-show password
+.my-toggle-class {
+  color: #888;
+  cursor: pointer;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+}
+
+
+
+//Responsive mobile design: media queries
+
+/* Custom, iPhone Retina */
+/* Extra small screen & Biger */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+  #main-tabs-nav{
+    width: 310px;
+    li{
+      width: 235px;
+      >a{
+        border: none;
+      }
+    }
+  }
+
+  .form-box {
+    width: 240px;
+    .form-content {
+      .btn-submit {
+        width: 210px;
+        padding: 5px;
+        font-size: 14px;
+      }
+      input[type=text], input[type=password], input[type=email] {
+        width: 210px;
+      }
+      .feeling-btn {
+        width: 90px;
+        padding: 3px 6px;
+        .feeling-text {
+          margin-left: 3px;
+          font-size: 14px;
+        }
+        .feeling-icon{
+          width: 25%;
+          height: 25%;
+        }
+      }
+    }
+    #activity{
+      width: 210px;
+    }
+    .btn-submit{
+      width: 210px;
+      padding: 5px;
+      font-size: 14px;
+    }
+  }
+
+  .headline{
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .map-control{
+    width: 210px;
+    font-size: 12px;
+    .btn-maptype{
+      margin: 0px;
+    }
+  }
+  .logout{
+    display: none;
+  }
+  .logout-mobile{
+    position: fixed;
+    display: block;
+    bottom: 0;
+    margin-bottom: 20px;
+    background-color: @endColor;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    &:hover {
+      cursor: pointer;
+      background-color: darken(@endColor, 10%);
+      -webkit-transition: background-color 0.3s;
+      -moz-transition: background-color 0.3s;
+      -ms-transition: background-color 0.3s;
+      -o-transition: background-color 0.3s;
+      transition: background-color 0.3s;
+    }
+    span {
+      font-size: 12px;
+    }
+  }
+
+  /*Chatbox*/
+
+  .headline-chat{
+    margin-top: 10px;
+  }
+  .chatbox{
+    height: 150px;
+    .chatbox-content textarea,button{
+      float: left;
+    }
+    #conversation{
+      height: 75px;
+      .sent-message{
+        background-color: @cloud;
+        padding: 5px;
+        margin: 5px;
+        max-width: 65px;
+        .sent-message-box{
+          background-color: @turquoise;
+          border-radius: 5px;
+          padding: 3px;
+          margin: 3px;
+          max-width: 65px;
+        }
+      }
+      .received-message{
+        padding: 5px;
+        margin: 5px;
+        max-width: 65px;
+        .received-message-box{
+          padding: 3px;
+          margin: 3px;
+          max-width: 65px;
+        }
+      }
+    }
+    #messages{
+      margin-top: 10px;
+      width: 140px;
+      height: 30px;
+      padding: 3px;
+    }
+    #btn-send{
+      height: 30px;
+      padding: 3px;
+      font-size: 12px;
+      width: 50px;
+    }
+  }
+  .online-list{
+    height: 125px;
+    max-height: 130px;
+    width: 240px;
+    color: @startColor;
+    overflow-y: scroll;
+    border-radius: 1px;
+    background-color: @white;
+    .list-group-item{
+      line-height: 18px;
+      border-top-right-radius: 1px;
+      border-top-left-radius: 1px;
+      border-bottom-right-radius: 1px;
+      border-bottom-left-radius: 1px;
+      cursor: pointer;
+      border: none;
+      &:hover{
+        -webkit-transition: background-color 0.2s;
+        -moz-transition: background-color 0.2s;
+        -ms-transition: background-color 0.2s;
+        -o-transition: background-color 0.2s;
+        transition: background-color 0.2s;
+        background-color: #428bca;
+        color: @white;
+        border: none;
+      }
+    }
+    .chat-status{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: @valid;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+}
+

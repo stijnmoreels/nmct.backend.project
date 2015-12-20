@@ -201,11 +201,11 @@ function addActivityToMap(error, activity) {
                         feedback.addClass(" share-failed");
                         $(".share-failed").animate({
                             opacity: 1
-                        }, 1500);
+                        }, 750);
                         close_alert.click(function () {
                             $(".share-failed").animate({
                                 opacity: 0
-                            }, 1500);
+                            }, 750);
 
                             infowindow.animate({
                                 "height": 205
@@ -220,12 +220,12 @@ function addActivityToMap(error, activity) {
 
                     $(".share-success").animate({
                         opacity: 1
-                    }, 1500);
+                    }, 750);
 
                     close_alert.click(function () {
                         $(".share-success").animate({
                             opacity: 0
-                        }, 1500);
+                        }, 750);
 
                         infowindow.animate({
                             "height": 205
@@ -285,7 +285,7 @@ function addUnsignedShareToMap(error, share) {
     });
 
 
-    //Example data ! 
+    //Example data !
     var data = {
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
