@@ -113,10 +113,11 @@ var allSignedShares = [[]],
                     var author = shares[i].author;
                     if (allUnsignedShares[author] === undefined)
                         allUnsignedShares[author] = [];
-                    
                     allUnsignedShares[author].push(shares[i]);
+                } for (var i = 0, l = shares.length; i < l; i++) {
                     addUnsignedShareToMap(null, shares[i]);
-                }
+                };
+                
             });
         }
     })();
