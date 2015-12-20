@@ -1,3 +1,0 @@
-﻿# nmct.backend.project.web
-
-

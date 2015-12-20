@@ -56,7 +56,78 @@ var allSignedShares = [[]],
             })
         });
 
+<<<<<<< HEAD
     createMap.getData();
+=======
+    var getData = (function () {
+        //window.onbeforeunload = function () {
+        //    return "The session will be expired when you reload the page.";
+        //}
+        
+        
+        //if (localStorage.hash && localStorage.username !== "anonymous") {
+        //    client.rememberMeLogin(localStorage.username, localStorage.hash, function (error, user) {
+        //        if (error) { console.log(error); }
+        //        else {
+        //            //$cookies.put("user", $scope.username);
+        //            //$rootScope.loggedInUser = $scope.username;
+        //            location.href = "/#/main";
+        //            getInformationForTheMap();
+        //        }
+        //    });
+        //} else {
+            client.connectAnonymous(function (error, user) {
+                if (error) { console.log(error) } 
+                else { getInformationForTheMap(); }
+            });
+        //}
+
+        function getInformationForTheMap() {
+            // get signed shares (related to an activity)
+            client.getAllGeneric("signedshares", function (error, shares) {
+                if (error) {
+                    console.log(error);
+                }
+                for (var i = 0, l = shares.length; i < l; i++) {
+                    var share = shares[i],
+                        shareActivity = share.activityId + "";
+                    // "allSignedShares" is a global variable 
+                    if (allSignedShares[shareActivity] === undefined) {
+                        allSignedShares[shareActivity] = [];
+                    }
+                    allSignedShares[shareActivity].push(share);
+                }
+                // get activities from database
+                client.getAllGeneric("activities", function (error, activities) {
+                    if (error) {
+                        console.log(error);
+                    }
+                    else {
+                        allActivities = activities;
+                        for (var i = 0, l = activities.length; i < l; i++) {
+                            addActivityToMap(null, activities[i]);
+                        };
+                    }
+                });
+            });
+            
+            // get unsigned shares (not related to an activity)
+            client.getAllGeneric("unsignedshares", function (error, shares) {
+                if (error) {
+                    console.log(error);
+                }
+                for (var i = 0, l = shares.length; i < l; i++) {
+                    var author = shares[i].author;
+                    if (allUnsignedShares[author] === undefined)
+                        allUnsignedShares[author] = [];
+                    allUnsignedShares[author].push(shares[i]);
+                } for (var i = 0, l = shares.length; i < l; i++) {
+                    addUnsignedShareToMap(null, shares[i]);
+                }; 
+            });
+        }
+    })();
+>>>>>>> origin/master
 
 })();
 
