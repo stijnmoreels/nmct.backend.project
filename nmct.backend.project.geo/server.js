@@ -26,6 +26,6 @@ communication.listen(server);
 var authenticationRoute = require('./routes/authentication.js')(app);
 
 // start server
-server.listen(process.env.PORT || 9000, function () {
-    console.log('server listening on http://localhost:9000');
+server.listen(9000, function () {
+    console.log('server listening on http://localhost:' + 9000);
 });

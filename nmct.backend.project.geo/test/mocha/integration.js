@@ -15,6 +15,10 @@ describe("Integration: Socket tests", function () {
         testToken = "",
         socket;
     
+    before(function () {
+        require("../../server.js");
+    });
+
     // Get token from server and set it as global "testToken"
     // The only ajax relation with the server is when the user gets its token
     it("Should return a user token", function (done) {
@@ -27,8 +31,11 @@ describe("Integration: Socket tests", function () {
             });
             response.on("end", function () {
                 // parse token from body
-                var data = querystring.parse(body);
-                var token = JSON.parse(Object.keys(data)[0]).token;
+                var secret = body;
+                //var data = querystring.parse(body);
+                //var token = JSON.parse(Object.keys(data)[0]).token;
+                var token = JSON.parse(secret).token;
+                
                 assert.notEqual(token, null);
                 if (token) {
                     testToken = token;
@@ -41,6 +48,8 @@ describe("Integration: Socket tests", function () {
                     done();
                 }
             });
+        }).on("error", function (error) { 
+            console.log(error);
         });
         // anonymous credentials (hashed password)
         request.write(querystring.stringify({
