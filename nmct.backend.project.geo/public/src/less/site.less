@@ -588,11 +588,15 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   #main-tabs-nav{
     width: 310px;
+    border-right: none;
     li{
       width: 235px;
       >a{
         border: none;
       }
+    }
+    #main-tab{
+      border-right: 0;
     }
   }
 
@@ -683,27 +687,29 @@ and (-webkit-min-device-pixel-ratio: 2) {
     }
     #conversation{
       height: 75px;
+      overflow-y: scroll;
+      overflow-x: hidden;
       .sent-message{
         background-color: @cloud;
         padding: 5px;
         margin: 5px;
-        max-width: 65px;
+        max-width: 95px;
         .sent-message-box{
-          background-color: @turquoise;
-          border-radius: 5px;
           padding: 3px;
           margin: 3px;
-          max-width: 65px;
+          max-width: 95px;
+          font-size: 11px;
         }
       }
       .received-message{
         padding: 5px;
         margin: 5px;
-        max-width: 65px;
+        max-width: 95px;
         .received-message-box{
           padding: 3px;
           margin: 3px;
-          max-width: 65px;
+          max-width: 95px;
+          font-size: 11px;
         }
       }
     }

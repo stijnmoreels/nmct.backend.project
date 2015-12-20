@@ -284,30 +284,26 @@ function addUnsignedShareToMap(error, share) {
         content: contentStringShare
     });
 
+    var feelings = { "happy": 0, "sad": 0, "excited": 0, "tender": 0, "angry": 0, "scared": 0 };
+    if(userShares !== undefined){
+        for(var i= 0, l=userShares.length; i < l; i++){
+            feelings[userShares[i].feeling]++;
+        }
+    }
 
     //Example data !
     var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["Happy", "Excited", "Tender", "Scared", "Sad", "Angry"],
         datasets: [
             {
-                label: "My First dataset",
+                label: "Feelings",
                 fillColor: "rgba(220,220,220,0.2)",
                 strokeColor: "rgba(220,220,220,1)",
                 pointColor: "rgba(220,220,220,1)",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
+                data: [feelings["happy"], feelings["excited"], feelings["tender"], feelings["scared"], feelings["sad"], feelings["angry"]]
             }
         ]
     };
