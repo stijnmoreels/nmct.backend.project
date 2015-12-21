@@ -61,6 +61,7 @@
                     client.addActivity(activityModel, function (error, activity) {
                         //addActivityToMap(error, activity);
                         console.log("activity added");
+                        $("#activity").val("");
                     });
                 } else {
                     shareModel.activityId = 0;
