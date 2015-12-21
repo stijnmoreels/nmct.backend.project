@@ -53,7 +53,7 @@ var allSignedShares = [[]],
                         $location.path("/");
                     }
                 }
-            })
+            });
         });
 
     createMap.getData();
