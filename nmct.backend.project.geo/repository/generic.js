@@ -21,8 +21,8 @@ var Generic = (function () {
         }
     }, 
     // Concrete: Get all shares from databse
-    getShares = function (query, callback) {
-        var query = { query: query !== null ? query : sharesDefaultQuery };
+    getShares = function (queryString, callback) {
+        var query = { query: queryString !== null ? queryString : sharesDefaultQuery };
         documentDb.query("shares", query, callback);
     }, 
     // Concrete: Get all activities from database
