@@ -5,5 +5,5 @@
 
     };
 
-    app.controller("HomeController", HomeController);
+    app.controller("HomeController",["$scope",HomeController]);
 })();

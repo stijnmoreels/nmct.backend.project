@@ -186,7 +186,7 @@ var createMap = (function () {
             '<div id="iw-container" class="container">' +
             '<div class="row">' +
             '<h1 class="iw-title">' + activity.activityName + '</h1>' +
-            '<div class="col-sm-5">' +
+            '<div class="col-sm-5 col-xs-4">' +
             '<div class="list-group">' +
             '<button id="btn' + activity.id + '_happy" value="happy" class="list-group-item feeling-btn">' +
             '<img class="feeling-icon" src="./images/happy@xs.png" alt="happy">' +
@@ -205,7 +205,7 @@ var createMap = (function () {
             '</button>' +
             '</div>' +
             '</div>' +
-            '<div class="col-sm-5">' +
+            '<div class="col-sm-5 col-xs-4">' +
             '<div class="list-group feelings-right">' +
             '<button id="btn' + activity.id + '_scared" value="scared" class="list-group-item feeling-btn">' +
             '<img class="feeling-icon" src="./images/scared@xs.png" alt="scared">' +
