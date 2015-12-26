@@ -2,12 +2,7 @@
     var app = angular.module("app");
     
     var MainController = function ($scope, $rootScope, $location, $cookies) {
-        
-        // pure designwise, has no security issues
-        //$scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
-        //$scope.isAdmin = false;
-        //$cookies.put("user", $scope.username);
-        //$rootScope.loggedInUser = $scope.username;
+
         
         // feelings initialisation
         var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];

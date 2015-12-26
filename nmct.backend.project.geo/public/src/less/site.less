@@ -443,12 +443,27 @@ html, body, #map-canvas {
 .chatbox{
   height: 250px;
   background-color: @white;
+  padding: 5px 10px;
 
   .chatbox-content textarea,button{
     float: left;
   }
+  #placeholder-user{
+    font-weight: 800;
+    i{
+      color: lighten(@startColor, 10%);
+      padding: 0 0 5px 5px;
+    }
+    color: @startColor;
+    #selected-user{
+      margin: 0;
+      display: inline-block;
+      padding: 0 0 5px 5px;
+
+    }
+  }
   #conversation{
-    height: 175px;
+    height: 165px;
     background-color: @cloud;
     overflow-y: scroll;
     overflow-x: hidden;

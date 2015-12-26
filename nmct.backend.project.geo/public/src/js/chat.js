@@ -44,10 +44,12 @@ var chat = (function () {
         var sentMessage = document.getElementsByClassName("sent-message")[0];
         var receivedMessage = document.getElementsByClassName("received-message")[0];
         var btnsend = document.getElementById("btn-send");
-        
+        var selectedUser = document.getElementById("selected-user");
+
         if (chat.selectedUser === "" || typeof (chat.selectedUser) === "undefined" || chat.selectedUser === null) {
             btnsend.setAttribute("disabled", true);
         }
+
         
         // fill user list
         for (var i = 0, l = users.length; i < l; i++) {
@@ -65,6 +67,9 @@ var chat = (function () {
                     receivedMessage.innerHTML = "";
                     // add messages back to chat
                     addMessageToChat(chat.selectedUser);
+                    //show selected user
+                    selectedUser.innerHTML = users[index].id;
+
                 });
             }(index))
         }
