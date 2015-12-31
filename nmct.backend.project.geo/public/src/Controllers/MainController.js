@@ -2,12 +2,7 @@
     var app = angular.module("app");
     
     var MainController = function ($scope, $rootScope, $location, $cookies) {
-        
-        // pure designwise, has no security issues
-        //$scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
-        //$scope.isAdmin = false;
-        //$cookies.put("user", $scope.username);
-        //$rootScope.loggedInUser = $scope.username;
+
         
         // feelings initialisation
         var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
@@ -32,9 +27,9 @@
         $scope.addActivityDb = function () {
             
             // block event if the input field (name of activity) doesn't match the Regular Expression
-            var regularExpression = new RegExp("^[a-zA-Z\\s]*$");
+            /*var regularExpression = new RegExp("^[a-zA-Z\\s]*$");
             if (!regularExpression.test($scope.activityName))
-                return;
+                return;*/
 
             var lat, lng;
             var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
@@ -60,7 +55,33 @@
 
                     client.addActivity(activityModel, function (error, activity) {
                         //addActivityToMap(error, activity);
-                        console.log("activity added");
+                        if(error){
+                            var feedback = $("#activity-feedback");
+                            feedback.addClass("error-msg");
+                            feedback.html("Something went wrong! Please try again later");
+                            feedback.animate({
+                                opacity: 1
+                            }, 500);
+                            feedback.css("display", "block");
+                            $("html").click(function () {
+                                feedback.css("display", "none");
+                            });
+                            $("#activity").val("");
+                        }else{
+                            console.log("activity added");
+                            var feedback = $("#activity-feedback");
+                            feedback.removeClass("error-msg");
+                            feedback.addClass("success-msg");
+                            feedback.html("Thanks for sharing!");
+                            feedback.animate({
+                                opacity: 1
+                            }, 500);
+                            feedback.css("display", "block");
+                            $("html").click(function () {
+                                feedback.css("display", "none");
+                            });
+                            $("#activity").val("");
+                        }
                     });
                 } else {
                     shareModel.activityId = 0;
@@ -73,7 +94,32 @@
                     shareModel.author = $cookies.get("user");
 
                     client.addShare(shareModel, function (error, share) {
-                        console.log("share added")
+                        if(error){
+                            var feedback = $("#activity-feedback");
+                            feedback.addClass("error-msg");
+                            feedback.html("Something went wrong! Please try again later");
+                            feedback.animate({
+                                opacity: 1
+                            }, 500);
+                            feedback.css("display", "block");
+                            $("html").click(function () {
+                                feedback.css("display", "none");
+                            });
+                            console.log(error);
+                        }else{
+                            var feedback = $("#activity-feedback");
+                            feedback.removeClass("error-msg");
+                            feedback.addClass("success-msg");
+                            feedback.html("Thanks for sharing!");
+                            feedback.animate({
+                                opacity: 1
+                            }, 500);
+                            feedback.css("display", "block");
+                            console.log("share added");
+                            $("html").click(function () {
+                                feedback.css("display", "none");
+                            });
+                        }
                     });
 
                 }

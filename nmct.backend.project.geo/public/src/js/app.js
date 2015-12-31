@@ -45,7 +45,7 @@ var allSignedShares = [[]],
             .otherwise({
                 redirectTo: '/'
             });
-    }).run(function ($rootScope, $location, $cookies) {
+    })/*.run(function ($rootScope, $location, $cookies) {
             $rootScope.$on("$routeChangeStart", function (event, next, current) {
                 if (!$rootScope.loggedInUser) {
                     //console.log("no user");
@@ -54,7 +54,7 @@ var allSignedShares = [[]],
                     }
                 }
             });
-        });
+        });*/
 
     createMap.getData();
 

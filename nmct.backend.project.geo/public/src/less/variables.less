@@ -13,3 +13,32 @@
 @startColor: #185a9d;
 @endColor: #43cea2;
 
+
+#activity-feedback{
+  display: none;
+  margin: 5px 0 0 0;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  color: @white;
+  font-weight: 400;
+  font-size: 12px;
+  opacity: 1;
+  .close{
+    right: 0;
+    outline: none;
+    opacity: .8;
+    font-size: 19px;
+    color: @white;
+  }
+  p{
+    margin-bottom: 0;
+  }
+}
+.success-msg{
+  background-color: @valid;
+}
+.error-msg{
+  background-color: @warning;
+}

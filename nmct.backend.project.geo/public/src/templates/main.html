@@ -77,6 +77,9 @@
                     <input type="hidden" id="activityID" ng-model="activityID"/>
                 </div>
                 <input type="submit" ng-click="addActivityDb()" class="btn btn-lg btn-block btn-submit" value="Submit"/>
+                <div id="activity-feedback" role="alert">
+                    <span></span>
+                </div>
             </div>
         </form>
 
@@ -95,6 +98,7 @@
                 <h2 class="headline headline-chat">Chatbox!</h2>
                     <div class="form-box chatbox">
                         <div class="form-content chatbox-content">
+                            <div id="placeholder-user"><i class="fa fa-user"></i><p id="selected-user">No user selected</p></div>
                             <div id="conversation">
                                 <div class="sent-message"></div>
                                 <div class="received-message"></div>
