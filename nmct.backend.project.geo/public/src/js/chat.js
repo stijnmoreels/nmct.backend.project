@@ -93,7 +93,6 @@ var chat = (function () {
         }
 
     }
-    
     // delete user from user list
     function deleteUserToOnlineUsers(error, username) {
         document.getElementById(username).remove();
