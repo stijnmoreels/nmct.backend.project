@@ -26,10 +26,6 @@
         
         $scope.addActivityDb = function () {
             
-            // block event if the input field (name of activity) doesn't match the Regular Expression
-            /*var regularExpression = new RegExp("^[a-zA-Z\\s]*$");
-            if (!regularExpression.test($scope.activityName))
-                return;*/
 
             var lat, lng;
             var location = navigator.geolocation.getCurrentPosition(getPosition, showError);

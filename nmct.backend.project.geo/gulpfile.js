@@ -12,15 +12,12 @@ var gulp = require('gulp'),
     jsStylish = require('jshint-stylish'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch'),
-    livereload = require('gulp-livereload'),
     ngAnnotate = require('gulp-ng-annotate');
 
-livereload({start: true});
 
 
 //watcher
 gulp.task("default", function () {
-    livereload.listen();
     //Css Watch
     var cssWatcher = gulp.watch('./public/src/less/**/*.less', ['css']);
     //gulp.watch('./public/src/dist/css/*.css');

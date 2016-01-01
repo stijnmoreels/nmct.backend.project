@@ -70,7 +70,8 @@
                     <label for="activity">Name of event</label>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="activity" ng-model="activityName">
+                        <input type="text" class="form-control" id="activity" ng-model="activityName"
+                        pattern="^[A-Za-z0-9 #]*[A-Za-z0-9][A-Za-z0-9 -]*$">
                     </div>
                 </div>
                 <div>
