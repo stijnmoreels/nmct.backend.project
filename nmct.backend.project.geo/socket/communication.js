@@ -82,8 +82,8 @@ var Communication = (function () {
                     if (error) { fileLogger(error); }
                     
                     // only add a share if the user hasn't add a share in the past
-                    /* if (shares == null || shares == undefined || shares.length == 0) {*/
-                    if (true) {
+                     if (shares == null || shares == undefined || shares.length == 0) {
+                    //if (true) {
                         data.share.isActivity = false; // we use the same document list
                         repository.insertOne(data.share, "shares", function (error, document) {
                             if (error) { sio.emit("error", "Insert share failed"); fileLogger(error); }
