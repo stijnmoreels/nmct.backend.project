@@ -65,6 +65,8 @@ html, body, #map-canvas {
   .form-content {
     color: @midnightBlue;
 
+
+
     .icon-input {
       margin: 0 10px 0 2px;
     }
@@ -73,7 +75,14 @@ html, body, #map-canvas {
     }
     .checkbox input {
       width: 0;
+      outline: none;
+      outline-offset: 0;
     }
+    .checkbox input[type="checkbox"]:focus + label::before, .checkbox input[type="radio"]:focus + label::before{
+      outline: none;
+    }
+
+
     .btn-submit {
       background-color: lighten(@startColor, 10%);
       color: @cloud;
