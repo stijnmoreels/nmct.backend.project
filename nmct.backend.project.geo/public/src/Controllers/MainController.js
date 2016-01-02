@@ -147,7 +147,13 @@
             
             // remove admin rights
             client.isAdmin = false;
-            document.querySelector('button[id^="btnDelete_"]').style.display = "none";
+            document.querySelector('button[id^="btnDelete_"]').style.display = "none"; // any opened info-windows
+            
+            // remove local user storage
+            localStorage.token = undefined;
+            localStorage.isAvailable = undefined; // chatbox
+            localStorage.hash = undefined;
+            localStorage.username = undefined;
 
             $rootScope.loggedInUser = null;
             $location.path("/");
