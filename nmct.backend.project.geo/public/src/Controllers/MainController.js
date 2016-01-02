@@ -144,6 +144,11 @@
 
         $scope.logout = function () {
             $cookies.remove("user");
+            
+            // remove admin rights
+            client.isAdmin = false;
+            document.querySelector('button[id^="btnDelete_"]').style.display = "none";
+
             $rootScope.loggedInUser = null;
             $location.path("/");
         };

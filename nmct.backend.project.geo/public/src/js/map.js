@@ -229,7 +229,7 @@ var createMap = (function () {
             '<span id="feedback-msg"></span>' +
             '<button class="close-alert">&times;</button>' +
             '</div>' +
-            '<button ng-show="isAdmin" id="btnDelete_' + activity.id + '" class="btn btn-danger" >Delete</button>' +
+            '<button ng-show="isAdmin" style="display:none;" id="btnDelete_' + activity.id + '" class="btn btn-danger" >Delete</button>' +
             '</div>';
 
         var infoWindow = new google.maps.InfoWindow({
