@@ -147,7 +147,7 @@
             
             // remove admin rights
             client.isAdmin = false;
-            document.querySelector('button[id^="btnDelete_"]').style.display = "none"; // any opened info-windows
+            //document.querySelector('button[id^="btnDelete_"]').style.display = "none"; // any opened info-windows
             
             // remove local user storage
             localStorage.token = undefined;
