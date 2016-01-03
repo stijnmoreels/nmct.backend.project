@@ -25,7 +25,7 @@
         }
         
         $scope.addActivityDb = function () {
-            
+
 
             var lat, lng;
             var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
