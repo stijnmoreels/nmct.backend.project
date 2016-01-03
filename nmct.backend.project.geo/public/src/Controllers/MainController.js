@@ -147,8 +147,9 @@
             
             // remove admin rights
             client.isAdmin = false;
-            //document.querySelector('button[id^="btnDelete_"]').style.display = "none"; // any opened info-windows
-            
+            var button = document.querySelector('button[id^="btnDelete_"]'); // any opened info-windows
+            if (button !== null) button.style.display = "none";
+
             // remove local user storage
             localStorage.token = undefined;
             localStorage.isAvailable = undefined; // chatbox
