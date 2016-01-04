@@ -302,7 +302,7 @@ var createMap = (function () {
                 var lat, lng;
                 var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
 
-                var getPosition =  function(position) {
+                function getPosition(position) {
                     lat = position.coords.latitude;
                     lng = position.coords.longitude;
 
