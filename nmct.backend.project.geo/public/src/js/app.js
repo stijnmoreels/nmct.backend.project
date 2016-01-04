@@ -46,15 +46,15 @@ var allSignedShares = [[]],
                 redirectTo: '/'
             });
     }).run(function ($rootScope, $location, $cookies) {
-            $rootScope.$on("$routeChangeStart", function (event, next, current) {
-                if (!$rootScope.loggedInUser) {
-                    //console.log("no user");
-                    if (next.templateUrl === "./templates/main.html") {
-                        $location.path("/");
-                    }
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            if (!$rootScope.loggedInUser) {
+                //console.log("no user");
+                if (next.templateUrl === "./templates/main.html") {
+                    $location.path("/");
                 }
-            });
+            }
         });
+    });
 
     createMap.getData();
 

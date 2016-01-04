@@ -37,7 +37,6 @@ gulp.task("css", function () {
         .pipe(concat("site.css"))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest("./public/src/dist/css"))
-        .pipe(livereload())
         .pipe(notify({
             message: "css built"
         }))

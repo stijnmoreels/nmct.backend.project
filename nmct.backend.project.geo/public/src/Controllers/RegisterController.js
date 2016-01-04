@@ -6,8 +6,7 @@
         $rootScope.loggedInUser = null;
 
         //toggle show/hide password
-        // Example 2
-        $('#password').hideShowPassword({
+        /*$('#password').hideShowPassword({
             // Make the password visible right away.
             show: false,
             // Create the toggle goodness.
@@ -20,7 +19,9 @@
             hideToggleUntil: 'focus',
             // Enable touch support for toggle.
             touchSupport: Modernizr.touch
-        });
+        });*/
+
+
 
 
         $scope.userRegister = function () {
