@@ -12,12 +12,12 @@ var map;
 
 var createMap = (function () {
     "use strict";
-    
-    
+
+
     var initialize = function (element) {
         var mapCanvas = document.getElementById(element);
         var mapOptions = {
-            center: { lat: 50.824683, lng: 3.25141 },
+            center: {lat: 50.824683, lng: 3.25141},
             zoom: 8,
             mapTypeControl: false,
             scrollwheel: false,
@@ -25,7 +25,7 @@ var createMap = (function () {
         };
         map = new google.maps.Map(mapCanvas, mapOptions);
     };
-    
+
     var getData = function () {
         client.connectAnonymous(function (error, user) {
             if (error) {
@@ -36,7 +36,7 @@ var createMap = (function () {
             }
         });
     };
-    
+
     var getInformationForTheMap = function () {
         // get signed shares (related to an activity)
         client.getAllGeneric("signedshares", function (error, shares) {
@@ -64,7 +64,7 @@ var createMap = (function () {
                 }
             });
         });
-        
+
         // get unsigned shares (not related to an activity)
         client.getAllGeneric("unsignedshares", function (error, shares) {
             if (error) {
@@ -83,7 +83,7 @@ var createMap = (function () {
 
         });
     };
-    
+
     var addShareToMap = function (error, share) {
         if (share.activityId == 0) {
             addUnsignedShareToMap(error, share);
@@ -98,14 +98,14 @@ var createMap = (function () {
             }
         }
     };
-    
+
     var addUnsignedShareToMap = function (error, share) {
         var marker = new google.maps.Marker({
-            position: { lat: share.latitude, lng: share.longitude },
+            position: {lat: share.latitude, lng: share.longitude},
             icon: '../images/' + share.feeling + '-pin.png',
             map: map
         });
-        
+
         var userShares = allUnsignedShares[share.author];
         var contentStringShare = '<div id="iw-container" class="container">' +
             '<div class="row">' +
@@ -113,19 +113,19 @@ var createMap = (function () {
             '<canvas id="feelings-chart"></canvas>' +
             '</div>' +
             '</div>';
-        
-        
+
+
         var infoWindow = new google.maps.InfoWindow({
             content: contentStringShare
         });
-        
-        var feelings = { "happy": 0, "sad": 0, "excited": 0, "tender": 0, "angry": 0, "scared": 0 };
+
+        var feelings = {"happy": 0, "sad": 0, "excited": 0, "tender": 0, "angry": 0, "scared": 0};
         if (userShares !== undefined) {
             for (var i = 0, l = userShares.length; i < l; i++) {
                 feelings[userShares[i].feeling]++;
             }
         }
-        
+
         var data = {
             labels: ["Happy", "Excited", "Tender", "Scared", "Sad", "Angry"],
             datasets: [
@@ -141,7 +141,7 @@ var createMap = (function () {
                 }
             ]
         };
-        
+
         marker.addListener('click', function () {
             infoWindow.open(map, marker);
             var ctx = document.getElementById("feelings-chart").getContext("2d");
@@ -149,29 +149,29 @@ var createMap = (function () {
 
         });
     };
-    
+
     var addActivityToMap = function (error, activity) {
         var marker = new google.maps.Marker({
-            position: { lat: activity.latitude, lng: activity.longitude },
+            position: {lat: activity.latitude, lng: activity.longitude},
             icon: '../images/activity_pin@xs.png',
             map: map
         });
-        
+
         marker.set("id", activity.id);
         markers[activity.id] = marker;
-        
+
         // find out how much shares each feeling has in this activity
-        var feelings = { "happy": 0, "sad": 0, "excited": 0, "tender": 0, "angry": 0, "scared": 0 };
+        var feelings = {"happy": 0, "sad": 0, "excited": 0, "tender": 0, "angry": 0, "scared": 0};
         var shares = allSignedShares[activity.id];
         if (shares !== undefined)
             for (var i = 0, l = shares.length; i < l; i++) {
                 feelings[shares[i].feeling]++;
             }
-        
-        
+
+
         createActivityWindow(activity, marker, feelings);
     };
-    
+
     var deleteActivityFromMap = function (error, activityId) {
         if (error) {
             console.log(error);
@@ -179,7 +179,7 @@ var createMap = (function () {
         var marker = markers[activityId];
         marker.setMap(null);
     };
-    
+
     function createActivityWindow(activity, marker, feelings) {
         // Infowindow HTML
         contentString =
@@ -231,17 +231,17 @@ var createMap = (function () {
             '</div>' +
             '<button ng-show="isAdmin" style="display:none;" id="btnDelete_' + activity.id + '" class="btn btn-danger" >Delete</button>' +
             '</div>';
-        
+
         var infoWindow = new google.maps.InfoWindow({
             content: contentString
         });
-        
+
         marker.addListener('click', function () {
             infoWindow.open(map, marker);
         });
-        
+
         google.maps.event.addListener(infoWindow, 'domready', function () {
-            
+
             // set click listener for each feeling (for each infowindow)
             var feelings = ["happy", "excited", "tender", "sad", "scared", "angry"];
             for (var i = 0, l = feelings.length; i < l; i++) {
@@ -252,18 +252,18 @@ var createMap = (function () {
                     });
                 })(i);
             }
-            
+
             var button = document.querySelector('button[id^="btnDelete_' + activity.id + '"]');
             button.style.display = !client.isAdmin ? "none" : "block";
-            
-            
+
+
             // admin only
             document.getElementById("btnDelete_" + activity.id).addEventListener("click", function (e) {
                 client.deleteActivity(activity.id, function (error, activityId) {
                     console.log("delete activity");
                 });
             });
-            
+
             // check if the user already has a share in the activity
             // if so ? return that share
             getUserSharesForActivity(localStorage.username, activity.id, function (error, share) {
@@ -272,36 +272,40 @@ var createMap = (function () {
         });
 
     }
-    
-    
+
+
     var getUserSharesForActivity = function (username, activityId, callback) {
         var shares = allSignedShares[activityId];
-        if (shares === undefined || shares.length <= 0)
+        if (shares === undefined || shares.length <= 0) {
             callback("No shares found", null);
-        for (var i = 0, l = shares.length; i < l; i++)
-            if (shares[i].author === username)
+        } else {
+            for (var i = 0, l = shares.length; i < l; i++)
+                if (shares[i].author === username)
                 // share found
-                break;
-                callback(null, shares[i]);
+                    break;
+            callback(null, shares[i]);
+        }
     };
-    
+
     var addShareClickListener = function (feeling, activity) {
-        
+
         var activityID = activity.id;
         //document.getElementById("activityID").value = activityID;
-        
+
         // Check if this activity already has a share for this user
         getUserSharesForActivity(localStorage.username, activityID, function (error, share) {
-            if (error) { console.log(error); }
+            if (error) {
+                console.log(error);
+            }
             if (share === null) {
                 // No share found
                 var lat, lng;
                 var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
-                
-                function getPosition(position) {
+
+                var getPosition =  function(position) {
                     lat = position.coords.latitude;
                     lng = position.coords.longitude;
-                    
+
                     // Register ShareModel
                     shareModel.id = new Date().getTime() + "-" + localStorage.username;
                     shareModel.feeling = feeling;
@@ -310,21 +314,21 @@ var createMap = (function () {
                     shareModel.timestamp = new Date().toLocaleDateString();
                     shareModel.author = localStorage.username;
                     shareModel.activityId = activityID;
-                    
-                    
+
+
                     // Add share to database
                     client.addShare(shareModel, function (error, share) {
-                        
+
                         var infowindow = $("#iw-container");
                         var feedback = $("#feedback");
                         var feedback_msg = $("#feedback-msg");
-                        
+
                         infowindow.animate({
                             "height": 237
                         }, 500);
                         feedback.css("display", "block");
                         var close_alert = $(".close-alert");
-                        
+
                         if (error) {
                             console.log(error);
                             feedback.addClass("share-failed");
@@ -336,7 +340,7 @@ var createMap = (function () {
                                 $(".share-failed").animate({
                                     opacity: 0
                                 }, 750);
-                                
+
                                 infowindow.animate({
                                     "height": 205
                                 }, 500);
@@ -351,12 +355,12 @@ var createMap = (function () {
                             $(".share-success").animate({
                                 opacity: 1
                             }, 750);
-                            
+
                             close_alert.click(function () {
                                 $(".share-success").animate({
                                     opacity: 0
                                 }, 750);
-                                
+
                                 infowindow.animate({
                                     "height": 205
                                 }, 500);
@@ -369,7 +373,7 @@ var createMap = (function () {
                 var feedback = $("#feedback");
                 var feedback_msg = $("#feedback-msg");
                 var close_alert = $(".close-alert");
-                
+
                 infowindow.animate({
                     "height": 237
                 }, 500);
@@ -385,7 +389,7 @@ var createMap = (function () {
                     $(".share-failed").animate({
                         opacity: 0
                     }, 750);
-                    
+
                     infowindow.animate({
                         "height": 205
                     }, 500);
@@ -394,8 +398,8 @@ var createMap = (function () {
             }
         });
     };
-    
-    
+
+
     return {
         initialize: initialize,
         addShareToMap: addShareToMap,

@@ -7,7 +7,7 @@
         var allActivities = [];
         
         // pure designwise, has no security issues
-        $scope.isAdmin = localStorage.isAmin == undefined || !localStorage.isAdmin ? false : true;
+        $scope.isAdmin = localStorage.isAmin === undefined || !localStorage.isAdmin ? false : true;
 
         $scope.userLogin = function () {
             //$location.path("/main");
