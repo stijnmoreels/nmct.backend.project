@@ -63,7 +63,7 @@ var Communication = (function () {
             socket.on("addshare", function (data) {
                 if (data.error) { fileLogger(data.error); }
                 // Get verified by JsonWebToken
-                tokenService.verify(data.token, getDecoded);
+                    tokenService.verify(data.token, getDecoded);
                 function getDecoded(error, user) {
                     if (error) { fileLogger(error); }
                     // Anonymous has no rights to add shares/activities
@@ -74,7 +74,9 @@ var Communication = (function () {
                 } function userExistsCallback(error, user) {
                     if (error) { fileLogger(error); }
                         // (user exists) -> check if this user has already a share in this activity
-                    else repository.getOne({ username: user[0].username, activityId: data.share.activityId }, 
+                    else if (data.share.activityId === 0) {
+                        queryDocumentsCallback(null, null);
+                    } else repository.getOne({ username: user[0].username, activityId: data.share.activityId }, 
                             "shares", queryDocumentsCallback);
                 }
                 // callback that checks for the single or multiple shares

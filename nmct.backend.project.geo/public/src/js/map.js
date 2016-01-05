@@ -297,7 +297,7 @@ var createMap = (function () {
             if (error) {
                 console.log(error);
             }
-            if (share === null) {
+            if (share === null || share === undefined) {
                 // No share found
                 var lat, lng;
                 var location = navigator.geolocation.getCurrentPosition(getPosition, showError);
