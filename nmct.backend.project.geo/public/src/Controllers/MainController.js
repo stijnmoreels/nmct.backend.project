@@ -115,6 +115,8 @@
                             $("html").click(function () {
                                 feedback.css("display", "none");
                             });
+
+                            createMap.getData();
                         }
                     });
 

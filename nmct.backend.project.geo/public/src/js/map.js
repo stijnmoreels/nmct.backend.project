@@ -11,8 +11,6 @@ var previousShareId = "";
 var map;
 
 var createMap = (function () {
-    "use strict";
-
 
     var initialize = function (element) {
         var mapCanvas = document.getElementById(element);
