@@ -15,7 +15,6 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate');
 
 
-
 //watcher
 gulp.task("default", function () {
     //Css Watch
@@ -43,14 +42,18 @@ gulp.task("css", function () {
 
 gulp.task("js", function () {
     gulp.src([
-        "./public/src/js/chat.js",
-        "./public/src/js/hash.js",
-        "./public/src/js/mapType.js",
-        "./public/src/models/ActivityModel.js",
-        "./public/src/models/ShareModel.js",
-        "./public/src/js/showErrorMsg.js",
-        "./public/src/Directives/**/*.js",
-        "./public/src/js/userLocation.js"])
+            "./public/src/js/chat.js",
+            "./public/src/js/hash.js",
+            "./public/src/js/client.js",
+            "./public/src/js/map.js",
+            "./public/src/js/mapType.js",
+            "./public/src/models/ActivityModel.js",
+            "./public/src/models/ShareModel.js",
+            "./public/src/js/showErrorMsg.js",
+            "./public/src/js/app.js",
+            "./public/src/Controllers/**/*.js",
+            "./public/src/Directives/**/*.js",
+            "./public/src/js/userLocation.js"])
         .pipe(jshint())
         .pipe(jshint.reporter(jsStylish))
         .pipe(sourcemaps.init())
