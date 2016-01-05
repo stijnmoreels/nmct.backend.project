@@ -3,7 +3,7 @@
  */
 var gulp = require('gulp'),
     csslint = require('gulp-csslint'),
-//cssMinifier = require('gulp-minify-css'),
+    cssMinifier = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
@@ -20,7 +20,6 @@ var gulp = require('gulp'),
 gulp.task("default", function () {
     //Css Watch
     var cssWatcher = gulp.watch('./public/src/less/**/*.less', ['css']);
-    //gulp.watch('./public/src/dist/css/*.css');
 
 });
 
@@ -33,8 +32,8 @@ gulp.task("css", function () {
             'ids': false
         }))
         .pipe(sourcemaps.init())
-        //.pipe(cssMinifier())
-        .pipe(concat("site.css"))
+        .pipe(cssMinifier())
+        .pipe(concat("site.min.css"))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest("./public/src/dist/css"))
         .pipe(notify({
@@ -50,9 +49,6 @@ gulp.task("js", function () {
         "./public/src/models/ActivityModel.js",
         "./public/src/models/ShareModel.js",
         "./public/src/js/showErrorMsg.js",
-        "./public/src/js/app.js",
-        "./public/src/Controllers/LoginController.js",
-        "./public/src/Controller/RegisterController.js",
         "./public/src/Directives/**/*.js",
         "./public/src/js/userLocation.js"])
         .pipe(jshint())
