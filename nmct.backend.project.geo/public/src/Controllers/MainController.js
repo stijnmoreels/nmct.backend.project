@@ -18,6 +18,10 @@
                 });
             })(i);
         }
+
+        $(".btn-submit").click(function () {
+            $("#" + $scope.feeling).removeClass("active");
+        });
         
         // chat initialisation
         if (!localStorage.isAvailable) {
