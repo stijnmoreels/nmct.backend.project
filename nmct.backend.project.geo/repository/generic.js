@@ -42,7 +42,7 @@ var Generic = (function () {
     getOneUser = function (wheres, callback) {
         if (wheres.username === undefined || wheres.password === undefined) { callback("No valid statement found", null); }
         var query = "SELECT * FROM users u WHERE u.username=@username AND u.password=@password";
-        var parameters = [{ name: "@username", value: wheres.username + "" }, { name: "@password", value: wheres.password + "" }];
+        var parameters = [{ name: "@username", value: wheres.username }, { name: "@password", value: wheres.password }];
         documentDb.query("users", { query: query, parameters: parameters }, callback);
     },
     // Concrete: Get one share from collection

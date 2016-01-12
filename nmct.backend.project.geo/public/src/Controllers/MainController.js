@@ -151,6 +151,9 @@
         $scope.logout = function () {
             $cookies.remove("user");
             
+            // disconnect client
+            client.disconnect();
+
             // remove admin rights
             client.isAdmin = false;
             var button = document.querySelector('button[id^="btnDelete_"]'); // any opened info-windows
