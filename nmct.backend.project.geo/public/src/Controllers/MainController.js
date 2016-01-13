@@ -44,14 +44,14 @@
                 
                 if ($scope.activityName) {
                     //activityModel.id = new Date().getTime() + "-" + $rootScope.loggedInUser;
-                    activityModel.id = new Date().getTime() + "-" + $cookies.get("user");
+                    activityModel.id = new Date().getTime() + "-" + $rootScope.loggedInUser;
                     activityModel.activityName = $scope.activityName;
                     activityModel.feeling = $scope.feeling;
                     activityModel.latitude = lat;
                     activityModel.longitude = lng;
                     activityModel.timestamp = new Date().toLocaleDateString();
-                    //activityModel.author = $rootScope.loggedInUser;
-                    activityModel.author = $cookies.get("user");
+                    activityModel.author = $rootScope.loggedInUser;
+                    //activityModel.author = $cookies.get("user");
 
                     client.addActivity(activityModel, function (error, activity) {
                         //addActivityToMap(error, activity);
@@ -90,8 +90,8 @@
                     shareModel.latitude = lat;
                     shareModel.longitude = lng;
                     shareModel.timestamp = new Date().toLocaleDateString();
-                    //shareModel.author = $rootScope.loggedInUser;
-                    shareModel.author = $cookies.get("user");
+                    shareModel.author = $rootScope.loggedInUser;
+                    //shareModel.author = $cookies.get("user");
 
                     client.addShare(shareModel, function (error, share) {
                         if(error){
