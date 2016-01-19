@@ -11,5 +11,5 @@ by: **Stijn Moreels** (https://github.com/stijnmoreels)
 by: **Arne Tesch** (https://github.com/ArneTesch)
 
 **Software Design**
-Inline-style: 
+
 ![alt text](https://github.com/stijnmoreels/Geofeelings.png)
