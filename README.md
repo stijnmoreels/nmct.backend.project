@@ -2,9 +2,9 @@
 
 Hosted: https://geofeeling.herokuapp.com
 
-An Location-based application that shows the current feelings from people around the world (real-time).
+An **location-based** application that shows the current feelings from people around the world (**real-time**).
 
 Backend: Node.js, DocumentDb, Mocha, Socket.io
-by: Stijn Moreels (https://github.com/stijnmoreels)
+by: **Stijn Moreels** (https://github.com/stijnmoreels)
 Frontend: Gulp, Chart.js, jQuery, AngularJS
-by: Arne Tesch (https://github.com/ArneTesch)
+by: **Arne Tesch** (https://github.com/ArneTesch)
