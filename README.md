@@ -12,4 +12,4 @@ by: **Arne Tesch** (https://github.com/ArneTesch)
 
 **Software Design**
 
-![alt text](https://github.com/stijnmoreels/Geofeelings.png)
+![alt text](https://github.com/stijnmoreels/nmct.backend.project/blob/master/nmct.backend.project.geo/Geofeelings.png)
