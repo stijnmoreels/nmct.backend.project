@@ -61,6 +61,7 @@
     <Compile Include="test\mocha\unit.js" />
     <None Include="geofeelings - Web Deploy.pubxml" />
     <None Include="geofeelings - FTP.pubxml" />
+    <Content Include="Geofeelings.png" />
     <Content Include="logger\events.log" />
     <Content Include="public\src\index.html" />
     <Content Include="public\src\stylesheets\bootstrap.css" />
